@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Mi primer codigo JavaScript</title>
+  </head>
+  <body>
+    <script>
+        var i = 2;
+        var primo = true;
+        var num = parseInt(prompt("Introduce un numero: "));
+
+        do {
+          if (num % i == 0){
+            primo = false;
+          }
+          i++;
+        } while(num < 1);
+
+        if (primo == true){
+          alert("El numero " +num+ " es primo.");
+        } else {
+          alert("El numero " +num+ " no es primo.");
+        }
+    </script>
+  </body>
+</html>

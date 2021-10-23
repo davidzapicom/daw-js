@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const cabecera = "|\tLu\t|\tMa\t|\tMi\t|\tJu\t|\tVi\t|\tSa\t|\tDo\t|";
+
+
+        do{
+            var mes = parseInt(prompt("Introduce el numero del mes (1-12)"));
+        }while(mes < 1 || mes > 12);
+
+        do{
+            var anio = parseInt(prompt("Introduce el numero del año"));
+        }while(anio < 1 || anio > 2021);
+
+        let fecha = new Date(anio+"-"+mes+"-"+"01");
+        let diaSemana = fecha.getDay();
+
+        diaSemana = (diaSemana == 0) ? 7 : diaSemana;
+
+        var nom_mes, num_dias = 0;
+
+        switch (mes){
+            case 1:
+                nom_mes = 'ENERO';
+                num_dias = 31;
+                break;
+
+            case 2:
+                nom_mes = 'FEBRERO'
+            if ((anio % 4 == 0) && ((anio % 100 != 0) || (anio % 400 == 0))){
+                num_dias = 29;
+            } else{
+                num_dias = 28;
+            }
+                break;
+
+            case 3:
+                nom_mes = 'MARZO';
+                num_dias = 31;
+                break;
+
+            case 4:
+                nom_mes = 'ABRIL';
+                num_dias = 30;
+                break;
+
+            case 5:
+                nom_mes = 'MAYO';
+                num_dias = 31;
+                break;
+
+            case 6:
+                nom_mes = 'JUNIO';
+                num_dias = 30;
+                break;
+
+            case 7:
+                nom_mes = 'JULIO';
+                num_dias = 31;
+                break;
+
+            case 8:
+                nom_mes = 'AGOSTO';
+                num_dias = 31;
+                break;
+
+            case 9:
+                nom_mes = 'SEPTIEMBRE';
+                num_dias = 30;
+                break;
+
+            case 10:
+                nom_mes = 'OCTUBRE';
+                num_dias = 31;
+                break;
+
+            case 11:
+                nom_mes = 'NOVIEMBRE';
+                num_dias = 30;
+                break;
+
+            case 12:
+                nom_mes = 'DICIEMBRE';
+                num_dias = 31;
+                break;
+        }
+
+        salida = "\t\t\t\tMES DE "+nom_mes+ " DE " +anio+"\t\n\n";
+        salida += cabecera +"\n";
+
+        var i=1;
+        while(i<diaSemana){
+            i++;
+            salida+= "|\t\t";
+        }
+        salida+="|";
+
+        for(j=1; j <= num_dias; j++){
+            if (i==1){
+                salida+="|";
+            }
+            salida+="\t "+j+"\t|";
+
+            if (i == 7){
+                salida+="\n";
+                i=0;
+            }
+            i++;
+        }
+        alert(salida);
+    </script>
+</body>
+</html>

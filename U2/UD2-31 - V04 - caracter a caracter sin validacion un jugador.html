@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+	<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<title>Ejercicio 31 - Tema 2</title>
+	</head>
+	
+	<body>
+		<script>
+
+			const numeroJugadas = 8;
+			
+			let heridos=0;
+			let muertos=0;
+
+			// control de ganador
+			let jugador_1_gana = false; 
+			let jugador_2_gana = false; 
+			
+			// combinación del jugador 1
+			let jugador_1_digito_1 ;
+			let jugador_1_digito_2 ;
+			let jugador_1_digito_3 ;
+			let jugador_1_digito_4 ;
+			
+			// letiables para introducir las respuestas
+			let respuesta_1 = '3';
+			let respuesta_2 = '3';
+			let respuesta_3 = '1';
+			let respuesta_4 = '4';
+			
+			// control de cancelación de posición de la combinación (false => cancelados)
+			let digito_control_1 = true;
+			let digito_control_2 = true;
+			let digito_control_3 = true;
+			let digito_control_4 = true;
+
+			// control de cancelación de posición de la respuesta (false => cancelados)
+			let respuesta_control_1 = true;
+			let respuesta_control_2 = true;
+			let respuesta_control_3 = true;
+			let respuesta_control_4 = true;
+
+			// contador de intentos 
+			intentoNumero = 0;
+						
+			/*
+            // COMBINACIÓN SECRETA DEL JUGADOR 1	
+			
+			jugador_1_digito_1 = prompt("Introduce el primer numero de tu codigo secreto:");
+			jugador_1_digito_2 = prompt("Introduce el segundo numero de tu codigo secreto:");
+			jugador_1_digito_3 = prompt("Introduce el tercer numero de tu codigo secreto:");
+			jugador_1_digito_4 = prompt("Introduce el cuarto numero de tu codigo secreto:");
+
+			*/
+
+			// COMBINACIÓN SECRETA DEL JUGADOR 2
+			alert("Le toca al jugador 2");
+			jugador_2_digito_1 = prompt("Introduce el primer numero de tu codigo secreto:");
+			jugador_2_digito_2 = prompt("Introduce el segundo numero de tu codigo secreto:");
+			jugador_2_digito_3 = prompt("Introduce el tercer numero de tu codigo secreto:");
+			jugador_2_digito_4 = prompt("Introduce el cuarto numero de tu codigo secreto:");
+			
+			// Bucle para repetir el juego si lo desean los jugadores
+			do {
+				alert("Empieza la batalla, teneis "+ numeroJugadas +" turnos");
+
+				//Bucle para realizar las jugadas progrmaadas (numeroJugadas = 8)
+				do {				
+					// inicializamos los contadores y los controladores para la tirada del jugador 1
+					
+                    heridos=0;
+					muertos=0;
+
+					intentoNumero ++;
+					
+					// INTENTO JUGADOR 1
+					
+					alert("Jugada número: "+ intentoNumero +"\nLe toca al jugador 1");
+					respuesta_1 = prompt("Introduce el primer numero:");
+					respuesta_2 = prompt("Introduce el segundo numero:");
+					respuesta_3 = prompt("Introduce el tercer numero:");
+					respuesta_4 = prompt("Introduce el cuarto numero:");
+					
+					// CONTROLAMOS LOS MUERTOS
+                    
+                    if(respuesta_1 == jugador_2_digito_1){
+						muertos++;
+						digito_control_1 	= false;	//cancelamos la posición 1
+						respuesta_control_1 = false;	//cancelamos la posición 1 de la respuesta
+					}
+
+					if(respuesta_2 == jugador_2_digito_2){
+						muertos++;
+						digito_control_2 	= false;    //cancelamos la posición 2
+						respuesta_control_2 = false;	//cancelamos la posición 2 de la respuesta
+					}
+
+					if(respuesta_3 == jugador_2_digito_3){
+						muertos++;
+						digito_control_3 	= false;	//cancelamos la posición 3
+						respuesta_control_3 = false;	//cancelamos la posición 3 de la respuesta
+					}
+ 
+					if(respuesta_4 == jugador_2_digito_4){
+						muertos++;
+						digito_control_4 	= false;	//cancelamos la posición 4
+						respuesta_control_4 = false;	//cancelamos la posición 4 de la respuesta
+					}
+
+					// EMPEZAMOS CON LOS HERIDOS
+                    
+                    if (digito_control_1) {
+                        if(respuesta_control_2 && (respuesta_1 == jugador_2_digito_2)) {
+						    heridos ++;
+						    respuesta_control_2 = false;                            
+					    } else if(respuesta_control_3 && (respuesta_1 == jugador_2_digito_3)) {
+						    heridos ++
+						    respuesta_control_3 = false;
+                        } else if(respuesta_control_4 && (respuesta_1 == jugador_2_digito_4)) {
+						    heridos ++;
+						    respuesta_control_4 = false;
+					    }
+                    }
+
+                    if (digito_control_2) {
+                        if(respuesta_control_1 && (respuesta_2 == jugador_2_digito_1)) {
+						    heridos ++;
+						    respuesta_control_1 = false;
+					    } else if(respuesta_control_3 && (respuesta_2 == jugador_2_digito_3)) {
+						    heridos ++
+						    respuesta_control_3 = false;
+					    } else if(respuesta_control_4 && (respuesta_2 == jugador_2_digito_4)) {
+						    heridos ++;
+						    respuesta_control_4 = false;
+                        }
+					}
+
+					
+                    if (digito_control_3) {
+                        if(respuesta_control_1 && (respuesta_3 == jugador_2_digito_1)) {
+						    heridos ++
+						    respuesta_control_1 = false;
+					    } else if(respuesta_control_2 && (respuesta_3 == jugador_2_digito_2)) {
+						    heridos ++
+						    respuesta_control_2 = false;
+					    } else if(respuesta_control_4 && (respuesta_3 == jugador_2_digito_4)) {
+    						heridos ++
+	    					respuesta_control_4 = false;
+		    			}
+                    }
+
+                    if (digito_control_4) {
+                        if(respuesta_control_1 && (respuesta_4 == jugador_2_digito_1)) {
+						    heridos ++
+						    respuesta_control_1 = false;
+					    } else if(respuesta_control_2 && (respuesta_4 == jugador_2_digito_2)) {
+						    heridos ++
+						    respuesta_control_3 = false;
+					    } else if(respuesta_control_4 && (respuesta_4 == jugador_2_digito_4)) {
+						    heridos ++
+						    respuesta_control_4 = false;
+					    }
+                    }
+
+					if (muertos == 4) {jugador_1_gana = true}
+
+					alert("Jugador 1, en la jugada " + intentoNumero +" con tu combinación: "+ respuesta_1 + respuesta_2 + respuesta_3 + respuesta_4 + "\nHas tenido "+muertos+" muertos y "+heridos+" heridos");
+
+
+				} while (intentoNumero < numeroJugadas 	&& !(jugador_1_gana || jugador_2_gana))
+			
+				if (jugador_1_gana && jugador_2_gana) {
+					alert("Enhorabuena habéis empatado en la jugada número: " +intentoNumero);
+				} else if (jugador_1_gana) {
+					alert("Enhorabuena JUGADOR 1 has ganado en la jugada número: " +intentoNumero);
+				} else if (jugador_2_gana) {
+					alert("Enhorabuena JUGADOR 1 has ganado en la jugada número: " +intentoNumero);
+				} else {alert("Lo siento, no pudistéis adivinar ninguna combinación después de "+intentoNumero+" intentos")}
+			
+			} while(confirm("¿Deseáis jugar de nuevo?"))
+		
+
+		</script>
+	</body>
+</html>

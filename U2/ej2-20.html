@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Mi primer codigo JavaScript</title>
+  </head>
+  <body>
+    <script>
+      var num;
+      alert('1.SALIR \n 2.SUMATORIO \n 3.FACTORIAL');
+        
+      num = parseInt(prompt ('Elija una opción:',''));
+      switch (num) {
+      case 1: 
+        alert ('SALIR');
+        alert ('Has salido.');
+        break;
+
+      case 2: 
+        var suma = 0;
+        alert ('SUMATORIO');
+        num = parseInt(prompt('Ingrese un numero:',''));
+        for(var i= 1; i <= num; i++){
+          suma+=i;
+        }
+        alert(suma);
+        break;
+
+      case 3: 
+        alert ('FACTORIAL');
+        num = parseInt(prompt('Ingrese un numero:',''));
+        var total = 1;
+        for (i = 1; i <= num; i++){
+          total = total * i;
+        }
+        alert(total);
+        break;
+
+      default: 
+        alert ('Debe ingresar un valor comprendido entre 1 y 5.');
+      }
+    </script>
+  </body>
+</html>
