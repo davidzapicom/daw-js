@@ -5,11 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
     <script>
-        correo();
-
         function correo() {
             var usuario = prompt("Escribe el nombre de usuario:");
             var servidor = prompt("Escribe el nombre del servidor:");
@@ -18,5 +14,8 @@
             alert(usuario+"@"+servidor+dominio)
         }
     </script>
+</head>
+<body>
+    <input  type="button" value="Form" onclick="correo()" />
 </body>
 </html>
