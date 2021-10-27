@@ -10,9 +10,19 @@
     <script>
         var num = new Array(25);
         function factorial (num){
-            
-        }
-    </script>
+            var total = 1, pos = 0;
+            document.write("|\tN\t|\tN!\t|");
+            document.write("<br/>");
 
+            for (var i = 1; i <= num.length; i++){
+                total = total*i;
+                num[pos] = total;
+                pos++;
+                document.write("|   "+i+ "  |  " +total+ " |");
+                document.write("<br/>");
+            }
+        }
+        factorial(num);
+    </script>
 </body>
 </html>
