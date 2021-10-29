@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var array1 = [5,3,8,3];
+        var array2 = [4,9,2,6];
+        var resultado = [];
+
+        document.write(array1);
+        document.write("<br/>"+array2);
+        document.write("<br/>");
+        
+        for (var i = 0; i < array1.length; i++){
+            for (var j = 0; j < array2.length; j++){
+                resultado = array1[i] * array2[j];
+                document.write(resultado);
+                resultado.reverse();
+                document.write("<br>"+resultado);
+            }
+        }
+    </script>
+</body>
+</html>
