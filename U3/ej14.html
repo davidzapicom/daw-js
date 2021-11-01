@@ -1,41 +1,19 @@
 <html>
     <script>
-        'Podemos usar split para obtener las palabras de una oración'.split(' ');
-        // [ "Podemos", "usar", "split", "para", "obtener", "las", "palabras", "de", "una", "oración" ]
-
-        'javascript,split,snippet,samples'.split(',');
-        // [ "javascript", "split", "snippet", "samples" ]
-
-        'javascript,split,snippet,samples'.split(',', 2);
-        // [ "javascript", "split" ]
-
-        'Podemos usar split para obtener las palabras de una oración'.split(' ', 3);
-        // [ "Podemos", "usar", "split" ]
-
-        // convirtiendo un fichero csv con split y map
-        `Ada Lovelace,English,1815
-        Grace Hopper,American,1906
-        Alan Turin,English,1954`.split('\n').map(line => line.split(','));
-        // Array [ Array[3], Array[3], Array[3] ]
-
-        // inviertiendo una cadena con split y reverse
-        'javascript'.split('').reverse().join('');
-        // "tpircsavaj"
-
-        // split se puede usar con expresiones regulares
-        'Ada Lovelace   ,  English ,   1815'.split(/\s*,\s*/);
-        // [ "Ada Lovelace", "English", "1815" ]
-
-        // usando expresiones regulares también podemos usar varios delimitadores diferenciados
-        'Hello, how are you?'.split(/,|\s+/g);
-        // [ 'Hello', '', 'how', 'are', 'you?' ] 
-
-        // y si usamos () nos devuelve los delimitadores
-        'Ada Lovelace   ,  English ,   1815'.split(/(\s*,\s*)/);
-        // [ "Ada Lovelace", "   ,  ", "English", " ,   ", "1815" ]
-
-        // podemos encontrar todas las palabras diferentes de un texto con split, Set y Array.from
-        Array.from(new Set('texto texto largo con con con muchas palabras'.split(' ')));
-        // [ "texto", "largo", "con", "muchas", "palabras" ]
+        var str = 'Estas son algunas palabras.';
+  
+        var a = str.split(' ').length;
+        var b = str.split(' '). ;
+        var c = str.split(' '). ;
+        var d = str.split(' ').reverse().join(' ');
+        var e = str.split(' '). ;
+        var f = str.split(' '). ;
+            
+        alert("La cadena consta de " +a+ " palabras.");
+        alert("La primera palabra de la cadena es: " +b);
+        alert("La ultima palabra de la cadena es: " +c);
+        alert("La cadena en orden inverso: " +d);
+        alert("La cadena en orden de a-z: " +e);
+        alert("La cadena en orden de z-a: " +f);
     </script>
 </html>
