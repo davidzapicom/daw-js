@@ -1,0 +1,14 @@
+<html>
+
+<img id="A1" src="light-bulb-off.png" height="200px" onclick="myfunction()" alt="">
+    <script>
+        function myfunction(){
+            bombilla = document.getElementById("A1");
+            if ( bombilla.src == "file:///F:/DAW/D.CLIENTE/PRACTICAS/U3/light-bulb-off.png"){
+                bombilla.src = "light-bulb-on.png";
+            } else {
+                bombilla.src = "light-bulb-off.png";
+            }
+          }
+    </script>
+</html>
