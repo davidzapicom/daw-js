@@ -1,6 +1,5 @@
 <html>
     <script>
-        var aleatorio = Math.random();
         var resultado = 0;
         function division(){
             resultado = parseInt(prompt("Introduce el resultado de la division de 10/5: "));
@@ -13,7 +12,17 @@
                 alert("Resultado incorrecto.");
             }
         }
+
+        function getRandom() {
+            return Math.random();
+        }
+
+
         division();
         comprobacion(resultado);
+        getRandom();
+
+
+
     </script>
 </html>
