@@ -1,20 +1,49 @@
+<!DOCTYPE html>
 <html>
-    <script>
-        function calculo(){
-            var n1 = parseInt(prompt("Introduce el primer numero: "));
-            var n2 = parseInt(prompt("Introduce el segundo numero: "));
-            
-            var operador = prompt("Introduce el operador");
-            if (operador == '+'){
-                alert(n1 + n2);
-            } else if (operador == '-'){
-                alert(n1 - n2);
-            } else if (operador == '/'){
-                alert(n1 / n2);
-            }else if (operador == '*'){
-                alert(n1 * n2);
-            }
+<script>
+    function operar(num1, num2, operador) {
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+        var total = 0;
+        if (operador == '+') {
+            total = (num1 + num2);
         }
-        calculo();
-    </script>
+        if (operador == '-') {
+            total = (num1 - num2);
+        }
+        if (operador == '*') {
+            total = (num1 * num2);
+        }
+        if (operador == '/') {
+            total = (num1 / num2);
+        }
+        return total;
+    }
+
+    function procesarSalida(num1, num2, operador) {
+        let element = document.getElementById("pantalla")
+        element.innerHTML = "";
+        element.style.color = "black";
+        element.innerHTML = "El  resultado es: " + operar(num1, num2, operador);
+    }
+</script>
+<body>
+    <h1>Operación</h1>
+    <form class="formulario">
+        <label>Introduce el número 1:</label>
+        <input type="text" name="num1" value=0>
+        <br>
+        <label>Introduce el número 2:</label>
+        <input type="text" name="num2" value=0>
+        <br>
+        <label>Introduce el operador:</label>
+        <input type="text" name="operador" value='+'>
+        <br>
+        <input type="button" value="Calcular"
+            onClick="procesarSalida(form.num1.value,form.num2.value,form.operador.value)">
+    </form>
+    <div id="pantalla">
+    </div>
+</body>
+</html>
 </html>
