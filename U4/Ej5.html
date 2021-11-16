@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<title>Ejer5</title>
+</head>
+<body>
+	<p><strong>Selecciona un color para el fondo de la página:</strong></p>
+	<form>
+		<select name="color" id="colores" >
+			<option value="red">Rojo</option>
+			<option value="blue">Azul</option>
+			<option value="yellow">Amarillo</option>
+			<option value="green">Verde</option>
+		</select>
+		<input type="button" value="Modifica el color" onclick="modificar()">
+	</form>
+	<script>
+	function modificar(){
+         document.body.style.backgroundColor = document.getElementById("colores").value;
+	}
+</script>
+</body>
+</html>

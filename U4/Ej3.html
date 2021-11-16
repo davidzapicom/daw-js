@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejer3</title>
+</head>
+<body>
 <script>
-function altura() {
-  var x = " La altura disponible de la pantalla es : " + screen.availHeight + "px";
-  document.getElementById("demo").innerHTML = x;
-}
-altura();
-document.write("<br/>")
-
-function anchura() {
-  var x = " La anchura disponible de la pantalla es : " + screen.availWidth + "px";
-  document.getElementById("demo").innerHTML = x;
-}
-
-anchura();
-document.write("<br/>")
-
-function resolucion_color() {
-  var x =  "La resolucion de color de mi pantalla es : " + screen.pixelDepth + " bits por pixel";
-  document.getElementById("demo").innerHTML = x;
-}
-resolucion_color();
+	document.write ("Altura total: " + screen.height + "px <br>");
+	document.write ("Altura disponible: " + screen.availHeight + "px <br>");
+	document.write ("Anchura total: " + screen.width + "px <br>");
+	document.write ("Anchura disponible: " + screen.availWidth + "px <br>");
+	document.write ("Profundidad de color: " + screen.colorDepth);
 </script>
+</body>
 </html>
