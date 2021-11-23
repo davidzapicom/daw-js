@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Num1: <input type="number" id="num1"/>
+    <br><br>
+    Num2: <input type="number" id="num2"/>
+    <br><br>
+    <input id="boton" type="button" onclick="countdown()" value="Aceptar" />
+    <br><br>
+
+    <p id="counter"></p>
+
+
+   <script type="text/javascript">
+        function countdown() {
+            boton.style.display = "none";
+            var i = num1.value;
+            var j = num2.value;
+            myVar = setInterval(function(){
+                                    if (i>j) {
+                                        i=i-1;
+                                        counter.innerHTML = i;
+                                    }
+                                    else {
+                                        clearInterval(myVar);
+                                        boton.style.display = "block";
+                                        counter.innerHTML = "";
+                                    }
+                                }, 1000);
+        }
+
+    </script>
+</body>
+</html>

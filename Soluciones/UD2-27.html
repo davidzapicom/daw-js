@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<title>Ejercicio 27 - Tema 2</title>
+		<meta charset='UTF-8' />
+	</head>
+	
+	<body>
+		<script>
+			var correcto=0, bisiesto=0;
+			var dia= parseInt(prompt("Introduce un dia:"));		//1 a 31
+			var mes= parseInt(prompt("Introduce un mes:"));		//0 a 11
+			var anho= parseInt(prompt("Introduce un año:"));
+
+			var miFecha = new Date(anho,mes,dia);
+			if ((dia==miFecha.getDate()) && (mes==miFecha.getMonth()) && (anho==miFecha.getFullYear())) {
+				if ((anho % 4 == 0) && ((anho % 100 != 0) || (anho % 400) == 0))
+					alert("bisiesto");
+				else
+					alert("no es bisiesto");
+			} else {
+				alert("Fecha incorrecta");
+			}
+		</script>
+	</body>
+</html>

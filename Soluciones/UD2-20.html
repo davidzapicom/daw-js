@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<title>Ejercicio 20 - Tema 2</title>
+		<meta charset='UTF-8' />
+	</head>
+	
+	<body>
+		<script>
+			var opcion, sumar, sumatorio=0, factorial=1, fac;
+			do{
+				opcion= prompt("1) Salir \n2) Sumatoio \n3) Factorial");
+				if(opcion < 1 || opcion > 3)
+					alert("Las opciones posibles son: 1, 2 o 3");
+			}while(opcion <1 || opcion>3);
+			
+			while(opcion!=1){
+				if(opcion==2){
+					sumar= prompt("Introduce el numero para calcular el sumatorio");
+					for(num=1;num<=sumar;num++){
+						sumatorio= sumatorio+num;
+					}
+					alert("El sumatorio es: "+sumatorio);
+				}
+					
+				if(opcion==3){
+					fac= prompt("Introduce el numero para hallar el factorial");
+					for(num=1;num<=fac;num++){
+						factorial= factorial*num;
+					}
+					alert("El factorial es: "+factorial);
+				}
+				
+				opcion= prompt("1) Salir \n2) Sumatoio \n3) Factorial");
+				if(opcion <1 || opcion>3){
+					alert("Las opciones posibles son: 1, 2 o 3");
+				}
+			}
+		</script>
+	</body>
+</html>

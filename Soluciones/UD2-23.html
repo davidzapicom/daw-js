@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<title>Ejercicio 23 - Tema 2</title>
+		<meta charset='UTF-8' />
+	</head>
+	
+	<body>
+		<script>
+			var abajo;
+			var arriba;
+			var num;
+			var pares=0;
+		
+			abajo= prompt("Introduce el numero mas bajo:");
+			arriba= prompt("Introduce el numero mas alto:");
+			num=abajo;
+			do  {
+				if(num%2==0){
+					pares++;
+				}
+				num++;
+			}while(num<=arriba);
+			alert("El numero de pares es: "+pares);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="divi" style="background-color: red; height: 100px; width: 150px; padding: 1%;">
+	<button type="button" onclick="nuevo()">Crea Text</button>
+</div>
+
+<script type="text/javascript">
+	function nuevo(){ //Cada vez que se clique el botón se crea un nuevo input
+        var input = document.createElement("input"); //Creamos el elemento input
+        input.type = "text"; //Tipo texto
+        input.style = "background-color:blue;color:yellow;margin-top:5px;"; //Le damos estilo
+        input.value = "Caja de texto"; //Value del input
+
+        document.getElementById("divi").appendChild(input); //Lo incluimos en el div
+
+        document.getElementById("divi").style.height = (document.getElementById("divi").offsetHeight + 30) + "px"; //El div se incrementa en 30 pixeles cada vez que se añada un elemento. La propiedad offsetHeight nos devuelve la altura en píxeles.
+	}
+</script>
+</body>
+</html>

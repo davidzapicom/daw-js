@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+
+<head>
+	<meta charset='UTF-8' />
+	<title>Ejercicio 50 - Tema 2</title>
+	<script>
+
+		let b16='';
+
+		do {
+			numero = parseInt(prompt("Dame el numero que quieras convertir a base 16"));
+			if (isNaN(numero))
+				alert("No has introducido un numero");
+		} while (isNaN(numero));
+
+		b16 = numero.toString(16).toUpperCase();
+		alert("El numero en base 10: " + numero + "\nes en base 16: " + b16);
+				
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

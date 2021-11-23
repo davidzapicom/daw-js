@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 9</title>
+</head>
+<body>
+<p id="parrafo"></p>
+<button type="button" id="nuevoCli">Añadir Cliente</button>
+<button type="button" id="elim">Eliminar Cliente</button>
+<button type="button" id="nuevafac">Añadir Factura</button>
+<button type="button" id="mostrar">Mostrar</button>
+<script type="text/javascript">
+	class Clientes{
+      constructor(dni,cliente,divisa){
+        this.dni = dni;
+        this.cliente = cliente;
+        this.divisa = divisa;
+      }
+
+      añadir(){
+			nuevoCli.addEventListener("click",function(){
+
+			var dni = prompt ("Introduce dni: ");
+			var cliente =  prompt("Introduce nombre del cliente: ");
+			var divisa = prompt("Introduce divisa: ");
+	
+            var registro = new Clientes (dni,cliente,divisa);
+			clientes.push(registro);
+		});
+		}
+
+		eliminar(){
+			elim.addEventListener("click",function(){
+			var nombreCli = prompt ("Que usuario deseas eliminar: ");
+			for(var i = 0; i < clientes.length; i++) {
+   			if(clientes[i].cliente === nombreCli) {
+   				clientes.splice(i, 1);
+   			} 
+			}
+			});
+		}
+
+	}
+
+	class Facturas extends Clientes {
+		constructor(Nfactura,dni,total){
+			super(dni);
+			this.Nfactura = Nfactura;
+			this.total = total;
+		}
+
+		 añadirFactura(){
+			nuevafac.addEventListener("click",function(){
+
+			var Nfactura = prompt ("Introduce numero de factura: ");
+			var dni =  prompt("Introduce dni: ");
+			var total = prompt("Introduce total: ");
+	
+            var registro = new Facturas (Nfactura,dni,total);
+			facturas.push(registro);
+		});
+		}
+
+		listado(){
+			mostrar.addEventListener("click",function(){
+			parrafo.innerHTML = "";
+            var nombreCli = prompt("Introduce el dni del cliente: ");
+            var divisa;
+
+             for (var i=0; i<facturas.length; i++){
+             	for (var j=0; j<clientes.length;j++){ 
+             	if (facturas[i].dni === nombreCli && clientes[j].dni === nombreCli){
+             		if (clientes[j].divisa === "dolares"){
+                     divisa = facturas[i].total * 0.82;
+                     cambioDivisa.push(divisa);
+                     facturas[i].total = divisa;
+                     clientes[j].divisa = "euros";
+             		}
+             		parrafo.innerHTML +=  "**************<br>Nombre: " + clientes[j].cliente+ "<br>Total: " + facturas[i].total + "<br>Divisa: " + clientes[j].divisa + "<br>**************";
+             	}
+              }
+             }
+
+             
+   			 console.log(cambioDivisa);
+
+			});
+			console.log(facturas);
+			console.log (clientes);
+			
+		}
+	}
+
+	var clientes = [
+	new Clientes ("1111","Pepe","euros")];
+	var facturas = [
+	new Facturas("454545","1111","300")];
+    var cambioDivisa = [];
+    var regCli = new Clientes();
+    regCli.añadir();
+    regCli.eliminar();
+    var regFact = new Facturas();
+    regFact.añadirFactura();
+    regFact.listado();
+
+</script>
+</body>
+</html>

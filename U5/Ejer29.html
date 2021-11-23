@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<p style="width: 500px; height: 400px;" onclick="pulsar(event)" id="clicks">
+	Etiam non dui pellentesque, blandit mauris ac, vestibulum neque. Nullam ipsum velit, finibus sit amet est eget, placerat mollis ante. Sed commodo elit augue, vitae congue lacus vulputate vitae. Mauris ultrices arcu non augue efficitur, id aliquam metus gravida. Nam bibendum vulputate varius. Vestibulum porta sem quis lorem porta porttitor sed eget nisi. Fusce interdum purus vel ipsum luctus, tempor pharetra dolor congue. Vivamus tincidunt lacinia sapien eu vulputate. <span style="background-color: red;" onclick="pulsar(event)"><strong>Vivamus maximus ante in blandit elementum. Morbi arcu nisi, sagittis at dolor in, auctor rutrum mauris. Fusce in vulputate metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mauris lorem, tempor eget tincidunt in, imperdiet non diam.</strong></span> Pellentesque tincidunt et dolor eget vulputate. In semper, sem sit amet molestie iaculis, est leo maximus dui, a consequat erat risus non tortor. In molestie porttitor justo, non feugiat dolor vehicula at.
+</p>
+
+<script type="text/javascript">
+
+    function pulsar(event){
+    	alert("Se ha pulsado una vez!");
+    	event.stopPropagation(); //Evento que evita que se produzcan repeteciones y se procese más de una vez el evento click.
+    }
+</script>
+</body>
+</html>

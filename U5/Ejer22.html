@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<p>Lorem ipsum dolor sit amet, <a href="https://oix.es" target="_blank">consectetur adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a href="https://mem.es" target="_blank">Excepteur</a> sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec ullamcorper, nulla ut feugiat congue, purus urna porta odio, id <a href="https://miejmplo.com" target="_blank">porttitor enim</a> sem ut nisl. Aenean at convallis dui, id vulputate nibh. Donec consectetur, ante at posuere aliquet, risus ante varius urna, quis dictum ex tellus quis arcu. Donec pulvinar eros sed sodales <a href="https://miejmplo.com" target="_blank">molestie</a>. Praesent commodo purus non porta faucibus. Ut id erat vel lacus semper accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec eget mollis neque, ac congue ante. Pellentesque fermentum auctor tempus.
+</p>
+
+<p>Donec scelerisque rhoncus dapibus. Maecenas tincidunt metus sed orci sollicitudin, non finibus massa faucibus. Praesent semper dictum augue vel imperdiet. <a href="https://miejmplo.com" target="_blank">Vestibulum vulputate</a>, nibh ut tempus consectetur, neque sapien dictum justo, eu pulvinar tellus ipsum nec ex. Sed at consequat dui. Pellentesque molestie ultrices congue. Nunc <a href="https://mem.es" target="_blank">elementum pharetra</a> scelerisque. Etiam egestas posuere magna, eget volutpat tellus auctor consequat. Fusce consequat mollis sem, eget ultricies lacus euismod non. Ut nec nisi aliquet, <a href="https://mem.es" target="_blank">fringilla</a> enim quis, sagittis massa. Maecenas ultrices, lectus nec viverra vehicula, ligula orci ultrices eros, a maximus augue elit nec diam. Cras et ex enim. Nulla sodales vestibulum nisl, id fringilla ante. Donec vel vulputate quam. Vivamus ac sagittis nisl.</p>
+
+<p id="enl"></p>
+<p id="parrafo"></p>
+
+<script type="text/javascript">
+	var enlaces = document.getElementsByTagName("a"); 
+	document.write ("Enlaces: ");
+	for (var i=0; i<enlaces.length;i++){
+     document.write (enlaces[i].href + "<br>"); //Muestro los href de todos los enlaces
+     enlaces[i].href = "https://www.google.com"; //Todos los enlaces apuntan a Google.com
+	}
+    var par = document.getElementsByTagName("p")[2].getElementsByTagName("a").length; //Accedo al parrafo tres y a sus vez a los enlaces y su cantidad.
+
+	document.getElementById("enl").innerHTML ="El numero de enlaces es : " + enlaces.length; //Cantidad de enlaces de toda la página
+	document.getElementById("parrafo").innerHTML= "El numero de enlaces en el parrafo tres es: " + par;
+</script>
+
+
+</body>
+</html>

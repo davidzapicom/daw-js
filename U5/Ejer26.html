@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div style="border:1px solid red;">
+	<p id="parrafo" style="padding:1%;">Primer Parrafo.</p>
+</div>
+<br>
+<button type="button" onclick="otro()">Añade otro textNode</button>
+<script type="text/javascript">
+	function otro(){
+		var texto = document.createTextNode("  Texto Dinámico.  ");
+        document.getElementById("parrafo").appendChild(texto);
+	}
+
+</script>
+</body>
+</html>

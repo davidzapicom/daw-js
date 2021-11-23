@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="ver productos" onclick="verProductos()" />
+    <div>
+        <table id="tab">
+        </table>
+    </div>
+    <script>
+        class tienda{
+            constructor(producto, talla, precio, uds){
+                this.producto = producto;
+                this.talla = talla;
+                this.precio = precio;
+                this.uds = uds;
+            }
+        }
+
+        class ventas{
+            constructor(prodV, nUds, precioT){
+                this.prodV = prodV;
+                this.nUds = nUds;
+                this.precioT = precioT;
+            }
+
+            calculaIva() {
+               let precioIVA = this.precioT * 1.21;
+
+               return precioIVA;
+            }
+        }
+        productos = [];
+
+        productos.push(new tienda('Camisa', 36, 45, 3));
+        productos.push(new tienda('Pantalon', 40, 32.5, 6));
+        productos.push(new tienda('Falda', 36, 52, 3));
+
+        function verProductos() {
+        const contenedorTabla = document.getElementById('tab');
+        contenedorTabla.innerHTML = `<tr>
+                                    <th>Producto</th>
+                                    <th>Talla</th>
+                                    <th>Precio</th>
+                                    <th>Almacen</th>
+                                    </tr>`;
+            for(i = 0; i < productos.length; i++){
+            contenedorTabla.innerHTML += `<tr style='text-align: center'>
+                                            <td>${productos[i].producto}</td>
+                                            <td>${productos[i].talla}</td>
+                                            <td>${productos[i].precio}</td>
+                                            <td>${productos[i].uds}</td>
+                                            <td><input type='button' value='comprar' id='${i}' onclick='compra(this)' /></td>
+                                            <tr>`;
+            }
+        }
+        function compra(b) {
+            let uds_compra = prompt("Cuantas unidades quieres?");
+            let id_prod = b.id;
+            let totalUnds = productos[id_prod].uds;
+            if(uds_compra <= totalUnds){
+                alert("Compra realizada");
+                let precioTotal = productos[id_prod].precio * uds_compra;
+                let venta1 = new ventas(productos[id_prod].producto,uds_compra,precioTotal);
+                precioIVA = venta1.calculaIva();
+                totalUnds = totalUnds - uds_compra;
+                productos[id_prod].uds = totalUnds;
+                alert(`Producto: ${productos[id_prod].producto}
+Talla: ${productos[id_prod].talla}     
+Cantidad: ${uds_compra}           
+Precio con IVA: ${precioIVA}
+`);
+                verProductos();
+            }else{
+                alert("No tenemos esa cantidad disponible");
+            }
+    }
+    </script>
+</body>
+</html>
