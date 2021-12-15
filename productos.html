@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let productos = [
+            ['Lentejas', 100, 0.20],
+            ['Lentejas', 500, 0.18],
+            ['Lentejas', 1000, 0.17],
+            ['Lentejas', 5000, 0.15],
+            ['Lentejas', 10000, 0.14],
+          ];
+
+        var precio;
+        function calcularPrecio(producto, cantidad) {
+            for (var i = 0; i < productos.length; i++){
+                if(productos[i,0] == producto) {
+                    if (productos[i++,0] >= cantidad) {
+                        precio = productos[i, , ];
+                    } else {
+                        productos[i++,0];
+                    }
+               }
+            }
+        }
+
+
+        console.log(calcularPrecio("Lentejas",250));
+    </script>
+</head>
+<body>
+</body>
+</html>

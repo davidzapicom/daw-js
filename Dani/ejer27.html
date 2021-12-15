@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset='UTF-8' />
+        <script>
+            function comprobar_dni(dni)
+			{
+			
+			var numero;
+			var letra;
+			var letras_posibles;
+			var expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+				 
+			if(expresion_regular_dni.test (dni)){
+				  
+					 numero = dni.substr(0,dni.length-1);
+					 letra = dni.substr(dni.length-1,1);
+					 
+					 numero = numero % 23;
+					 
+					 letras_posibles='TRWAGMYFPDXBNJZSQVHLCKET';
+					 
+					 letras_posibles=letras_posibles.substring(numero,numero+1);
+					if (letras_posibles!=letra.toUpperCase()) {
+					   alert('Dni erroneo, la letra del NIF no se corresponde');
+					 }else{
+					   alert('Dni correcto');
+					 }
+				  }else{
+					 alert('Dni erroneo, formato no valido');
+				   }
+				}
+ 
+ 
+</script>
+</head>
+<body>
+<input type="text" onblur="comprobar_dni(this.value)" >
+</body>
+</html>

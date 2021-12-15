@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var countCampos = 0;
+        function AnadirCampo() {
+            var parent = document.getElementById("botones");
+            var newLabel = document.createElement('label');
+    
+            newLabel.className += "col-md-3 control-label";
+            newLabel.innerHTML = "campo" + countCampos + " ";
+            var input = document.createElement('input');
+            input.setAttribute('type', 'text');
+            parent.appendChild(newLabel);
+            parent.appendChild(input);
+            countCampos++;
+        }
+        function EliminarCampo() {
+            var parent = document.getElementById("botones");
+            parent.removeChild(parent.lastChild);
+            parent.removeChild(parent.lastChild);
+            countCampos--;
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="button" value="Anadir campo" name="Back" onclick="AnadirCampo()" />
+    </form>
+    </br>
+    <form>
+        <input type="button" value="Eliminar campo" name="Back" onclick="EliminarCampo()" />
+    </form>
+    <div class="row" id="botones">
+    </div>
+</body>
+
+</html>

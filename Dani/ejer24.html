@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset='UTF-8' />
+		<script>
+			function validateForm() {
+				email=miForm.email.value;
+				if  ((email.indexOf('@',0)==-1)  || (email.indexOf(';',0)!=-1) || 
+					 (email.indexOf(' ',0)!=-1)  || (email.indexOf('/',0)!=-1) || 
+					 (email.indexOf(';',0)!=-1)  || (email.indexOf('<',0)!=-1) || 
+					 (email.indexOf('>',0)!=-1)  || (email.indexOf('*',0)!=-1) || 
+					 (email.indexOf('|',0)!=-1)  || (email.indexOf('`',0)!=-1) || 
+					 (email.indexOf('&',0)!=-1)  || (email.indexOf('$',0)!=-1) || 
+ 					 (email.indexOf('!',0)!=-1)  || (email.indexOf('"',0)!=-1) || 
+					 (email.indexOf(':',0)!=-1))
+					 {
+						alert("Direccion incorrecta");
+						return false;
+					 }
+			}
+		</script>
+    </head>
+    
+	<body>
+        <form name="miForm" action="mailto:daniel@educastur.es" onsubmit="return validateForm();" method="post" enctype="text/plain">
+            <h1>Bienvenido</h1>
+			Email: <input type="text" name="email"> <br>
+            Introduce tu nombre: <input name="nombre" type="text"> <br>
+            Mensaje: <textarea name="mensaje" cols="60" rows="6"></textarea> <br>
+            <br />
+
+            <input type="submit" value="Enviar" />
+            <input type="reset" value="reset" />
+        </form>
+    </body>
+</html>

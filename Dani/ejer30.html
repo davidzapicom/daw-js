@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='UTF-8' />
+    <script>
+        window.onload = function () {
+            var parrafos = document.getElementsByClassName("parrafo").length;
+            var enlaces = document.getElementsByClassName("enlace").length;
+            var imagenes = document.getElementsByClassName("imagen").length;
+            var formularios = document.getElementsByClassName("formulario").length;
+            
+            var msg = "Nº de párrafos de la pagina: " + parrafos;
+            for(var i = 0; i < document.getElementsByClassName("parrafo").length; i++){
+                msg+= "\nID del párrafo: " + document.getElementsByClassName("parrafo")[i].id;
+            }
+            msg+= "\nNº de enlaces: " + enlaces;
+            for(var i = 0; i < document.getElementsByClassName("enlace").length; i++){
+                msg+= "\nURL del enlace: " + document.getElementsByClassName("enlace")[i].href;
+            }
+            msg+= "\nNº de imágenes: " + imagenes;
+            for(var i = 0; i < document.getElementsByClassName("enlace").length; i++){
+                msg+= "\nNombre de la imagen: " + document.getElementsByClassName("imagen")[i].name;
+            }
+            for(var i = 0; i < document.getElementsByClassName("enlace").length; i++){
+                msg+= "\nSRC de la imagen: " + document.getElementsByClassName("imagen")[i].src;
+            }
+            msg+= "\nNº de Formularios: " + formularios;
+
+            alert(msg);
+        }
+
+    </script>
+</head>
+
+<body>
+    <p class="parrafo" id="miparrafo">Primer parrafo de la pagina</p>
+    <p class="parrafo" id="miparrafo2">Segundo parrafo de la pagina</p>
+    <a class="enlace" href="otra_pagina.html">un enlace</a>
+    <br><br><img src="celebracion_cr7.jpg" class="imagen" name="IMAGEN1" />
+    <br><br>
+    <form method="post" class="formulario" name="consultas">
+        <input type="text" class="caja_texto" name="id" />
+        <input type="submit" class="boton" value="enviar">
+    </form>
+</body>
+
+</html>

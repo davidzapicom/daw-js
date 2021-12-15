@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var miVentana;
+        function AbrirVentana() {
+            miVentana = window.open("", "",
+                "menubar=no, scrollbars=no, width=200, height=300");
+            miVentana.document.write("<button onclick=\"{ window.close(); } \">Cerrar ventana</button>");
+        }
+        function CerrarVentana() {
+            miVentana.close();
+            document.write("Se ha cerrado la ventana hija");
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="button" value="Abrir Ventana" name="Back" onclick="AbrirVentana()" />
+    </form>
+    <form>
+        <input type="button" value="Cerrar Ventana" name="Back" onclick="CerrarVentana()" />
+    </form>
+</body>
+
+</html>
