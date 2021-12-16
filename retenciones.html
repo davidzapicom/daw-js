@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="calculoRetenciones.js"></script>
+    <title>Retenciones</title>
+    <script>
+        
+
+
+    </script>
+</head>
+<body>
+    <h1>CÁLCULO DE RETENCIONES</h1>
+    <form id="retenciones">
+        <label for="salario">Introducir salario bruto</label>
+        <input id="salario" type="number" step="any" value=0></input>
+        <br><br>
+        <div>
+            <h2>Situación Familiar</h2>
+            <fieldset>
+                <label for="soltero">1. Soltero, viudo, divorciado, separado</label>
+                <input type="radio" id="soltero" name="familiar" value="1">
+                <br><br>
+                <label for="soltero">2. Casado/a con cónyuge con rentas inferiores a 1.500 EUR anuales</label>
+                <input type="radio" id="rentaInferior" name="familiar" value="2">
+                <br><br>
+                <label for="soltero">3. Otras situaciones</label>
+                <input type="radio" id="Otros" name="familiar" value="3" checked>
+                <br><br>
+                <h3>Número de hijos</h3>
+                <label for="hijos">Introduce el número de hijos</label>
+                <input id="hijos" type="number" step=1 value=0></input>
+            </fieldset>
+        </div>
+        <br>
+        <button type="button" onclick="procesaRetencion(this.form)">Calcula retención</button>
+    </form>
+    <div id="salida">
+
+
+    </div>
+</body>
+</html>
