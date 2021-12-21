@@ -74,40 +74,42 @@ const importeMinimoPersonal = 5550;
 
 
 // ================= FUNCIONES DE CÁLCULO =============================================
-
 function minimoFamiliar(descendientes) {
- 
+  for (var i = descendientes; i < arrayMinDescendientes[i].length; i++) {
+    minimo = arrayMinDescendientes[i][1];
+  }
   return minimo;
 }
 
-function minimoPersonal() {
-  return importeMinimoPersonal;
-}
-
 function situacionFamiliar(familiar) {
-  /*
-  Devuelve un array de 2 elementos:
-  1. Situación: Texto de la situación:
-  2. Array de condiciones para la situación.
-  */
-
+  for (var i = familiar; i < arrayCondicionesMinimos[i].length; i++) {
+    situacion = arrayCondicionesMinimos[i];
+    condiciones = arrayCondicionesMinimos[i][2];
+  }
   return [situacion, condiciones];
 }
 
 function esRetencionAplicable(salario, condiciones, hijos) {
-  /*
-  Devuelve booleano, true, si la retención es aplicable
-  */
-
- 
+  for (var i = hijos; i < arrayRetenciones[i].length; i++) {
+      while (i < arrayRetenciones.length - 1 && arrayRetenciones[i][0] === salario && arrayRetenciones[i][1] <= salario) { i++ }
+      if (i === primerElemento) {
+        i = primerElemento;
+      } else if (i === arrayRetenciones.length - 1 && arrayRetenciones[i][1] < salario) {
+        i = arrayRetenciones.length - 1;
+      } else i = i - 1;
+      salario = arrayRetenciones[i][2];
+    }
   return salario > valorRango[1];
 }
-
 function determinaRetencion(base) {
-// Recorre el array y calcula la retención hasta la base más, si procede,
-// la retención del resto del siguiente tramo.
-// Una vez acumulada, se devuelve el porcentaje de retención sobre la base
-// de cálculo
+  for (var i = 0; i < arrayRetenciones[i].length; i++) {
+
+  }
+
+  // Recorre el array y calcula la retención hasta la base más, si procede,
+  // la retención del resto del siguiente tramo.
+  // Una vez acumulada, se devuelve el porcentaje de retención sobre la base
+  // de cálculo
 
   return Math.round((retencion / base) * 10000) / 100;
 }
@@ -119,7 +121,6 @@ function determinaRetencion(base) {
 // Ejemplo de salida del proceso.
 
 function procesaRetencion(datos) {
-
   let base = 0;
   let retencion = 0;
   let cuota = 0;
@@ -131,7 +132,7 @@ function procesaRetencion(datos) {
   let familiar = parseInt(datos.familiar.value);
   let hijos = parseInt(datos.hijos.value);
 
-  
+
   let salida = document.getElementById("salida");
 
   let situacion = situacionFamiliar(familiar);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,28 @@
     <script src="calculoRetenciones.js"></script>
     <title>Retenciones</title>
     <script>
-        
+        function validacion() {
+            vNombre = document.getElementById("nombre").value;
+            vEmail = document.getElementById("Email").value;
 
-
+            if (vNombre == null || vNombre.length == 0 || /^\s+$/.test(vNombre)) {
+                alert('[ERROR] Campo de texto obligatorio');
+                return false;
+            }
+            if ((vEmail.indexOf('@', 0) == -1) || (vEmail.indexOf(';', 0) != -1) ||
+                (vEmail.indexOf(' ', 0) != -1) || (vEmail.indexOf('/', 0) != -1) ||
+                (vEmail.indexOf(';', 0) != -1) || (vEmail.indexOf('<', 0) != -1) ||
+                (vEmail.indexOf('>', 0) != -1) || (vEmail.indexOf('*', 0) != -1) ||
+                (vEmail.indexOf('|', 0) != -1) || (vEmail.indexOf('`', 0) != -1) ||
+                (vEmail.indexOf('&', 0) != -1) || (vEmail.indexOf('$', 0) != -1) ||
+                (vEmail.indexOf('!', 0) != -1) || (vEmail.indexOf('"', 0) != -1) ||
+                (vEmail.indexOf(':', 0) != -1)) {
+                alert('[ERROR] E-mail incorrecto');
+                return false;
+            }
+            alert('TODO CORRECTO');
+            return true;
+        }
     </script>
 </head>
 <body>
@@ -17,6 +37,8 @@
     <form id="retenciones">
         <label for="salario">Introducir salario bruto</label>
         <input id="salario" type="number" step="any" value=0></input>
+        <p>Nombre: <input type="text" id="nombre" name="nombre" value="" /></p>
+        <p>E-mail: <input type="text" id="Email" name="Email" value="" /></p>
         <br><br>
         <div>
             <h2>Situación Familiar</h2>
@@ -39,8 +61,6 @@
         <button type="button" onclick="procesaRetencion(this.form)">Calcula retención</button>
     </form>
     <div id="salida">
-
-
     </div>
 </body>
 </html>
