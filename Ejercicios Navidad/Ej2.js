@@ -25,7 +25,6 @@ var entidades = [
     [6, 'Otra']
 ];
 
-
 function tarjetavalida(tarjeta) {
     var j = 0;
     var suma = 0;
@@ -48,7 +47,7 @@ function tarjetavalida(tarjeta) {
 function entidades(tarjetas) {
     for (var i = 0; i < tarjetas.length; i++) {
         console.log(tarjetavalida(tarjetas[i]));
-        var entidades = 
+        var entidades = []
     }
 }
 
