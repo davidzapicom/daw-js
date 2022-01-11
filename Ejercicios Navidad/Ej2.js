@@ -1,3 +1,5 @@
+var datos = [[]];
+
 var tarjetas = [
     [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8],
     [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9],
@@ -42,14 +44,35 @@ function tarjetavalida(tarjeta) {
         j++;
     }
     return (suma%10 == 0);
+
 }
 
 function entidades(tarjetas) {
     for (var i = 0; i < tarjetas.length; i++) {
-        console.log(tarjetavalida(tarjetas[i]));
-        var entidades = []
+        var tarjeta = tarjetas[i];
+        var validacion = tarjetavalida(tarjeta);
+        var entidad = tarjeta[0];
+        var nombre = "";
+        switch(entidad) {
+            case 3:
+                nombre = 'Amex (American Express)';
+            break;
+            case 4:
+                nombre = 'Visa';
+            break;
+            case 5:
+                nombre = 'Mastercard';
+            break;
+            case 6:
+                nombre = 'Otra';
+            break;
+        }
+        datos = [entidad,tarjeta,validacion];
     }
 }
 
-console.log(tarjetavalida(tarjetas[7]));
+function infoent() {
+
+}
+
 console.log(entidades(tarjetas[i]));
