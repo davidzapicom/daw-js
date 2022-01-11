@@ -26,12 +26,31 @@ var entidades = [
 ];
 
 
- function tarjetavalida(tarjeta) {
-    for (var i = tarjetas.length-1; i < tarjetas.length; i++) {
-        if (tarjeta[i] ) {
-            
+function tarjetavalida(tarjeta) {
+    var j = 0;
+    var suma = 0;
+    for (var i = tarjeta.length-1; i >= 0; i--) {
+        if (j%2 == 0) {
+            suma+=tarjeta[i];
+        } else {
+            tarjeta[i] = tarjeta[i] * 2;
+            if (tarjeta[i] > 9) {
+                tarjeta[i]-=9;
+            }
+            suma+=tarjeta[i];
         }
+        console.log(tarjeta[i]);
+        j++;
+    }
+    return (suma%10 == 0);
+}
+
+function entidades(tarjetas) {
+    for (var i = 0; i < tarjetas.length; i++) {
+        console.log(tarjetavalida(tarjetas[i]));
+        var entidades = 
     }
 }
 
-console.log(tarjetas[0]);
+console.log(tarjetavalida(tarjetas[7]));
+console.log(entidades(tarjetas[i]));
