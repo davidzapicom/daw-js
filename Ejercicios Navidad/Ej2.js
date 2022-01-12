@@ -1,4 +1,4 @@
-var datos = [[]];
+var datos = [];
 
 var tarjetas = [
     [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8],
@@ -27,52 +27,79 @@ var entidades = [
     [6, 'Otra']
 ];
 
+const final = [
+    [3, 0, 0, ""],
+    [4, 0, 0, ""],
+    [5, 0, 0, ""],
+    [6, 0, 0, ""],
+];
+
 function tarjetavalida(tarjeta) {
     var j = 0;
     var suma = 0;
     for (var i = tarjeta.length-1; i >= 0; i--) {
-        if (j%2 == 0) {
-            suma+=tarjeta[i];
+        if (j % 2 == 0) {
+            suma += tarjeta[i];
         } else {
-            tarjeta[i] = tarjeta[i] * 2;
-            if (tarjeta[i] > 9) {
-                tarjeta[i]-=9;
-            }
-            suma+=tarjeta[i];
+            let multiplicador =  tarjeta[i] * 2;
+            suma += (multiplicador > 9)? multiplicador-9: tarjeta[i];
         }
         console.log(tarjeta[i]);
         j++;
     }
-    return (suma%10 == 0);
-
+    return (suma % 10 == 0);
 }
 
-function entidades(tarjetas) {
+tarjetavalida(tarjetas[1]);
+function val_tarjetas(tarjetas) {
+    let tarjetasProcesadas = [];
     for (var i = 0; i < tarjetas.length; i++) {
         var tarjeta = tarjetas[i];
         var validacion = tarjetavalida(tarjeta);
-        var entidad = tarjeta[0];
-        var nombre = "";
-        switch(entidad) {
-            case 3:
-                nombre = 'Amex (American Express)';
-            break;
-            case 4:
-                nombre = 'Visa';
-            break;
-            case 5:
-                nombre = 'Mastercard';
-            break;
-            case 6:
-                nombre = 'Otra';
-            break;
-        }
-        datos = [entidad,tarjeta,validacion];
+        let indice = entidades.findIndex(elemento => elemento[0] === tarjeta[0]);
+        let nombreEntidad = (indice == -1)?"Error: no existe entidad":entidades[indice][1];
+        tarjetasProcesadas.push([nombreEntidad, tarjeta.join(''), validacion]);
     }
+    return tarjetasProcesadas;
 }
 
-function infoent() {
-
+function infoent(tarjetas) {
+    for (let i = 0; i < tarjetas.length; i++) {
+        switch (datos[i][0]) {
+            case 3:
+                final[0][1]++;
+                if (!datos[i][2]) {
+                    final[0][2]++;
+                }
+                break;
+            case 4:
+                final[1][1]++;
+                if (!datos[i][2]) {
+                    final[1][2]++;
+                }
+                break;
+            case 5:
+                final[2][1]++;
+                if (!datos[i][2]) {
+                    final[2][2]++;
+                }
+                break;
+            case 6:
+                final[3][1]++;
+                if (!datos[i][2]) {
+                    final[3][2]++;
+                }
+                break;
+        }
+    }
+    for (let i = 0; i < final.length; i++) {
+        if (final[i][2] == 0) {
+            final[i][3] = 0 + " %";
+        } else {
+            final[i][3] = (final[i][2] / final[i][1] * 100) + "%";
+        }
+    }
+    console.log(final);
 }
 
-console.log(entidades(tarjetas[i]));
+infoent(tarjetas);
