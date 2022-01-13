@@ -239,7 +239,6 @@ function rankingVentastotalesymedia() {
         //msg += "    El dia " + orden[i][0] + " con un total de ventas de " + orden[i][1] + " y una media de " + orden[i][2] + ".\n";
         datos.push = orden[i];
     }
-    //alert(msg);
     return datos;
 }
 function diferencial() {
@@ -284,5 +283,4 @@ function diferencial() {
         //msg += "Con una diferencia respecto a la mejor media de las semanas de " + (mediaSemana - media[l]) + '\n';
     }
     return datos;
-    //alert(msg);
 }
