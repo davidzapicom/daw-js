@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 13</title>
+</head>
+<body>
+<script type="text/javascript">
+	class Asiento{
+    generarSala(){
+    	var letras = "ABCDEFGHI";
+        for (var i=8; i>=1;i--){
+        	document.write("<br>");
+    		for (var j=9; j>=1;j--){ 
+    			cineAsientos[i] = new Array(i + "" + letras[j-1] + " ");
+    			//document.write(i + "" + letras[j-1] + " ");
+    			console.log(cineAsientos[i]);
+
+    		}
+    	}
+    }
+
+	}
+	class Usuario{
+       
+	}
+	var cineAsientos= [];
+	var cine = new Asiento();
+	cine.generarSala();
+	cine.ReservaAleatoria();
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<form>
+		<input type="checkbox" id ="opcion1" onclick="check1()"> Opción 1 <br>
+		<input type="checkbox" id="opcion2" onclick="check2()"> Opción 2 <br>
+		<input type="checkbox" id="opcion3" onclick="check3()"> Opción 3 <br>
+	</form>
+
+	<a href="" style="color: blue;" onclick="checked()">Ver valores</a>
+	<script>
+		function checked(){
+			var texto = check1();
+			var texto2 = check2();
+			var texto3 = check3();
+             alert ("Opción 1: " + texto + "\nOpción 2: " + texto2 + "\nOpción 3: " + texto3 );
+		}
+
+		function check1 (){
+			if (document.getElementById("opcion1").checked){
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function check2(){
+			if (document.getElementById("opcion2").checked){
+				return true;
+			} else {
+				return false;
+			}
+		}
+		function check3(){
+			if (document.getElementById("opcion3").checked){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

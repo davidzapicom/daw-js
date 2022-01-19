@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<title>Ejercicio 37 - Tema 2</title>
+	</head>
+	
+	<body>
+		<script>
+			var cena, costilla= 23.00, pescado= 15.00, postre= 3.00, final;
+			cena= prompt("Que quieres cenar"+
+						 "\n 1. Costilla  2. Pescado ", "");
+			cena= parseInt(cena);
+			final= confirm ("¿Quieres postre?");
+			if (cena==1) {
+				if (final)
+					total= (costilla+ postre) * 1.06;
+				else
+					total= costilla * 1.06;
+			}
+			else  {
+				if (cena ==2)  {
+					if (final)  
+						total= (pescado+ postre) * 1.06;
+					else
+						total= pescado * 1.06;
+				}
+			}
+  
+			if (cena==1 || cena==2)
+				alert (`La cena ha costado ${total} € `);
+			else
+				alert ("Opción erronea");    
+		</script>
+	</body>
+</html> 
+
+

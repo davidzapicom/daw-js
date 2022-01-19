@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 10</title>
+</head>
+<body>
+	<p id="parrafo"></p>
+	<button type="button" id="nuevaper">Añadir Persona</button>
+	<button type="button" id="imc">CalcularIMC</button>
+	<button type="button" id="ed">Edad</button>
+	<button type="button" id="mostrar">Mostrar</button>
+<script type="text/javascript">
+	class Persona{
+		constructor(nombre,edad,dni,sexo,peso,altura){
+        this.nombre= nombre;
+        this.edad = edad;
+        this.dni = dni;
+        if (sexo == "H" || sexo == "M"){
+        this.sexo = sexo;
+        }
+        this.peso = peso;
+        this.altura = altura;
+		}
+
+		añadir(){
+			nuevaper.addEventListener("click",function(){
+
+			var nombre = prompt ("Introduce nombre: ");
+			var edad = parseInt(prompt("Introduce la edad: "));
+			var dni = prompt("Introduce DNI: ");
+			var sexo = prompt("Introduce sexo (H/M): ");
+			var peso = parseInt(prompt("Introduce peso: "));
+			var altura = parseInt(prompt("Introduce altura: "));
+            var registro = new Persona (nombre,edad,dni,sexo,peso,altura);
+			personas.push(registro);
+		});
+		}
+
+		calcularIMC(){
+			imc.addEventListener("click",function(){
+        var nombrePersona = prompt("Introduce el nombre la persona: ");
+        var pesoIdeal;
+        for (var i=0; i<personas.length;i++){
+        if (personas[i].nombre === nombrePersona){
+        	pesoIdeal = personas[i].peso/(Math.pow(personas[i].altura,2));
+        	if (pesoIdeal < 20){
+			alert ("IMC: " + pesoIdeal + "<br>Estás por debajo de tu peso ideal");
+			}
+			if (pesoIdeal >= 20 && pesoIdeal <= 25){
+			alert ("IMC: " + pesoIdeal + "\nEstás en tu peso ideal");
+			}
+			if (pesoIdeal > 25){
+			alert ("IMC: " + pesoIdeal + "<br>Estás por encima de tu peso ideal");
+		}
+        }
+        }
+        });
+		}
+
+		esMayorDeEdad(){
+			ed.addEventListener("click",function(){
+		var nombrePersona = prompt("Introduce el nombre la persona: ");
+		var mayoria;
+		for (var i=0; i<personas.length;i++){
+        if (personas[i].nombre === nombrePersona){
+       	if(personas[i].edad >= 18){
+       	mayoria = true;
+        alert ("Tiene " +personas[i].edad+" años ¿Es mayor de Edad? " + mayoria);
+       	} else {
+       	mayoria = false;
+       	alert ("Tiene " +personas[i].edad+" años ¿Es mayor de Edad? " + mayoria);
+       	}
+        }
+        }
+        });
+		}
+
+		toString(){
+			mostrar.addEventListener("click",function(){
+			var nombrePersona = prompt("Introduce el nombre la persona: ");
+		for (var i=0; i<personas.length;i++){
+           if (personas[i].nombre === nombrePersona){
+            parrafo.innerHTML += personas[i].nombre + "<br>" + personas[i].edad + "<br>" + personas[i].dni + "<br>" + personas[i].sexo+ "<br>" + personas[i].peso+ "<br>" + personas[i].altura;
+          
+         	 }
+
+		}
+		});
+		}
+	}
+
+	var personas = [
+	new Persona ("Maria",21,"1111","M",60,1.67),
+	new Persona ("Carlos",16,"2222","H",80,1.88)];
+	console.log(personas);
+	var person = new Persona();
+	person.añadir();
+	person.calcularIMC();
+    person.esMayorDeEdad();
+	person.toString();
+	 
+</script>
+</body>
+</html>

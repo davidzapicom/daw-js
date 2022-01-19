@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 17</title>
+</head>
+<body>
+<script type="text/javascript">
+	class Rectangulo{
+		constructor(alto,ancho){
+			this.alto = alto;
+			this.ancho = ancho;
+		}
+
+		generarRectangulo(){
+         var ancho= parseInt(prompt("Introduce ancho: "));
+         var alto = parseInt(prompt ("Introduce alto: "));
+
+         for(var i=0; i<=alto; i++){
+            document.write ("<br>");
+         	for (var j=0; j<=ancho; j++){
+         		if(i==0 || i== alto){
+         			document.write("* ");
+         		} 
+
+                else {
+                    document.write ("");
+         		}
+         	}
+         }
+
+
+		}
+	}
+
+	var nuevoRectangulo = new Rectangulo();
+    nuevoRectangulo.generarRectangulo();
+</script>
+</body>
+</html>

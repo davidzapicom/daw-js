@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const productos = [
+            ['lentejas', 100, 0.20],
+            ['lentejas', 500, 0.18],
+            ['lentejas', 1000, 0.17],
+            ['lentejas', 5000, 0.15],
+            ['lentejas', 10000, 0.14],
+            ['tomates', 50, 0.65],
+            ['tomates', 150, 0.62],
+            ['tomates', 270, 0.61],
+            ['tomates', 480, 0.58],
+            ['tomates', 2000, 0.52],
+            ['almendras', 1000, 0.70],
+            ['almendras', 2500, 0.65],
+            ['almendras', 4000, 0.62]
+        ];
+        function determinaPrecio(producto, cantidad) {
+            let precio = 0;
+            // preciosProducto es el subarray de los productos por el nombre establecido por el argumento produto
+            let preciosProducto = productos.filter(elem => elem[0] === producto);
+            // i - es el indice del primer elemento  del array de rangos mayor al argumento cantidad
+            let i = preciosProducto.findIndex(elem => elem[1] > cantidad);
+            if (i === -1) {
+                // si no encuentra una cantidad superior a la del argumento, se trata del ultimo del array
+                i = preciosProducto.length - 1;
+            } else if (i === 0) {
+                // si la cantidad es inferior a la del primer elemento, tomamos el primer elemento
+                i = 0;
+            } else i = i - 1; // en otro caso tomamos el elemento anterior
+
+            // obtenemos el precio del array
+            precio = preciosProducto[i][2]
+
+            return precio;
+        }
+        console.log("determinaPrecio('lentejas',50):    ", determinaPrecio('lentejas', 50));
+        console.log("determinaPrecio('lentejas',12800): ", determinaPrecio('lentejas', 12800));
+        console.log("determinaPrecio('lentejas',1800):  ", determinaPrecio('lentejas', 1800));
+        console.log("determinaPrecio('lentejas',800)):  ", determinaPrecio('lentejas', 800));
+        console.log("determinaPrecio('lentejas',6000):  ", determinaPrecio('lentejas', 6000));
+        console.log("determinaPrecio('lentejas',1000):  ", determinaPrecio('lentejas', 1000));
+        console.log("determinaPrecio('almendras',50):    ", determinaPrecio('almendras', 50));
+        console.log("determinaPrecio('almendras',12800): ", determinaPrecio('almendras', 12800));
+        console.log("determinaPrecio('almendras',1800):  ", determinaPrecio('almendras', 1800));
+        console.log("determinaPrecio('almendras',800)):  ", determinaPrecio('almendras', 800));
+        console.log("determinaPrecio('almendras',6000):  ", determinaPrecio('almendras', 6000));
+        console.log("determinaPrecio('almendras',1000):  ", determinaPrecio('almendras', 1000));
+        console.log("determinaPrecio('tomates',  50):  ", determinaPrecio('tomates', 50));
+        console.log("determinaPrecio('tomates', 100):  ", determinaPrecio('tomates', 100));
+        console.log("determinaPrecio('tomates', 150):  ", determinaPrecio('tomates', 150));
+        console.log("determinaPrecio('tomates', 200):  ", determinaPrecio('tomates', 200));
+        console.log("determinaPrecio('tomates', 300):  ", determinaPrecio('tomates', 250));
+        console.log("determinaPrecio('tomates', 400):  ", determinaPrecio('tomates', 400));
+        console.log("determinaPrecio('tomates',2400):  ", determinaPrecio('tomates', 2400));
+    </script>
+</head>
+<body>
+</body>
+</html>

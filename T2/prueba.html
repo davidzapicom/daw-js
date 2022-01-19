@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    
+        <h1>Esto es la cabecera 1</h1>
+        <h2>Esto es la cabecera 2</h2>
+        <p>Un simple párrafo</p>
+        <a href="#" id="talla-12">12</a>
+        <a href="#" id="talla-16">16</a>
+        <a href="#" id="talla-20">20</a>
+        <a href="#" id="talla-40">40</a>
+        <script>
+            let tallaFuente = (altura) => () => document.body.style.fontSize = altura + 'px';
+    
+            let talla12 = tallaFuente(12);
+            let talla16 = tallaFuente(16);
+            let talla20 = tallaFuente(20);
+            document.getElementById('talla-12').onclick = talla12;
+            document.getElementById('talla-16').onclick = talla16;
+            document.getElementById('talla-20').onclick = talla20;
+            document.getElementById('talla-40').onclick = function () 
+              {
+                  if(document.body.style.fontSize > '16px')
+                    {
+                      document.body.style.fontSize = '40px'
+                    } else {
+                      document.body.style.fontSize = '10px'
+                    }
+                  }; 
+  </script>
+  </body>
+</html>

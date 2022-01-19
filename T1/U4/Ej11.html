@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ej11 - Cronometro</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="" id="">
+        <input type="button" value="Iniciar"><br />
+        <input type="button" value="Parar">
+        <input type="button" value="Cero">
+    </form>
+    <script>
+        function longitud() {
+            var longitud = document.getElementById("edad").length;
+            return longitud;
+        }
+        function texto() {
+            var texto = document.getElementById("edad").value;
+            return texto;
+        }
+
+        function valores() {
+            var long = longitud();
+            var text = texto();
+
+            alert("Elementos: " + long + "\nEdad: " + text);
+        }
+    </script>
+</body>
+</html>

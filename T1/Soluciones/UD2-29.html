@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<title>Ejercicio 29 - Tema 2</title>
+		<meta charset='UTF-8' />
+	</head>
+	
+	<body>
+		<script>
+			let suma=0;
+			let i=0 ;
+			let n = parseInt(prompt("Introduce un numero:"));
+
+			while (isNaN(n) || n <= 0) {
+				alert("Introduce un número válido");
+				n = parseInt(prompt("Introduce un numero:"));
+			}
+
+			for(i=1;i<=n;i++){
+				suma+=i;
+			}
+			alert(`La suma del numero 1 hasta el numero ${n} es ${suma}`);
+
+		</script>
+	</body>
+</html>

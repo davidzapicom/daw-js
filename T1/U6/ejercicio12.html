@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 12</title>
+</head>
+<body>
+<button type="button" id="altali">Alta Libro</button>
+<button type="button" id="bajali">Baja Libro</button>
+<button type="button" id="modificarli">Modificar libro</button>
+<button type="button" id="mostrarli">Mostrar</button>
+<button type="button" id="largo">¿Qué libro tiene más páginas?</button>
+
+<p id="inventario"></p>
+
+<script type="text/javascript">
+
+	class Libro{
+      constructor(isbn,titulo,autor,numpags){
+       		this.isbn=isbn;
+       		this.titulo=titulo;
+       		this.autor=autor;
+       		this.numpags=numpags;
+      }
+
+      alta(){
+        altali.addEventListener("click",function(){
+
+			var isbn = parseInt(prompt ("Introduce isbn: "));
+			var titulo =  prompt("Introduce nombre del título: ");
+			var autor = prompt("Introduce nombre del autor: ");
+			var numpags = parseInt(prompt ("Introduce el número de páginas: "));
+	
+            var nuevoLibro = new Libro (isbn,titulo,autor,numpags);
+			libros.push(nuevoLibro);
+      console.log(libros);
+		});
+		}
+
+		eliminar(){
+			bajali.addEventListener("click",function(){
+			var nombreli = prompt ("Que libro deseas eliminar: ");
+			for(var i = 0; i < libros.length; i++) {
+   			if(libros[i].titulo === nombreli) {
+   				libros.splice(i, 1);
+   			} 
+			}
+			});
+		}
+
+		modificar(){
+			modificarli.addEventListener("click",function(){
+            var modiflibro = parseInt(prompt("Introduce el ISBN del libro a modificar: "));
+            for(var i=0; i<libros.length;i++){
+            	if (libros[i].isbn == modiflibro){
+            		var menu = parseInt(prompt("¿Que deseas modificar?\n1- Título\n2- Autor\n3- Número de páginas"));
+            		if (menu == 1){
+            			var nuevotitulo = prompt("Introduce el nuevo titulo: ");
+            			libros[i].titulo = nuevotitulo;
+            		}
+            		else if (menu == 2){
+            			var nuevoautor = prompt("Introduce el nuevo autor: ");
+            			libros[i].autor = nuevoautor;
+            		}
+            		else if (menu == 3){
+            			var nuevonum = parseInt(prompt("Introduce el nuevo autor: "));
+            			libros[i].numpags = nuevonum;
+            		}
+            	}
+            }
+
+			});
+      console.log(libros);
+		}
+
+		maspags(){
+			largo.addEventListener("click",function(){
+		    var mayor=-1;
+            for(var i=0; i<libros.length;i++){
+                if (libros[i].numpags > mayor){
+                	mayor = libros[i].numpags;
+                	alert("El libro " + libros[i].titulo + " es el que tiene más páginas con " + mayor);
+            	 }
+                }
+			});
+		}
+      
+	}
+
+	var libros = [new Libro(1111,"El Principito","Antoine de Saint-Exupéry",104)];
+  var book = new Libro();
+  book.alta();
+  book.eliminar();
+  book.modificar();
+  book.maspags();
+
+  Libro.prototype.toString = function() { 
+  return "El libro " + this.titulo + " con ISBN " + this.isbn  + " creado por el autor " + this.autor + " tiene " +this.numpags+ " páginas. <br>";  ;
+}
+
+mostrarli.addEventListener("click",function(){
+    inventario.innerHTML = " ";
+    inventario.innerHTML += libros.toString();
+});
+
+  
+
+</script>
+</body>
+</html>

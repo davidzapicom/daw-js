@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div style="display: flex; height: 300px; width: 400px;">
+<textarea id="ventana1" style="margin-right: 8px;"></textarea>	
+<textarea id="ventana2"></textarea>
+</div>
+<br>
+<button type="button" onclick="limpiar()">Limpiar ventana de eventos</button>
+
+<script type="text/javascript">
+	document.getElementById("ventana1").addEventListener("keypress",function(){ 
+		var texto = document.createTextNode("\nonkeypress");
+       document.getElementById("ventana2").appendChild(texto);
+		});
+	document.getElementById("ventana1").addEventListener("keydown",function(){ 
+		var texto = document.createTextNode("\nonkeydown");
+       document.getElementById("ventana2").appendChild(texto);
+		});
+	document.getElementById("ventana1").addEventListener("keyup",function(){ 
+		var texto = document.createTextNode("\nonkeyup\n");
+       document.getElementById("ventana2").appendChild(texto);
+		});
+	function limpiar(){
+       document.getElementById("ventana2").innerHTML = " ";
+	}
+</script>
+</body>
+</html>

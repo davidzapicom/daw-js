@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<title>Ejercicio 13 - Tema 2</title>
+		<meta charset='UTF-8' />
+	</head>
+	
+	<body>
+		<script>
+			var precio = prompt("Introduce un precio: ");
+			var precioParsed = parseFloat(precio);
+			var IVA = prompt("Introduce el IVA a aplicarle: ");
+			var IVAParsed = parseFloat(IVA);
+			alert("Total: " + (precioParsed + (precioParsed*IVAParsed/100)));
+		</script>
+	</body>
+</html> 

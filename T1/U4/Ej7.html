@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script language="JavaScript">
+        function abreNuevaVentana(nombreVentana) {
+
+            miVentana = open(""), nombreVentana,
+
+            miVentana.document.open();
+            miVentana.document.write("<html><head><title>On-the-fly");
+            miVentana.document.write("</title></head><body>");
+            miVentana.document.write("<h1>Creando documentos al vuelo</h1>");
+            miVentana.document.write("<p>&nbsp;</p>");
+            miVentana.document.write("<p>El contenido es din&aacute;mico</p>");
+            miVentana.document.write("</body></html>");
+
+            miVentana.document.close();
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type=button value="On-the-fly" onClick="abreNuevaVentana();" )>
+    </form>
+</body>
+</html>

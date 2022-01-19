@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<p>Introduce una tecla para que al pulsarla puedas ver su código:</p>
+
+<input type="text" name="texto" size="10" onkeydown="codigo(event)" onkeypress="codigo(event)"> 
+
+<br><div id="tecla"></div>
+<div id="caracter"></div>
+<div id="teclas"></div>
+
+
+<script type="text/javascript">
+	function codigo(event){
+		var codigo = event.keyCode || event.which ; //Si la propiedad keyCode no funcionase en algún navegador, pasaría a utilizarse la propiedad which. De esta forma funcionan en ambos navegadores.
+		document.getElementById("tecla").innerHTML = "El código de esta letra pulsada es: " + codigo;
+        document.getElementById("caracter").innerHTML = "El caracter pulsado es: " + String.fromCharCode(event.charCode);
+
+        var teclas = document.getElementById("teclas");
+        if (event.altKey){
+        	teclas.innerHTML = "La tecla ALT se ha pulsado.";
+        }
+        if (event.ctrlKey){
+        	teclas.innerHTML = "La tecla CRTL se ha pulsado.";
+        }
+        if (event.shiftKey){
+        	teclas.innerHTML = "La tecla SHIFT se ha pulsado.";
+        }
+	}
+</script>
+</body>
+</html>

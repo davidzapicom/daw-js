@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 15</title>
+</head>
+<body>
+<script type="text/javascript">
+	class NIF{
+		constructor(numDNI,letra){
+			this.numDNI = numDNI;
+			this.letra = letra;
+		}
+
+	    Generarletra(){
+	    var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+
+		var numDNI = prompt("Introduce tu número de DNI (sin la letra)");
+
+		if(numDNI < 0 || numDNI > 99999999) {
+ 		 alert("El número proporcionado no es válido");
+		}
+		else {
+  		var letra = letras[numDNI % 23];
+  		return "La letra del número de DNI " + numDNI + " es " + letra;
+  		  		}
+	    }
+	 }
+     
+     var nuevoDNI = new NIF();
+
+     var queletra = nuevoDNI.Generarletra();
+     alert(queletra);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 3</title>
+</head>
+<body>
+	<table id="tabla">
+		
+	</table>
+
+	<button type="button" id="añadirEmp">Añadir empresa</button>
+	<button type="button" id="bajaEmp">Dar de baja empresa</button>
+	<button type="button" id="añadiralu">Añadir alumno</button>
+	<button type="button" id="bajaalu">Dar de baja alumno</button>
+	<button type="button" id="buscarciclo">Búsqueda por ciclo</button>
+	<button type="button" id="buscaraño">Búsqueda por año</button>
+<script type="text/javascript">
+	class Empresa{
+		constructor (cif,cicloalu){
+			this.cif = cif;
+			this.cicloalu = cicloalu;
+		}
+
+		añadirEmpresa(){
+			document.getElementById("añadirEmp").addEventListener("click",function(){
+			var cifEmp = prompt("Introduce el CIF de la empresa: ");
+			var cicloalu = prompt ("Introduce el ciclo del alumno: ");
+
+			var nuevaemp = new Empresa (cifEmp,cicloalu);
+            empresas.push(nuevaemp);
+            console.log(empresas);
+            });
+		}
+
+		bajaEmpresa(){
+			document.getElementById("bajaEmp").addEventListener("click",function(){
+			var busquedacif = prompt ("Introduce el CIF a eliminar");
+			for (var i=0; i<empresas.length;i++){
+				if (empresas[i].cif == busquedacif){
+                  empresas.splice(i,1);
+				}
+			}
+			});
+		}
+	}
+	class Alumno{
+		constructor(dni,ciclo,añofin){
+			this.dni = dni;
+			this.ciclo = ciclo;
+			this.añofin = añofin;
+		}
+
+		añadirAlu(){
+			document.getElementById("añadiralu").addEventListener("click",function(){
+			var dniAlu = prompt ("Introduce DNI del alumno: ");
+			var ciclo = prompt ("Introduce ciclo: ");
+			var añofin = parseInt(prompt("Introduce año de finalización: "));
+
+			var nuevoAlu = new Alumno(dniAlu,ciclo,añofin);
+			alumnos.push(nuevoAlu);
+			console.log(alumnos);
+          });
+		}
+
+		bajaAlu(){
+			document.getElementById("bajaalu").addEventListener("click",function(){
+			var busquedadni = prompt ("Introduce DNI");
+			for (var x=0; x<alumnos.length; x++){
+				if (alumnos[x].dni == busquedadni){
+					alumnos.splice(x,1);
+				}
+			}
+			});
+		}
+
+		busquedaporciclo(){
+			document.getElementById("buscarciclo").addEventListener("click",function(){
+			document.getElementById("tabla").innerHTML = " ";
+			var buscarciclo= prompt ("Introduce ciclo a buscar: ");
+			for (var i=0; i<alumnos.length; i++){
+				if (alumnos[i].ciclo == buscarciclo){
+                 document.getElementById("tabla").innerHTML += "<tbody><td>" + alumnos[i].dni + "</td><td>" + alumnos[i].ciclo + "</td><td>" + alumnos[i].añofin + "</td></tbody>";
+				}
+			}
+			});
+		}
+
+		busquedaporaño(){
+			document.getElementById("buscaraño").addEventListener("click",function(){
+			document.getElementById("tabla").innerHTML = " ";
+			var buscaraño = parseInt(prompt("Introduce año de finalización a buscar: "));
+			for (var i=0; i<alumnos.length; i++){
+				if (alumnos[i].añofin == buscaraño){
+                 document.getElementById("tabla").innerHTML += "<tbody><td>" + alumnos[i].dni + "</td><td>" + alumnos[i].ciclo + "</td><td>" + alumnos[i].añofin + "</td></tbody>";
+				}
+			}
+			});
+		}
+	}
+
+	var empresas = [];
+	var alumnos = [];
+
+	var emp = new Empresa();
+	var alu = new Alumno();
+
+	emp.añadirEmpresa();
+	emp.bajaEmpresa();
+	alu.añadirAlu();
+	alu.bajaAlu();
+	alu.busquedaporciclo();
+	alu.busquedaporaño();
+</script>
+</body>
+</html>

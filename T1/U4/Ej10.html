@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<p>Edad: </p>
+<form>
+	<select name="edades" id="edad" onclick="texto()" onclick="texto()">
+		<option value="< 18">Menor de 18 años</option>
+		<option value="> 18">Mayor de 18 años</option>
+		<option value="> 60">Mayor de 60 años</option>
+	</select>
+</form>
+
+<a href="" style="color: blue;" onclick="valores()">Ver valores</a>
+
+<script>
+	function longitud(){
+		var longitud = document.getElementById("edad").length;
+		return longitud;
+	}
+	function texto(){
+		var texto = document.getElementById("edad").value;
+		return texto;
+	}
+
+	function valores(){
+		var long = longitud();
+		var text = texto();
+
+		alert("Elementos: " + long + "\nEdad: " +text);
+	}
+</script>
+
+</body>
+</html>

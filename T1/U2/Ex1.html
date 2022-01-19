@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen ejercicio 1</title>
+</head>
+<body>
+    <script>
+        //declaro e inicializo algunas variables.
+        var acum = 0, cont = 0, n = 0;
+
+        //empieza el bucle para introducir un numero
+        do{
+            //introduce el numero
+            var n = parseFloat(prompt ('Introduce un numero:',''));
+            //acumula los numeros ingresados
+            acum+=n;
+            //cuenta la cantidad de numeros introducidos
+            cont++;
+            //hace la media
+            var media = acum/cont;
+            //si el valor es igual a 0 resta 1 numero en el contador, así no cuenta el 0
+            if (n == 0){
+                cont --;
+            }
+            //muestra el resultado
+            alert('Numeros introducidos: ' +cont+ "\nValor acumulado: " +acum+ '\nMedia: ' +media);
+        //si el numero es igual a cero sale del do while.
+        } while (n != 0);
+        //muestra el resultado final
+        document.write('RESULTADO FINAL <br/>Numeros introducidos: ' +cont+ '<br/>Valor acumulado: ' +acum+ '<br/>Media: ' +media);
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Mi primer codigo JavaScript</title>
+  </head>
+  <body>
+    <script>
+        var precio, preciototal, preciopostre;
+        var cena = prompt('1.Costilla \n 2.Pescado');
+        if (cena == 1){
+          precio = 23;
+        } else {
+          precio = 15;
+        }
+
+        var respuesta = confirm( "¿Desea postre?" )
+        if ( respuesta == true ) {
+          preciopostre = precio + 3;
+        }
+
+        preciototal = preciopostre*1.06;
+        var num = preciototal.toFixed(2);
+        document.write('El precio total de la cena incluyendo la propina es: ' +num);
+    </script>
+  </body>
+</html>

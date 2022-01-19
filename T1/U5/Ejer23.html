@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<a href="#" onclick="funcion1()">Ocultar contenidos</a>
+<p id="p1">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel tellus vulputate, finibus quam non, posuere quam. In porttitor felis vel lobortis aliquam. Fusce tincidunt, ligula ac elementum mollis, ligula nisl lobortis orci, eu elementum elit nulla id lectus. Donec lacus erat, ullamcorper et aliquam ut, malesuada et nulla. Pellentesque et neque eu tortor tristique placerat. Fusce ut ex pellentesque quam tempus aliquet. Fusce massa quam, ultricies sed dapibus et, imperdiet sit amet nisl.
+</p>
+<a href="#" onclick="funcion2()">Ocultar contenidos</a>
+<p id="p2">
+	Vestibulum leo dolor, bibendum et tellus ac, mattis condimentum ante. Duis pellentesque metus et justo ullamcorper, eu tincidunt est feugiat. Suspendisse magna urna, placerat placerat varius non, dignissim quis diam. Quisque scelerisque vulputate augue eget condimentum. Vestibulum bibendum pharetra elementum. Cras purus libero, auctor sit amet mi vitae, imperdiet consequat odio. Maecenas efficitur vel tortor nec faucibus. Proin elementum, purus non sodales tristique, odio elit mattis nisi, ut pharetra nulla est eu ligula. Duis eget condimentum velit. Aliquam erat volutpat. Ut justo nulla, dignissim venenatis nunc vel, vulputate tincidunt quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+</p>
+<a href="#" onclick="funcion3()">Ocultar contenidos</a>
+<p id="p3">
+	Vestibulum aliquet ultrices dolor in fermentum. Duis mollis blandit neque eget volutpat. Maecenas eu metus mauris. Mauris commodo tempus purus, in consectetur nunc tincidunt id. Sed odio est, porta ac sagittis eu, blandit et est. Sed finibus leo eget dapibus fermentum. Curabitur nisl enim, convallis id elit tincidunt, ullamcorper bibendum tellus.
+</p>
+
+
+<script type="text/javascript">
+	function funcion1(){
+        var ocultar = document.getElementsByTagName("a")[0].childNodes[0].textContent;
+        if (ocultar == "Ocultar contenidos"){
+        	document.getElementById("p1").innerHTML= " ";
+        	document.getElementsByTagName("a")[0].childNodes[0].textContent = "Mostrar contenidos";
+        } 
+        if (ocultar == "Mostrar contenidos"){
+        	document.getElementById("p1").innerHTML= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel tellus vulputate, finibus quam non, posuere quam. In porttitor felis vel lobortis aliquam. Fusce tincidunt, ligula ac elementum mollis, ligula nisl lobortis orci, eu elementum elit nulla id lectus. Donec lacus erat, ullamcorper et aliquam ut, malesuada et nulla. Pellentesque et neque eu tortor tristique placerat. Fusce ut ex pellentesque quam tempus aliquet. Fusce massa quam, ultricies sed dapibus et, imperdiet sit amet nisl."
+        	document.getElementsByTagName("a")[0].childNodes[0].textContent = "Ocultar contenidos";
+        }
+
+	}
+	function funcion2(){
+        var ocultar = document.getElementsByTagName("a")[1].childNodes[0].textContent;
+        if (ocultar == "Ocultar contenidos"){
+        	document.getElementById("p2").innerHTML= " ";
+        	document.getElementsByTagName("a")[1].childNodes[0].textContent = "Mostrar contenidos";
+        } 
+        if (ocultar == "Mostrar contenidos"){
+        	document.getElementById("p2").innerHTML= "Vestibulum leo dolor, bibendum et tellus ac, mattis condimentum ante. Duis pellentesque metus et justo ullamcorper, eu tincidunt est feugiat. Suspendisse magna urna, placerat placerat varius non, dignissim quis diam. Quisque scelerisque vulputate augue eget condimentum. Vestibulum bibendum pharetra elementum. Cras purus libero, auctor sit amet mi vitae, imperdiet consequat odio. Maecenas efficitur vel tortor nec faucibus. Proin elementum, purus non sodales tristique, odio elit mattis nisi, ut pharetra nulla est eu ligula. Duis eget condimentum velit. Aliquam erat volutpat. Ut justo nulla, dignissim venenatis nunc vel, vulputate tincidunt quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+        	document.getElementsByTagName("a")[1].childNodes[0].textContent = "Ocultar contenidos";
+        }
+
+	}
+	function funcion3(){
+        var ocultar = document.getElementsByTagName("a")[2].childNodes[0].textContent;
+        if (ocultar == "Ocultar contenidos"){
+        	document.getElementById("p3").innerHTML= " ";
+        	document.getElementsByTagName("a")[2].childNodes[0].textContent = "Mostrar contenidos";
+        } 
+        if (ocultar == "Mostrar contenidos"){
+        	document.getElementById("p3").innerHTML= "Vestibulum aliquet ultrices dolor in fermentum. Duis mollis blandit neque eget volutpat. Maecenas eu metus mauris. Mauris commodo tempus purus, in consectetur nunc tincidunt id. Sed odio est, porta ac sagittis eu, blandit et est. Sed finibus leo eget dapibus fermentum. Curabitur nisl enim, convallis id elit tincidunt, ullamcorper bibendum tellus."
+        	document.getElementsByTagName("a")[2].childNodes[0].textContent = "Ocultar contenidos";
+        }
+
+	}
+</script>
+</body>
+</html>

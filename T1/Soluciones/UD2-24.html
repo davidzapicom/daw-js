@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<title>Ejercicio 24 - Tema 2</title>
+		<meta charset='UTF-8' />
+	</head>
+	
+	<body>
+		<script>
+			var dias;
+			var mes= prompt("Introduce un mes del año", "");
+			switch(mes) {
+				case "febrero": 
+					dias=28;
+					break;
+				case "abril": 	
+				case "junio": 	
+				case "septiembre": 	
+				case "noviembre": 	
+					dias=30;
+					break;
+				case "enero": 
+				case "marzo": 	
+				case "mayo": 	
+				case "julio": 	
+				case "agosto": 	
+				case "octubre": 	
+				case "diciembre": 	
+					dias=31;
+					break;					
+				default: 			
+					alert("Has introducido mal el mes");
+					break;
+			}
+			alert("El mes "+mes+" tiene "+dias+" dias");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+    img {
+        height: 500px;
+        width: 500px;
+    }   
+</style>
+<script>
+window.onload = function(){
+    var imagen = document.getElementById("imagen_web");
+    imagen.addEventListener('mouseover',cambiarImagen);
+    imagen.addEventListener('mouseout',imagenIniciar);
+   
+    function cambiarImagen(){
+        this.setAttribute('src','celebracion_cr7.jpg');   
+    }
+   
+    function imagenIniciar(){
+        this.setAttribute('src',"penalti_cr7.jpg");
+    }
+   
+   
+}   
+   
+</script>
+</head>
+<body>
+    <img id="imagen_web" src="penalti_cr7.jpg" />
+</body>
+</html>

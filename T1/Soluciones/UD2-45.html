@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<title>Ejercicio 45 - Tema 2</title>
+	</head>
+	
+	<body>
+		<script>
+			var contador=0;
+			var numero= prompt("Introduce un número (0 para terminar)", "");
+			numero= parseInt(numero);
+			while (numero !=0)  {
+				document.write("<h3>" + numero+" </h3><p>" );
+				contador++;
+				numero= prompt("Introduce un número (0 para terminar)", "");
+				numero= parseInt(numero);
+			}
+			document.write("Hemos introducido "+ contador + " numeros");
+		</script>
+	</body>
+</html> 
+
+

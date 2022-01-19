@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset='UTF-8' />
+		<script>
+			var ventana;
+			function abrir(){
+				ventana = window.open("","abrir","");
+				ventana.document.write("<h1>Lista de prefijos internacionales<br/>");
+				ventana.document.write("España: <input type='button' value='+34' onclick='opener.dar(\"+34\")'><br/>");
+				ventana.document.write("Holanda: <input type='button' value='+31' onclick='opener.dar(\"+31\")'><br/>");
+				ventana.document.write("Gran Bretaña: <input type='button' value='+44' onclick='opener.dar(this.value)'><br/>");
+				ventana.document.write("Estados unidos: <input type='button' value='+01' onclick='opener.dar(this.value)'><br/>");
+				ventana.document.write("Belgica: <input type='button' value='+32' onclick='opener.dar(this.value)'><br/>");
+				ventana.document.write("Grecia: <input type='button' value='+30' onclick='opener.dar(this.value)'><br/>");
+			}
+			
+			function dar(valor){
+				document.getElementById("pref").value=valor;
+				ventana.close();
+			}
+		</script>
+	</head>
+
+	<body >
+		Prefijo: <input type="text" id="pref"><input type="button" value="+" onclick="abrir()"><br/>
+		Numero: <input type="text" id="numero">
+	</body>
+</html>
+

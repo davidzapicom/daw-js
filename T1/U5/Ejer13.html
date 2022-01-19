@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<img src="msdmsdf.gif" onerror="errores()"> <!-- La imagen no es existe -->
+
+<p id="error2"></p>
+
+<script type="text/javascript">
+	function errores(){
+		alert ("Error. No se pudo cargar la imagen"); //Se muestra en una alerta que no se pudo cargar la imagen.
+	}
+
+	var script = document.createElement('script');
+	script.src = "https://ejemplo1.es/404.js"; //Script inventado, no existe.
+	document.head.append(script);
+
+	script.onerror = function(){
+		document.getElementById("error2").innerHTML= ("Error al cargar " + this.src); //Se muestra en el documento que no se pudo cargar.
+	}
+</script>
+</body>
+</html>

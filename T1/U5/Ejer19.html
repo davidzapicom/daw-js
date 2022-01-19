@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<h1>Modificar el enlace</h1>
+<h2>Enlace</h2>
+
+<a></a> <!--El tag del enlace que se creará posteriormente -->
+
+<h2>Modificar el enlace</h2>
+<form>
+	URL: <input type="text" name="url" id="url"> <br>
+	Texto : <input type="text" name="texto" id="texto"> <br>
+	<select id="opciones">
+		<option value="_blank">Nueva ventana</option> <!--_black es el target para ir a una ventana, mientras que _self se queda en la misma página -->
+		<option value="_self">Esta ventana</option>
+	</select>
+	<br>
+	<button type="button" id="enviar">Enviar</button>
+</form>
+
+<script type="text/javascript">
+	document.getElementById("enviar").addEventListener("click",mifuncion); //Creamos el evento, que se creará cuando hagamos click sobre el botón
+
+	function mifuncion(){
+      var url = document.getElementById("url").value //Valor del campo texto de la URL
+      document.getElementsByTagName("a")[0].setAttribute("href",url); //Creamos el atributo y le pasamos el valor
+      var mitexto = document.getElementById("texto").value; //Valor del campo texto de texto
+      document.getElementsByTagName("a")[0].innerHTML= mitexto; //Le pasamos el valor para que se muestre en la etiqueta a
+      var targ= document.getElementById("opciones");
+      var x = targ.options[targ.selectedIndex].value; //Se comprueba que opción está seleccionada
+      document.getElementsByTagName("a")[0].setAttribute("target",x); //Se crea el atributo target y se le pasa el valor
+ 
+	}
+</script>
+</body>
+</html>

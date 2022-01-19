@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang='es'>
+	<head>
+		<meta charset='UTF-8' />
+		<title>Ejercicio 56 - Tema 2</title>
+		<script>
+			function evaluar(numero){				
+				numero = parseFloat(numero);
+				if (isNaN(numero)) {
+					alert("Tu cadena no es un número: es NaN")
+				}				
+				else {
+					alert(`El número introducido ${numero} es un número`);
+				}
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<form class="darMaximo" name="miformu">
+			<input type="text" name="num1" value="Deme un número float">
+			<input type="button" value="evaluar" onClick="evaluar(form.num1.value)">
+		</form>
+	</body>
+</html>

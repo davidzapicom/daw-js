@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>
+	</title>
+</head>
+<body>
+ <form style="width: 500px;">
+ 	<h1>Cuestionario: </h1>
+ 	Capital de Rusia:
+ 	<input type="text" size="15"> <button type="button" onclick="preg1()">Respuesta</button> <span id="resp"></span> <br> <br>
+ 	Capital de China:
+ 	<input type="text"  size="15"> <button type="button" onclick="preg2()">Respuesta</button> <span id="resp2"></span> <br> <br>
+ 	Rio mas largo del mundo:
+ 	<input type="text" size="15"> <button type="button" onclick="preg3()">Respuesta</button> <span id="resp3"></span><br> <br>
+ 	Idioma que se habla en Canadá: <br>
+ 	Francés<input type="radio" name="idiomas" onclick="idi()"> Inglés<input type="radio" name="idiomas" onclick="idi()"> Ambos<input type="radio" name="idiomas" onclick="idi()"> <span id="resp4"></span> <br> <br>
+ 	Quien será el nuevo presidente de Estados Unidos: <br>
+ 	<input type="checkbox" name="presi" onclick="pres()"> Barack Obama <br>
+ 	<input type="checkbox" name="presi" onclick="pres()"> Donald Trump <br>
+ 	<input type="checkbox" name="presi" onclick="pres()"> Joe Biden <br>
+ 	<span id="resp5"></span>
+
+ </form>
+<script type="text/javascript">
+	function preg1(){ 
+       document.getElementById("resp").innerHTML = "Moscu";
+   
+	}
+
+	function preg2(){ 
+       document.getElementById("resp2").innerHTML = "Pekín";
+     
+	}
+	function preg3(){  
+       document.getElementById("resp3").innerHTML = "Amazonas";
+     
+	}
+
+	function idi(){
+        var idioma = document.getElementsByName("idiomas");
+        for (var i=0; i<3; i++){
+        	if (idioma[i].checked){
+         document.getElementById("resp4").innerHTML = "Ambos";
+        	}
+        }
+	}
+
+	function pres(){
+		var presidentes = document.getElementsByName("presi");
+		for (var i=0; i<3;i++){
+			if (presidentes[i].checked){
+				document.getElementById("resp5").innerHTML = "Joe Biden";
+			}
+		}
+	}
+
+       	
+</script>
+
+</body>
+</html>
