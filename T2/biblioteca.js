@@ -21,46 +21,14 @@ publicaciones => Todas las publicaciones que maneja la biblioteca.
 ejemplares => Los ejemplares referenciados catalogados por su signatura
 lectores => Los lectores que toman a préstamo los ejemplares de la biblioteca
 prestamos => Cada uno de los préstamos realizados por cada lector.
-
-
-Métodos: Actualización
-=============
-
-procesaPrestamo(ejemplar, lector) => busca si el ejemplar está disponible y si lo está ejecuta nuevoPrestamo
-devuelvePrestamo(signatura) => procesa la devolución del ejemplar.
-Consultas y listados
-====================
-ejemplaresTitulo(titulo) => devuelve array con todos los ejemplares correspondiente al título de la publicación
-ejemplaresDisponiblesTitulo(titulo) => igual que el anterior, pero devuelve sólo los disponibles.
-seleccionarEjemplar(signatura) => devuelve el ejemplar correspondiente a la signatura
-listarEjemplares(coleccion o array) => lista todos los ejemplares del array por consola, por defecto, todos los ejemplares de la biblioteca.
-listarLectores => lista por consola todos los lectores de la bibilioteca.
-listarPrestamos(ejemplar) => lista por consola todos los préstamos de un ejemplar
-El objeto Ejemplar, tiene el método  Ficha() que muestra por consola la ficha del mismo.
-El objeto Publicación, mantiene un array con los autores de cada publicación
 */
 
 // Ejemplo de uso:
-/*  // Creamos un objeto biblioteca en este caso la llamamos Gijón
-let publicacion = biblioGijon.nuevaPublicacion('0131103628', 'The C Programming Language'); // añadimos una publicación
-publicacion.nuevoAutor(1, 'Briwan W. Kernighan'); // Añadimos un autor a la publicación
-publicacion.nuevoAutor(2, 'Dennis M. Ritchie');   // Añadimos un segundo autor.
-
-
-
-biblioGijon.listarEjemplares();  // Listamos todos los ejemplares de la biblioteca
-biblioGijon.listarEjemplares(biblioGijon.ejemplaresDisponiblesTitulo('The C Programming Language')); // Listamos los ejemplares disponibles del título
-let ejemplar = biblioGijon.seleccionarEjemplar('C/12'); // Seleccionamos un ejemplar por su signatura
+/* 
+ // Seleccionamos un ejemplar por su signatura
 ejemplar.ficha(); // Mostramos la ficha del ejemplar
-biblioGijon.listarLectores();  // Listamos todos los lectores
-biblioGijon.procesaPrestamo('The C Programming Language', maria); // Prestamos 1 libro a la lectora maria
-biblioGijon.listarPrestamos(ejemplar); // listamos los préstamos de un ejemplar (en este caso coincide con el prestado a maria)
 
-biblioGijon.procesaPrestamo('The C Programming Language', juan); // Añadimos más préstamos
-biblioGijon.procesaPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', juan);
-biblioGijon.procesaPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', luisa);
-biblioGijon.procesaPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', pedro);
-biblioGijon.procesaPrestamo('The C Programming Language', pedro);
+
 biblioGijon.devuelvePrestamo('C/14'); //Devolvemos préstamos
 biblioGijon.devuelvePrestamo('C/15');
 */
@@ -175,12 +143,35 @@ const pedro = new Lector("bbbbbbbbb", 'Pedro Pérez');
 const juan = new Lector("ccccccccc", 'Juan Gómez');
 const luisa = new Lector("dddddddd", 'Luisa Fernández');
 
-let publicacion = new Titulos("2549655545", "Don Quijote de la Mancha", "Miguel Cervantes");
+publicacion = new Titulos("2549655545", "Don Quijote de la Mancha", "Miguel Cervantes");
 publicacion = Biblioteca.nuevaPublicacion('97818479411007','Scrum: The Art of Doing Twice the Work in Half the Time',['Jeff Shuterland']);
 
 
 let autor = new Autores("MC23", "Miguel Cervantes");
 
-publicacion.mostrarPublicaciones();
-autor.mostrarAutores();
+publicacion.nuevoAutor(1, 'Briwan W. Kernighan');
+publicacion.nuevoAutor(2, 'Dennis M. Ritchie');
+
+
+
+
+Biblioteca.nuevoPrestamo('The C Programming Language', maria);
+Biblioteca.nuevoPrestamo('The C Programming Language', juan);
+Biblioteca.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', juan);
+Biblioteca.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', luisa);
+Biblioteca.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', pedro);
+Biblioteca.nuevoPrestamo('The C Programming Language', pedro);
+
+
+
+
+
+
+Publicacion.mostrarPublicaciones();
+Autor.mostrarAutores();
 Ejemplar.mostrarEjemplares();
+biblioGijon.listarPrestamos(ejemplar);
+biblioGijon.listarLectores();
+
+
+
