@@ -20,11 +20,7 @@ El objeto Biblioteca mantiene las siguientes colecciones (arrays):
 publicaciones => Todas las publicaciones que maneja la biblioteca.
 ejemplares => Los ejemplares referenciados catalogados por su signatura
 lectores => Los lectores que toman a préstamo los ejemplares de la biblioteca
-prestamos => Cada uno de los préstamos realizados por cada lector.
-*/
-
-// Ejemplo de uso:
-/* 
+prestamos => Cada uno de los préstamos realizados por cada lector. 
  // Seleccionamos un ejemplar por su signatura
 ejemplar.ficha(); // Mostramos la ficha del ejemplar
 
