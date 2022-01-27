@@ -1,32 +1,14 @@
-/* Modelo de Biblioteca .
-Una Biblioteca contiene una colección de ejemplares (libros):
-1. Cada ejemplar tiene una signatura en la biblioteca que permite su identificación
-2. Cada ejemplar tiene una ubicación (por ejemplo, zona, librería, estantería)
-3. Cada ejemplar es de una Publicación.
-4. Cada Publicación tiene un código ISBN, un título y un conjunto de autores (1 ó más).
-5. Los autores de identifican por un número y un nombre.
-6. La Biblioteca tiene un conjunto de Lectores, que identificamos por DNI y nombre.
-7. Se registran los préstamos de ejemplares de Los lectores.
-8. Se registran las devoluciones de los préstamos.
+/*
+Cada ejemplar tiene una ubicación (por ejemplo, zona, librería, estantería)
+Se registran los préstamos de ejemplares de Los lectores.
 
-Objetos
-Biblioteca
-Publicaciones
-Autores
-Ejemplares
-Lectores
-Préstamos
+
 El objeto Biblioteca mantiene las siguientes colecciones (arrays):
 publicaciones => Todas las publicaciones que maneja la biblioteca.
 ejemplares => Los ejemplares referenciados catalogados por su signatura
 lectores => Los lectores que toman a préstamo los ejemplares de la biblioteca
 prestamos => Cada uno de los préstamos realizados por cada lector. 
- // Seleccionamos un ejemplar por su signatura
-ejemplar.ficha(); // Mostramos la ficha del ejemplar
 
-
-biblioGijon.devuelvePrestamo('C/14'); //Devolvemos préstamos
-biblioGijon.devuelvePrestamo('C/15');
 */
 
 function Publicacion(isbn, titulo, autores) {
@@ -66,6 +48,7 @@ function Biblioteca(ejemplares, lectores, titulos, prestamos) {
     this.titulos = titulos;
     this.prestamos = prestamos;
     this.lectores = lectores;
+
     this.mostrarBiblioteca = function () {
         for (let atributo in this) {
             console.log(`${atributo} => ${this[atributo]}`);
@@ -92,6 +75,10 @@ function Biblioteca(ejemplares, lectores, titulos, prestamos) {
         prestamos.push(prestamo);
     }
 
+    this.devolverPrestamo = function () {
+
+    }
+
     this.mostrarLectores = function () {
         for (let atributo in lectores) {
             console.log(`${atributo} => ${lectores[atributo]}`);
@@ -104,7 +91,7 @@ function Biblioteca(ejemplares, lectores, titulos, prestamos) {
         }
     }
 
-    function Prestamo(ejemplar,lector) {
+    function Prestamo(ejemplar,lector,devoluciones) {
         this.ejemplar = ejemplar;
         this.lector = lector;
         this.mostrarPrestamo = function () {
@@ -125,14 +112,15 @@ function Biblioteca(ejemplares, lectores, titulos, prestamos) {
     }
 }
 
-const biblioGijon = new Biblioteca("Gijón");
+const bibliotecaGijon = new Biblioteca("Gijón");
+const bibliotecaAviles = new Biblioteca("Avilés");
 
-Biblioteca.nuevoEjemplar("A/08", publicacion, "a08-x");
-Biblioteca.nuevoEjemplar("C/09", publicacion, "a09-z");
-Biblioteca.nuevoEjemplar("C/12", publicacion, "b12-n"); 
-Biblioteca.nuevoEjemplar("C/13", publicacion, "b13-n");
-Biblioteca.nuevoEjemplar("C/14", publicacion, "b14-n");
-Biblioteca.nuevoEjemplar("C/15", publicacion, "b15-n");
+bibliotecaGijon.nuevoEjemplar("A/08", publicacion, "a08-x");
+bibliotecaGijon.nuevoEjemplar("C/09", publicacion, "a09-z");
+bibliotecaGijon.nuevoEjemplar("C/12", publicacion, "b12-n"); 
+bibliotecaGijon.nuevoEjemplar("C/13", publicacion, "b13-n");
+bibliotecaGijon.nuevoEjemplar("C/14", publicacion, "b14-n");
+bibliotecaGijon.nuevoEjemplar("C/15", publicacion, "b15-n");
 
 const maria = new Lector("aaaaaaaaa", 'María Garrido');
 const pedro = new Lector("bbbbbbbbb", 'Pedro Pérez');
@@ -142,32 +130,24 @@ const luisa = new Lector("dddddddd", 'Luisa Fernández');
 publicacion = new Titulos("2549655545", "Don Quijote de la Mancha", "Miguel Cervantes");
 publicacion = Biblioteca.nuevaPublicacion('97818479411007','Scrum: The Art of Doing Twice the Work in Half the Time',['Jeff Shuterland']);
 
-
-let autor = new Autores("MC23", "Miguel Cervantes");
+let cervantes = new Autor("MC23", "Miguel Cervantes");
 
 publicacion.nuevoAutor(1, 'Briwan W. Kernighan');
 publicacion.nuevoAutor(2, 'Dennis M. Ritchie');
 
+bibliotecaGijon.nuevoPrestamo('The C Programming Language', maria);
+bibliotecaGijon.nuevoPrestamo('The C Programming Language', juan);
+bibliotecaGijon.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', juan);
+bibliotecaGijon.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', luisa);
+bibliotecaGijon.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', pedro);
+bibliotecaGijon.nuevoPrestamo('The C Programming Language', pedro);
 
-
-
-Biblioteca.nuevoPrestamo('The C Programming Language', maria);
-Biblioteca.nuevoPrestamo('The C Programming Language', juan);
-Biblioteca.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', juan);
-Biblioteca.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', luisa);
-Biblioteca.nuevoPrestamo('Scrum: The Art of Doing Twice the Work in Half the Time', pedro);
-Biblioteca.nuevoPrestamo('The C Programming Language', pedro);
-
-
-
-
-
+bibliotecaGijon.devolverPrestamo('C/14');
+bibliotecaGijon.devolverPrestamo('C/15');
 
 Publicacion.mostrarPublicaciones();
 Autor.mostrarAutores();
 Ejemplar.mostrarEjemplares();
-biblioGijon.listarPrestamos(ejemplar);
-biblioGijon.listarLectores();
-
-
-
+bibliotecaGijon.listarPrestamos(ejemplar);
+bibliotecaGijon.listarLectores();
+ejemplar.ficha();
