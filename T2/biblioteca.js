@@ -132,8 +132,8 @@ publicacion = Biblioteca.nuevaPublicacion('97818479411007','Scrum: The Art of Do
 
 let cervantes = new Autor("MC23", "Miguel Cervantes");
 
-publicacion.nuevoAutor(1, 'Briwan W. Kernighan');
-publicacion.nuevoAutor(2, 'Dennis M. Ritchie');
+Publicacion.nuevoAutor(1, 'Briwan W. Kernighan');
+Publicacion.nuevoAutor(2, 'Dennis M. Ritchie');
 
 bibliotecaGijon.nuevoPrestamo('The C Programming Language', maria);
 bibliotecaGijon.nuevoPrestamo('The C Programming Language', juan);
@@ -145,9 +145,12 @@ bibliotecaGijon.nuevoPrestamo('The C Programming Language', pedro);
 bibliotecaGijon.devolverPrestamo('C/14');
 bibliotecaGijon.devolverPrestamo('C/15');
 
+
+mostrarPrestamos();
+
 Publicacion.mostrarPublicaciones();
 Autor.mostrarAutores();
-Ejemplar.mostrarEjemplares();
+mostrarEjemplares();
 bibliotecaGijon.listarPrestamos(ejemplar);
 bibliotecaGijon.listarLectores();
 ejemplar.ficha();
