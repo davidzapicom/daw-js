@@ -4,6 +4,8 @@ function Biblioteca(nombre) {
     this.publicaciones = [];
     this.lectores = [];
     this.prestamos = [];
+
+
     // Actualización objetos
     this.nuevaPublicacion = function(isbn, titulo) {
         let nuevaPublicacion = new Publicacion(isbn, titulo);
@@ -23,6 +25,8 @@ function Biblioteca(nombre) {
         console.log(`Lector ${nombre} registrado en la biblioteca`);
         return nuevoLector;
     };
+
+
     // Operaciones de préstamo
     this.nuevoPrestamo = (ejemplar, lector) =>{
         if (ejemplar.disponible) {
@@ -61,8 +65,8 @@ function Biblioteca(nombre) {
         }
     }
  
+    
     // Consultas
-            
     this.ejemplaresTitulo = (titulo) => this.ejemplares.filter(ejemplar => ejemplar.publicacion.titulo === titulo);
     this.ejemplaresDisponiblesTitulo = (titulo) => this.ejemplares.filter(ejemplar => ejemplar.publicacion.titulo === titulo && ejemplar.disponible);
     this.seleccionarEjemplar = (signatura) => this.ejemplares.find(ejemplar => ejemplar.signatura === signatura);
