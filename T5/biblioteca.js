@@ -90,17 +90,22 @@ function Biblioteca(nombre) {
         console.table(salidaPrestamos);
     }
 }
+
+
 function Lector(dni, nombre) {
     this.dni = dni;
     this.nombre = nombre;
     this.fechaAlta = new Date();
 }
 
+
 function Autor(numero, nombre) {
     this.numero = numero;
     this.nombre = nombre;
     console.log(`Autor ${numero} - ${nombre} creado`)
 }
+
+
 function Publicacion(isbn, titulo, autores = []) {
     this.titulo = titulo;
     this.isbn = isbn;
@@ -113,6 +118,8 @@ function Publicacion(isbn, titulo, autores = []) {
     }
     console.log(`Publicación ${isbn} - ${titulo} creada`)
 }
+
+
 function Ejemplar(signatura, publicacion, ubicacion) {
     this.signatura = signatura;
     this.publicacion = publicacion;
@@ -126,6 +133,8 @@ function Ejemplar(signatura, publicacion, ubicacion) {
     }
     
 }
+
+
 function Prestamo(ejemplar, lector) {
     this.ejemplar = ejemplar;
     this.lector = lector;
@@ -133,6 +142,8 @@ function Prestamo(ejemplar, lector) {
     this.fechaFinal = '';
     this.ejemplar.disponible = false;
 }
+
+
 const biblioGijon = new Biblioteca("Gijón");
 let publicacion = biblioGijon.nuevaPublicacion('0131103628','The C Programming Language');
 publicacion.nuevoAutor(1, 'Briwan W. Kernighan');
