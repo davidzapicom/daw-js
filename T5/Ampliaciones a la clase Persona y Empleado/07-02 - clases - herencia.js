@@ -134,7 +134,9 @@ class Empleado extends Persona {
 }
 
 function situacionEmpleado(fecha) {
+    for () {
 
+    }
 
 }
 
@@ -174,8 +176,3 @@ plantilla.sort(Persona.compararEdad);
 juan.tomarDiasVacaciones(4); // Juan toma 4 días de vacaciones
 
 console.log(juan.vacacionesPendientes); 
-
-
-
-
-
