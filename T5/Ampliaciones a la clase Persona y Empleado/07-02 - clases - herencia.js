@@ -64,13 +64,21 @@ class Empleado extends Persona {
     
     static categorias = ['A','B','C','D']; // propiedad estática, sólo accesible desde la clase
 
-    constructor(nombre, fechaNacimiento, categoriaProfesional, salario, fechaIncorporacion, activo) {
+    constructor(nombre, fechaNacimiento, categoriaProfesional, salario, fechaIncorporacion, fechaBaja, activo, historial) {
         super(nombre, fechaNacimiento); // Llamada al constructor de la clase superior
         this.categoriaProfesional = categoriaProfesional; // propiedad específica de la clase
         this._vacacionesPendientes = 24; 
-        this.salario = salario;
-        this.fechaIncorporacion = fechaIncorporacion;
-        this.activo = activo;
+        this._salario = salario;
+        this._fechaIncorporacion = fechaIncorporacion;
+        if(fechaIncorporacion == null) { 
+            this._fechaIncorporacion = Date.now();
+        }
+        this._fechaBaja = fechaBaja;
+        this._activo = activo;
+        if(!fechaBaja){
+            this._activo = 'activo';
+        }
+        this._historial = [];
     }
     get categoriaProfesional() {
         return this._categoriaProfesional;
@@ -82,11 +90,6 @@ class Empleado extends Persona {
     }
     get vacacionesPendientes() {
         return this._vacacionesPendientes;
-    }
-    set fechaIncorporacion(valor) {
-        if(Empleado.categorias.indexOf(valor) == null) { 
-            this._categoriaProfesional = Date.now();
-        }
     }
     tomarDiasVacaciones(dias) {
         if (dias <= this.vacacionesPendientes) {
@@ -110,10 +113,24 @@ class Empleado extends Persona {
         return 0;
     }
 
-    static gestionarCatySal() {
+    static promoEmpleado(salario, newSalario, categoriaProfesional, newCategoriaProfesional) {
+        if (!newSalario) {
+            return 'No existe la promoción';
+        } else if (newSalario > salario) {
+            salario = newSalario;
+        }
+
+        if (!newCategoriaProfesional) {
+            return 'No existe la promoción';
+        } else if (newCategoriaProfesional > categoriaProfesional) {
+            categoriaProfesional = newCategoriaProfesional;
+        }
+
+        for () {
+
+        }
 
     }
-
 }
 
 function situacionEmpleado(fecha) {
