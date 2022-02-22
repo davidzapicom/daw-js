@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Recorrer</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            display: flex;
+            margin: .5rem;
+            padding: 1rem;
+            border: 3px solid black;
+            min-height: 1rem;
+            flex-grow: 1;
+        }
+
+        .abuelo {
+            background-color: hsl(0, 50%, 50%);
+            flex-direction: column;
+        }
+
+        .padre {
+            background-color: hsl(100, 50%, 50%);
+        }
+
+        .hijo {
+            background-color: hsl(200, 50%, 50%);
+        }
+    </style>
+</head>
+
+<body onload="processDOMnodes()">
+    <div class="abuelo" id="el-abuelo">
+        <p class="texto-abuelo"></p>
+        <div class="padre" id="h01">
+            <p class="texto-padre"></p>
+            <div class="hijo" id="h0101"></div>
+            <div class="hijo" id="h0102"></div>
+            <div class="hijo" id="h0103"></div>
+        </div>
+        <div class="padre" id="h02">
+            <p class="texto-padre"></p>
+            <div class="hijo" id="h0201"></div>
+            <div class="hijo" id="h0202"></div>
+            <div class="hijo" id="h0203"></div>
+        </div>
+        <div class="padre" id="h03">
+            <p class="texto-padre"></p>
+            <div class="hijo" id="h0301"></div>
+            <div class="hijo" id="h0302"></div>
+            <div class="hijo" id="h0303"></div>
+        </div>
+    </div>
+    <script src="00 - DOM.js"></script>
+    <script src="01 - DOM.js"></script>
+</body>
+
+</html>
