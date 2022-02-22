@@ -1,6 +1,7 @@
 function inicio() {
     console.log(document);
-    processDOMnodes();
+    let processDOMnodes = processDOMnodes();
+    let DOMElements = processDOMelements();
 }
 
 const node_types = [
@@ -27,14 +28,17 @@ const node_types = [
         previousSibling
         nextSibling
         firstChild
-        lastChild
-        
+        lastChild        
 */
+
+let domArrayNodes;
 
 function processDOMnodes() {
     let domArrayNodes = domToArray(document);
     printArray(domArrayNodes);
+    return domArrayNodes;
 }
+
 function printArray(array) {
     console.log(array);
 }
@@ -44,8 +48,8 @@ function domToArray(document) {
     moveDomNodesToArray(document, domArray, 'N0');
     return domArray;    
 }
+
 function moveDomNodesToArray(node, domArray, numero) {
-    
     domArray.push([numero ,node_types[node.nodeType].toLowerCase(), node.nodeName, node.id, node.className, node.nodeValue, node]);
     if (node.attributes) {
         for (let i=0; i < node.attributes.length; ++i){
@@ -59,5 +63,11 @@ function moveDomNodesToArray(node, domArray, numero) {
     }
 }
 
+function processDOMelements() {
+    domArrayElements = domToArrayElements(document);
+    printArrayElements(domArrayElements);
+    return domArrayElements;
+}
 
-
+nuevoParrafo = document.createElement("p");
+nuevoParrafo.inner
