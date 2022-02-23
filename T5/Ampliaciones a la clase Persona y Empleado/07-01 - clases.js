@@ -108,7 +108,6 @@ class PersonalSanitario {
     }
 }
 
-
 doctoraNuria = new PersonalSanitario();
 
 // Al debugar las siguiente sentencias observamos que
@@ -122,7 +121,3 @@ doctoraNuria.tipo = 'médica';
 doctoraNuria.especialidad = 'hematología'
 
 console.log(doctoraNuria.nombre); // Accede al getter de la propiedad...
-
-
-
-
