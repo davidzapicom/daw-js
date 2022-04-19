@@ -11,6 +11,7 @@ const layoutHTMLTarjeta = {
 		justifyContent: 'center',
 	}
 };
+
 const layoutHTMLLinea = {
 	tipo: 'div',
 	atributos: {
@@ -24,6 +25,7 @@ const layoutHTMLLinea = {
 		alignItems: 'center'
 	}
 }
+
 const layoutHTMLCelda = {
 	tipo: 'div',
 	atributos: {
