@@ -45,8 +45,8 @@ function generarElementoHTML(layout, altura, anchura) {
         for (let estilo in layout.estilos) {
             elementoHTML.style[estilo] = layout.estilos[estilo];
         }
-        elementoHTML.style.height = altura / 10 + "px";
-        elementoHTML.style.width = anchura / 2 + "px";
+        elementoHTML.style.height = altura + "px";
+        elementoHTML.style.width = anchura + "px";
         return elementoHTML;
     }
     return null;
@@ -76,7 +76,7 @@ class Tarjeta {
         for (let i = 1; i <= this.numeroDeLineas; i++) {
             let desde = i * this.numeroDeColumnas - (this.numeroDeColumnas - 1);
             let hasta = i * this.numeroDeColumnas;
-            let linea = new Linea(this, desde, hasta, alto, ancho, this.numeroDeColumnas * ancho, alto);
+            let linea = new Linea(this, desde, hasta, alto, ancho, alto, this.numeroDeColumnas * ancho);
             this.lineas.push(linea);
         }
     }
@@ -96,7 +96,7 @@ class Linea {
         this.celdas = [];
 
         this.generarCeldas(alto, ancho);
-        document.body.insertAdjacentElement("beforeend", this.ElementoHTML);
+        this.tarjeta.ElementoHTML.insertAdjacentElement("beforeend", this.ElementoHTML);
     }
 
     generarCeldas(alto, ancho) {
