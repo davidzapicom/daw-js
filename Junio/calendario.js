@@ -1,4 +1,3 @@
-// note -> estilos
 const layoutHTMLTarjeta = {
 	tipo: 'section',
 	atributos: {
@@ -75,13 +74,14 @@ class Tarjeta {
 		this.altoTarjeta = this.numeroDeLineas * this.alto;
 		this.elementoHTML = generarElementoHTML(layoutHTMLTarjeta);
 		this.lineas = [];
+
+
 		this.selecionarContenido();
 		this.generarLineas(alto, ancho);
 		document.body.insertAdjacentElement("beforeend", this.elementoHTML);
 	}
 
 
-	// am i good?
 	selecionarContenido() {
 		while (this.palabras.length < this.numeroDeColumnas) {
 			if (this.palabras.indexOf(this.contenido[n]) == -1) {
@@ -90,12 +90,11 @@ class Tarjeta {
 		}
 	}
 
-	// fixme
 	generarLineas(alto, ancho) {
 		for (let i = 0; i < this.numeroDeLineas; i++) {
 			let datosLinea = [];
 			for (let j = 0; j < this.palabras.length; j++) {
-				if (this.palabras[j].length > i) {
+				if (this.contenido.length > i) {
 					datosLinea.push(this.palabras[j].charAt(i));
 				}
 				else {
