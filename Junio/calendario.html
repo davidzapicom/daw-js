@@ -3,88 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
 </head>
 
 <body>
-    <script>        
-    
-        const cabecera = "|\tLu\t|\tMa\t|\tMi\t|\tJu\t|\tVi\t|\tSa\t|\tDo\t|";
-        let annum = parseInt(prompt("Introduzca el año"));
-        let mes = parseInt(prompt("Introduzca el mes:"));
-        let fecha = new Date(annum + "-" + mes + "-" + "01");
-        let diaSemana = fecha.getDay();
-        diaSemana = (diaSemana == 0) ? 7 : diaSemana;
-        let diasMes;
-        switch (mes) {
-            case 1:
-                diasMes = 31;
-                nombreMes = "ENERO";
-                break;
-            case 3:
-                diasMes = 31;
-                nombreMes = "MARZO";
-                break;
-            case 5:
-                diasMes = 31;
-                nombreMes = "MAYO";
-                break;
-            case 7:
-                diasMes = 31;
-                nombreMes = "JULIO";
-                break;
-            case 8:
-                diasMes = 31;
-                nombreMes = "AGOSTO";
-                break;
-            case 10:
-                diasMes = 31;
-                nombreMes = "OCTUBRE";
-                break;
-            case 12:
-                diasMes = 31;
-                nombreMes = "DICIEMBRE";
-                break;
-            case 4:
-                diasMes = 30;
-                nombreMes = "ABRIL";
-                break;
-            case 6:
-                diasMes = 30;
-                nombreMes = "JUNIO";
-                break;
-            case 9:
-                diasMes = 30;
-                nombreMes = "SEPTIEMBRE";
-                break;
-            case 11:
-                diasMes = 30;
-                nombreMes = "NOVIEMBRE";
-                break;
-            case 2:
-                diasMes = ((annum % 4 == 0) && ((annum % 100 != 0) || (annums % 400) == 0)) ? 29 : 28;
-                nombreMes = "FEBRERO";
-        }
-        salida = "\t\t\t\tMES DE " + nombreMes + " DE " + annum + "\t\n\n";
-        salida += cabecera + "\n";
-        var i = 1;
-        while (i < diaSemana) {
-            i++;
-            salida += "|\t" + "\t";
-        };
-        salida += "|";
-        for (j = 1; j <= diasMes; j++) {
-            if (i == 1) { salida += "|" };
-            salida += "\t" + j.toString().padStart(4, " ") + "\t|";
-            if (i == 7) {
-                salida += "\n";
-                i = 0;
-            }
-            i++
-        }
-
-        alert(salida);
-    </script>
 </body>
+<script src="calendario.js"></script>
 
 </html>
