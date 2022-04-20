@@ -1,5 +1,4 @@
-// * constantes
-
+// note estilos
 const layoutHTMLTarjeta = {
 	tipo: 'section',
 	atributos: {
@@ -12,7 +11,7 @@ const layoutHTMLTarjeta = {
 		alignItems: 'center',
 		justifyContent: 'center',
 	}
-};
+}
 
 const layoutHTMLLinea = {
 	tipo: 'div',
@@ -46,8 +45,6 @@ const layoutHTMLCelda = {
 	}
 }
 
-const mes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-
 function generarElementoHTML(layout, altura, anchura) {
 	if (layout != undefined) {
 		let elementoHTML = document.createElement(layout.tipo);
@@ -63,6 +60,8 @@ function generarElementoHTML(layout, altura, anchura) {
 	}
 	return null;
 }
+
+const mes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
 
 class Tarjeta {
 	constructor(numeroDeLineas = 5, numeroDeColumnas = 5, alto = 50, ancho = 50, contenido) {
@@ -82,7 +81,7 @@ class Tarjeta {
 	}
 
 
-    // ? what is this
+	// am i good?
 	selecionarContenido() {
 		while (this.palabras.length < this.numeroDeColumnas) {
 			if (this.palabras.indexOf(this.contenido[n]) == -1) {
@@ -144,4 +143,4 @@ class Celda {
 	}
 }
 
-let miTarjeta3 = new Tarjeta(5, 7, 50, 50, mes);
+let calendario_abril = new Tarjeta(5, 7, 50, 50, mes);
