@@ -1,4 +1,4 @@
-// note estilos
+// note -> estilos
 const layoutHTMLTarjeta = {
 	tipo: 'section',
 	atributos: {
