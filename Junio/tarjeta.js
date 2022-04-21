@@ -61,7 +61,7 @@ function generarElementoHTML(layout, altura, anchura) {
 }
 
 const contenido = [
-	['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
+	['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
 	['', '', '', '', '1', '2', '3'],
 	['4', '5', '6', '7', '8', '9', '10'],
 	['11', '12', '13', '14', '15', '16', '17'],
@@ -86,32 +86,17 @@ class Tarjeta {
 		document.body.insertAdjacentElement("beforeend", this.elementoHTML);
 	}
 
-
 	generarLineas(alto, ancho) {
-		for (let i = 0; i < this.numeroDeLineas; i++) {
-			let desde = i * this.numeroDeColumnas - (this.numeroDeColumnas - 1);
-			let hasta = i * this.numeroDeColumnas;
-			let datosLinea = [];
-			for (let j = 0; j < this.contenido.length; j++) {
-				if (this.contenido[j].length > i) {
-					datosLinea.push(this.contenido[j]);
-				}
-				else {
-					datosLinea.push(" ");
-				}
-			}
-			let linea = new Linea(this, desde, hasta, ancho, alto, datosLinea);
+		for (let i = 1; i <= this.numeroDeLineas; i++) {
+			let linea = new Linea(this, ancho, alto, this.contenido[i - 1]);
 			this.lineas.push(linea);
 		}
 	}
 }
 
-
 class Linea {
-	constructor(tarjeta, desde, hasta, alto, ancho, datos) {
+	constructor(tarjeta, alto, ancho, datos) {
 		this.tarjeta = tarjeta;
-		this.desde = desde;
-		this.hasta = hasta;
 		this.alto = alto;
 		this.ancho = ancho;
 		this.altoLinea = this.alto;
@@ -123,7 +108,7 @@ class Linea {
 		this.tarjeta.elementoHTML.insertAdjacentElement("beforeend", this.elementoHTML);
 	}
 	generarCeldas(alto, ancho) {
-		for (let i = 0; i < this.tarjeta.lineas.length; i++) {
+		for (let i = 0; i < this.datos.length; i++) {
 			let celda = new Celda(this, this.datos[i], alto, ancho);
 			this.celdas.push(celda);
 		}
