@@ -1,7 +1,3 @@
-const { StrictMode } = require("react/cjs/react.production.min");
-
-StrictMode
-
 const layoutHTMLTarjeta = {
 	tipo: 'section',
 	atributos: {
@@ -65,25 +61,24 @@ function generarElementoHTML(layout, altura, anchura) {
 }
 
 const contenido = [
-    ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
-    ['', '', '', '', '1', '2', '3'],
-    ['4', '5', '6', '7', '8', '9', '10'],
-    ['11', '12', '13', '14', '15', '16', '17'],
-    ['18', '19', '20', '21', '22', '23', '24'],
-    ['25', '26', '27', '28', '29', '30', '']
+	['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
+	['', '', '', '', '1', '2', '3'],
+	['4', '5', '6', '7', '8', '9', '10'],
+	['11', '12', '13', '14', '15', '16', '17'],
+	['18', '19', '20', '21', '22', '23', '24'],
+	['25', '26', '27', '28', '29', '30', '']
 ];
 
 class Tarjeta {
-	constructor(numeroDeLineas = 5, numeroDeColumnas = 5, alto = 50, ancho = 50, contenido) {
-		this.numeroDeLineas = numeroDeLineas;
+	constructor(contenido, alto = 50, ancho = 50) {
+		this.numeroDeLineas = contenido.length;
 		this.numeroDeColumnas = 7;
 		this.alto = alto;
 		this.ancho = ancho;
 		this.contenido = contenido;
-		this.palabras = [];
 		this.anchoTarjeta = this.numeroDeColumnas * this.ancho;
 		this.altoTarjeta = this.numeroDeLineas * this.alto;
-		this.elementoHTML = generarElementoHTML(layoutHTMLTarjeta);
+		this.elementoHTML = generarElementoHTML(layoutHTMLTarjeta, this.altoTarjeta, this.anchoTarjeta);
 		this.lineas = [];
 
 
@@ -91,22 +86,26 @@ class Tarjeta {
 		document.body.insertAdjacentElement("beforeend", this.elementoHTML);
 	}
 
+
 	generarLineas(alto, ancho) {
 		for (let i = 0; i < this.numeroDeLineas; i++) {
+			let desde = i * this.numeroDeColumnas - (this.numeroDeColumnas - 1);
+			let hasta = i * this.numeroDeColumnas;
 			let datosLinea = [];
 			for (let j = 0; j < this.contenido.length; j++) {
-				if (this.contenido.length > i) {
-					datosLinea.push(this.contenido[j].charAt(i));
+				if (this.contenido[j].length > i) {
+					datosLinea.push(this.contenido[j]);
 				}
 				else {
 					datosLinea.push(" ");
 				}
 			}
-			let linea = new Linea(this, i * this.numeroDeColumnas + 1, (i + 1) * this.numeroDeColumnas, ancho, alto, datosLinea);
+			let linea = new Linea(this, desde, hasta, ancho, alto, datosLinea);
 			this.lineas.push(linea);
 		}
 	}
 }
+
 
 class Linea {
 	constructor(tarjeta, desde, hasta, alto, ancho, datos) {
@@ -121,10 +120,10 @@ class Linea {
 		this.elementoHTML = generarElementoHTML(layoutHTMLLinea, this.altoLinea, this.anchoLinea);
 		this.celdas = [];
 		this.generarCeldas(alto, ancho);
-		document.body.insertAdjacentElement("beforeend", this.elementoHTML);
+		this.tarjeta.elementoHTML.insertAdjacentElement("beforeend", this.elementoHTML);
 	}
 	generarCeldas(alto, ancho) {
-		for (let i = 0; i < this.datos.length; i++) {
+		for (let i = 0; i < this.tarjeta.lineas.length; i++) {
 			let celda = new Celda(this, this.datos[i], alto, ancho);
 			this.celdas.push(celda);
 		}
@@ -143,4 +142,4 @@ class Celda {
 	}
 }
 
-let calendario_abril = new Tarjeta(5, 7, contenido);
+let calendario_abril = new Tarjeta(contenido);
