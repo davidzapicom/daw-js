@@ -161,24 +161,13 @@ function preparaControlCalendario() {
 	const mesDefecto = fecha.getMonth();
 	const anoDefecto = fecha.getFullYear();
 	const arrayCalendario = obtenerCalendario(anoDefecto, mesDefecto);
-	const arrayMeses = [
-		'Enero',
-		'Febrero',
-		'Marzo',
-		'Abril',
-		'Mayo',
-		'Junio',
-		'Julio',
-		'Agosto',
-		'Septiembre',
-		'Octubre',
-		'Noviembre',
-		'Diciembre'];
+	const arrayMeses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 	const arrayAnos = Array.from(Array(1800)).map((e, i) => i + 400);
 	const control = document.getElementById('calendarControl');
 	const formulario = document.createElement('form');
 	const controlAno = document.createElement('select');
 	const controlMes = document.createElement('select');
+
 	arrayAnos.forEach(ano => {
 		let opcion = document.createElement('option');
 		opcion.value = ano;
@@ -186,7 +175,9 @@ function preparaControlCalendario() {
 		opcion.selected = ano === anoDefecto;
 		controlAno.append(opcion);
 	});
+	
 	controlAno.setAttribute('name', 'anno');
+	
 	arrayMeses.forEach((mes, i) => {
 		let opcion = document.createElement('option');
 		opcion.value = i;
@@ -194,6 +185,7 @@ function preparaControlCalendario() {
 		opcion.selected = i === mesDefecto;
 		controlMes.append(opcion);
 	});
+	
 	controlMes.setAttribute('name', 'mes');
 	formulario.append(controlAno);
 	formulario.append(controlMes);
