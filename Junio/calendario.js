@@ -60,15 +60,6 @@ function generarElementoHTML(layout, altura, anchura) {
 	return null;
 }
 
-/* const contenido = [
-	['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
-	['', '', '', '', '1', '2', '3'],
-	['4', '5', '6', '7', '8', '9', '10'],
-	['11', '12', '13', '14', '15', '16', '17'],
-	['18', '19', '20', '21', '22', '23', '24'],
-	['25', '26', '27', '28', '29', '30', '']
-]; */
-
 class Tarjeta {
 	constructor(contenido, alto = 50, ancho = 50) {
 		this.numeroDeLineas = contenido.length;
@@ -127,94 +118,98 @@ class Celda {
 	}
 }
 
-
 function obtenerDiaMes(annum, mes) {
-    const diaMes = [31, ((annum % 4 == 0) && ((annum % 100 != 0) || (annum % 400) == 0)) ? 29 : 28,
-        31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    return diaMes[mes];
+	const diaMes = [31, ((annum % 4 == 0) && ((annum % 100 != 0) || (annum % 400) == 0)) ? 29 : 28,
+		31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	return diaMes[mes];
 }
+
 function obtenerCalendario(annum, mes) {
-    let fecha = new Date(annum, mes, 1);
-    let diaSemana = fecha.getDay();
-    let calendario = [['Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab', 'Dom']];
-    let semana = [];
-    let diasMes = obtenerDiaMes(annum, mes);
-    diaSemana = (diaSemana == 0) ? 7 : diaSemana;
-    let i = 1;
-    while (i < diaSemana) {
-        i++;
+	let fecha = new Date(annum, mes, 1);
+	let diaSemana = fecha.getDay();
+	let calendario = [['Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab', 'Dom']];
+	let semana = [];
+	let diasMes = obtenerDiaMes(annum, mes);
+	diaSemana = (diaSemana == 0) ? 7 : diaSemana;
+	let i = 1;
+	while (i < diaSemana) {
+		i++;
 		semana.push(" ");
-    };
-    for (j = 1; j <= diasMes; j++) {
-        semana.push(j);
-        if (i == 7) {
-            calendario.push(semana);
-            semana = [];
-            i = 0;
-        }
-        i++;
-    }
-    if (semana.length > 0) {
-        let i = semana.length;
-        while (i < 7) {
-            i++;
-            semana.push(" ");
-        }
-        calendario.push(semana);
-    }
-    return calendario;
+	};
+	for (j = 1; j <= diasMes; j++) {
+		semana.push(j);
+		if (i == 7) {
+			calendario.push(semana);
+			semana = [];
+			i = 0;
+		}
+		i++;
+	}
+	if (semana.length > 0) {
+		let i = semana.length;
+		while (i < 7) {
+			i++;
+			semana.push(" ");
+		}
+		calendario.push(semana);
+	}
+	return calendario;
 }
+
 function preparaControlCalendario() {
-    const fecha = new Date();
-    const mesDefecto = fecha.getMonth();
-    const anoDefecto = fecha.getFullYear();
-    const arrayCalendario = obtenerCalendario(anoDefecto, mesDefecto);
-    const arrayMeses = [
-        'Enero',
-        'Febrero',
-        'Marzo',
-        'Abril',
-        'Mayo',
-        'Junio',
-        'Julio',
-        'Agosto',
-        'Septiembre',
-        'Octubre',
-        'Noviembre',
-        'Diciembre'    ];
-    const arrayAnos = Array.from(Array(1800)).map((e, i) => i + 400);
-    const control = document.getElementById('calendarControl');
-    const formulario = document.createElement('form');
-    const controlAno = document.createElement('select');
-    const controlMes = document.createElement('select');
-    arrayAnos.forEach(ano => {
-        let opcion = document.createElement('option');
-        opcion.value = ano;
-        opcion.text = ano;
-        opcion.selected = ano === anoDefecto;
-        controlAno.append(opcion);
-    });
-    controlAno.setAttribute('name', 'anno');
-    arrayMeses.forEach((mes, i) => {
-        let opcion = document.createElement('option');
-        opcion.value = i;
-        opcion.text = mes;
-        opcion.selected = i === mesDefecto;
-        controlMes.append(opcion);
-    });
-    controlMes.setAttribute('name', 'mes');
-    formulario.append(controlAno);
-    formulario.append(controlMes);
-    control.append(formulario);
-    control.addEventListener('change', (e) => cargaCalendario(e, formulario));
-    calendario = new Tarjeta(arrayCalendario, 80, 80);
+	const fecha = new Date();
+	const mesDefecto = fecha.getMonth();
+	const anoDefecto = fecha.getFullYear();
+	const arrayCalendario = obtenerCalendario(anoDefecto, mesDefecto);
+	const arrayMeses = [
+		'Enero',
+		'Febrero',
+		'Marzo',
+		'Abril',
+		'Mayo',
+		'Junio',
+		'Julio',
+		'Agosto',
+		'Septiembre',
+		'Octubre',
+		'Noviembre',
+		'Diciembre'];
+	const arrayAnos = Array.from(Array(1800)).map((e, i) => i + 400);
+	const control = document.getElementById('calendarControl');
+	const formulario = document.createElement('form');
+	const controlAno = document.createElement('select');
+	const controlMes = document.createElement('select');
+	arrayAnos.forEach(ano => {
+		let opcion = document.createElement('option');
+		opcion.value = ano;
+		opcion.text = ano;
+		opcion.selected = ano === anoDefecto;
+		controlAno.append(opcion);
+	});
+	controlAno.setAttribute('name', 'anno');
+	arrayMeses.forEach((mes, i) => {
+		let opcion = document.createElement('option');
+		opcion.value = i;
+		opcion.text = mes;
+		opcion.selected = i === mesDefecto;
+		controlMes.append(opcion);
+	});
+	controlMes.setAttribute('name', 'mes');
+	formulario.append(controlAno);
+	formulario.append(controlMes);
+	control.append(formulario);
+	control.addEventListener('change', (e) => cargaCalendario(e, formulario));
+	calendario = new Tarjeta(arrayCalendario, 80, 80);
 }
+
 function cargaCalendario(evento, objeto) {
-    const anno = objeto.anno.value;
-    const mes = objeto.mes.value;
-    calendario.elementoHTML.remove();
-    let arrayCalendario = obtenerCalendario(anno, mes);
-    console.log(arrayCalendario);
-    calendario = new Tarjeta(arrayCalendario,80,80);
+	const anno = objeto.anno.value;
+	const mes = objeto.mes.value;
+	calendario.elementoHTML.remove();
+	let arrayCalendario = obtenerCalendario(anno, mes);
+	console.log(arrayCalendario);
+	calendario = new Tarjeta(arrayCalendario, 80, 80);
 }
+
+
 preparaControlCalendario();
