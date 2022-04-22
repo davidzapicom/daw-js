@@ -1,3 +1,5 @@
+'use strict'
+
 const layoutHTMLTarjeta = {
 	tipo: 'section',
 	atributos: {
@@ -119,8 +121,7 @@ class Celda {
 }
 
 function obtenerDiaMes(annum, mes) {
-	const diaMes = [31, ((annum % 4 == 0) && ((annum % 100 != 0) || (annum % 400) == 0)) ? 29 : 28,
-		31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	const diaMes = [31,((annum % 4 == 0) && ((annum % 100 != 0) || (annum % 400) == 0)) ? 29 : 28,31,30,31,30,31,31,30,31,30,31];
 	return diaMes[mes];
 }
 
