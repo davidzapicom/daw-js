@@ -67,7 +67,7 @@ function generarElementoHTML(layout) {
 
 
 const layoutHTMLMesa = {
-	tipo: "div", 
+	tipo: "div",
 	atributos: {
 		mesa: "mesa",
 	},
@@ -81,7 +81,7 @@ const layoutHTMLAreaCartones = {
 		name: "areaCartones",
 	},
 	estilos: {
-		display: "flex", 
+		display: "flex",
 		flexDirection: "column",
 	},
 };
@@ -91,20 +91,20 @@ const layoutHTMLMesaBombo = {
 		mesa: "mesaBombo",
 	},
 	estilos: {
-		display: "flex", 
+		display: "flex",
 		flexDirection: "column",
 	},
 };
 const layoutHTMLAreaBolas = {
-    tipo: "div",
+	tipo: "div",
 	atributos: {
 		name: "areaBolas",
 	},
 	estilos: {
 		display: "flex",
-		width: "600px", 
-		flexDirection: "row", 
-		flexWrap: "wrap", 
+		width: "600px",
+		flexDirection: "row",
+		flexWrap: "wrap",
 		justifyContent: "center",
 	},
 };
@@ -115,9 +115,9 @@ const layoutHTMLColumnaBolas = {
 	},
 	estilos: {
 		display: "flex",
-		width: "275px", 
-		flexDirection: "row", 
-		flexWrap: "wrap", 
+		width: "275px",
+		flexDirection: "row",
+		flexWrap: "wrap",
 		justifyContent: "center",
 	},
 };
@@ -128,9 +128,9 @@ const layoutHTMLCarrilBolas = {
 	},
 	estilos: {
 		display: "flex",
-		width: "50px", 
-		flexDirection: "row", 
-		flexWrap: "wrap", 
+		width: "50px",
+		flexDirection: "row",
+		flexWrap: "wrap",
 		justifyContent: "center",
 	},
 };
@@ -139,15 +139,69 @@ const layoutHTMLBombo = {
 		name: "bombo",
 	},
 	estilos: {
-		backgroundColor: "lightgrey", 
+		backgroundColor: "lightgrey",
 		width: "600px",
 		height: "240px",
-		display: "flex", flexDirection: "column", 
+		display: "flex", flexDirection: "column",
 		alignItems: "center",
 		justifyContent: "center",
 	},
 };
 
+const layoutHTMLHuecoBola = {
+	tipo: "div",
+	atributos: {
+		name: "huecoBola",
+	},
+	estilos: {
+		display: "inline-block",
+		background: "#cccccc",
+		borderRadius: "100px",
+		color: "#fff",
+		width: "40px",
+		height: "40px",
+		lineHeight: "1.6em",
+		marginRight: "15px",
+		fontSize: "1.5em",
+		fontFamily: "Arial",
+		fontWeight: "bold",
+		textAlign: "center",
+		boxShadow: "7px 7px 5px 0px rgba(50, 50, 50, 0.75)",
+	},
+};
+
+const layoutHTMLBola = {
+	tipo: "div", atributos: {
+		name: "bola",
+	},
+	estilos: {
+		display: "inline-block",
+		background: "#fd4d3f",
+		borderRadius: "100px",
+		color: "#fff",
+		width: "40px",
+		height: "40px",
+		lineHeight: "1.6em",
+		marginRight: "15px",
+		fontSize: "1.5em",
+		fontFamily: "Arial",
+		fontWeight: "bold",
+		textAlign: "center",
+		boxShadow: "7px 7px 5px 0px rgba(50, 50, 50, 0.75)",
+		bottom: "50px",
+		position: "relative",
+		transitionProperty: "bottom",
+		transitionDuration: "2s",
+	},
+};
+const layoutHTMLBotonBingo = {
+	tipo: "button",
+	atributos: {
+		name: "botonBombo",
+		fontSize: "4em",
+	},
+	eventos: []
+}
 
 function numeroAleatorio(desde, hasta) {
 	return Math.floor(Math.random() * (hasta - desde + 1) + desde);
