@@ -1,3 +1,4 @@
+// note Just STYLES start
 const layoutHTMLCarton = {
     tipo: "section",
     atributos: {
@@ -196,6 +197,10 @@ const layoutHTMLBotonBingo = {
     },
     eventos: []
 }
+// note Just STYLES end
+
+
+// note Just functions and constructors start
 function generarElementoHTML(layout) {
     if (layout != undefined) {
         let elementoHTML = document.createElement(layout.tipo);
@@ -389,9 +394,11 @@ class Bingo {
         }
     }
 }
+// note Just functions and constructor ends
+
 
 let miBingo = new Bingo();
 
-/*let miCarton1 = new Carton(90, 15, 3, 9);
-let miCarton2 = new Carton(90, 15, 3, 9);
-let miCarton3 = new Carton();*/
+// am let miCarton1 = new Carton(90, 15, 3, 9);
+// am let miCarton2 = new Carton(90, 15, 3, 9);
+// am let miCarton3 = new Carton();
