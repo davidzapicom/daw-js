@@ -206,7 +206,7 @@ const layoutHTMLBotonBingo = {
 
 
 // note Just functions and constructors start
-function generarElementoHTML(layout) {
+function generarElementoHTML(layout, objeto) {
     if (layout != undefined) {
         let elementoHTML = document.createElement(layout.tipo);
         for (let atributo in layout.atributos) {
@@ -215,6 +215,10 @@ function generarElementoHTML(layout) {
         for (let estilo in layout.estilos) {
             elementoHTML.style[estilo] = layout.estilos[estilo];
         }
+        const elemHTML = documen.createElement(layout.tipo);
+        layout.eventos.forEach(ev => {
+            elemHTML.addEventListener(ev.evento, ev.funcion);
+        });
         return elementoHTML;
     }
     return null;
@@ -371,24 +375,24 @@ class Bingo {
     }
 
     generarTablaDeBolas() {
-      this.areaBolasHTML = generarElementoHTML(layoutHTMLAreaBolas, this);
-      this.mesaBomboHTML.insertAdjacentElement("beforeend" , this.areaBolasHTML);
-      this.columnasBolasDerechaHTML = generarElementoHTML(layoutHTMLColumnaBolas, this);
-      this.areaBolasHTML.insertAdjacentElement("beforeend" , this.columnasBolasDerechaHTML);
-      this.carrilBolasHTML = generarElementoHTML(layoutHTMLCarrilBolas, this);
-      this.areaBolasHTML.insertAdjacentElement("beforeend" , this.carrilBolasHTML);
-      this.columnasBolasIzquierdaHTML = generarElementoHTML(layoutHTMLColumnaBolas, this);
-      this.areaBolasHTML.insertAdjacentElement("beforeend" , this.columnasBolasIzquierdaHTML);
-      
-      let y = 1;
-      for(let i = 1; i <= this.numeroDeBolas; i++){
-          let elementoHTMLhueco = generarElementoHTML(layoutHTMLHuecoBola, this);
-          elementoHTMLhueco.innerHTML = i;
-          elementoHTMLhueco.setAttribute("id", i);
-          let elementoRaiz = y > 5 ? this.columnasBolasIzquierdaHTML : this.columnasBolasDerechaHTML;
-          elementoRaiz.insertAdjacentElement("beforeend" , elementoHTMLhueco);
-          y = y >= 10 ? 1 : y + 1;
-      }
+        this.areaBolasHTML = generarElementoHTML(layoutHTMLAreaBolas, this);
+        this.mesaBomboHTML.insertAdjacentElement("beforeend", this.areaBolasHTML);
+        this.columnasBolasDerechaHTML = generarElementoHTML(layoutHTMLColumnaBolas, this);
+        this.areaBolasHTML.insertAdjacentElement("beforeend", this.columnasBolasDerechaHTML);
+        this.carrilBolasHTML = generarElementoHTML(layoutHTMLCarrilBolas, this);
+        this.areaBolasHTML.insertAdjacentElement("beforeend", this.carrilBolasHTML);
+        this.columnasBolasIzquierdaHTML = generarElementoHTML(layoutHTMLColumnaBolas, this);
+        this.areaBolasHTML.insertAdjacentElement("beforeend", this.columnasBolasIzquierdaHTML);
+
+        let y = 1;
+        for (let i = 1; i <= this.numeroDeBolas; i++) {
+            let elementoHTMLhueco = generarElementoHTML(layoutHTMLHuecoBola, this);
+            elementoHTMLhueco.innerHTML = i;
+            elementoHTMLhueco.setAttribute("id", i);
+            let elementoRaiz = y > 5 ? this.columnasBolasIzquierdaHTML : this.columnasBolasDerechaHTML;
+            elementoRaiz.insertAdjacentElement("beforeend", elementoHTMLhueco);
+            y = y >= 10 ? 1 : y + 1;
+        }
     }
 
     generarCartones() {
@@ -400,7 +404,7 @@ class Bingo {
                 this.columnas
             );
             this.cartones.push(carton);
-            this.areaCartonesHTML.insertAdjacentElement('afterbegin' , carton.ElementoHTML);
+            this.areaCartonesHTML.insertAdjacentElement('afterbegin', carton.ElementoHTML);
         }
     }
 }
