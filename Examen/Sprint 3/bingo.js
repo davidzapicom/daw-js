@@ -80,7 +80,8 @@ const layoutHTMLMesaBombo = {
     estilos: {
         display: "flex",
         flexDirection: "column",
-    },
+
+    }
 };
 
 const layoutHTMLAreaBolas = {
@@ -194,6 +195,10 @@ const layoutHTMLBotonBingo = {
     atributos: {
         name: "botonBombo",
         fontSize: "4em",
+    },
+    estilos: {
+        borderRadius: "100px",
+        backgroundColor: "lightgrey",
     },
     eventos: []
 }
@@ -339,7 +344,7 @@ class Bingo {
         this.columnas = columnas;
         this.cartones = [];
         this.bolas = [];
-        this.numeros = []
+        this.numeros = [];
 
         this.mesaHTML = generarElementoHTML(layoutHTMLMesa, this);
         document.body.insertAdjacentElement("beforeend", this.mesaHTML);
@@ -356,6 +361,11 @@ class Bingo {
         this.botonBingoHTML = generarElementoHTML(layoutHTMLBotonBingo, this);
         this.bomboHTML.insertAdjacentElement("beforeend", this.botonBingoHTML);
         this.botonBingoHTML.innerHTML = "Girar";
+
+
+        // am lineaComprobar.celdas.every(celda => {
+        // am   miBingo.includes(celda.numero); 
+        // am });
 
         this.generarTablaDeBolas();
     }
@@ -375,12 +385,12 @@ class Bingo {
           let elementoHTMLhueco = generarElementoHTML(layoutHTMLHuecoBola, this);
           elementoHTMLhueco.innerHTML = i;
           elementoHTMLhueco.setAttribute("id", i);
-          let elementoRaiz =
-          y > 5 ? this.columnasBolasIzquierdaHTML : this.columnasBolasDerechaHTML;
+          let elementoRaiz = y > 5 ? this.columnasBolasIzquierdaHTML : this.columnasBolasDerechaHTML;
           elementoRaiz.insertAdjacentElement("beforeend" , elementoHTMLhueco);
           y = y >= 10 ? 1 : y + 1;
       }
     }
+
     generarCartones() {
         for (let i = 1; i <= this.numeroDeCartones; i++) {
             let carton = new Carton(
@@ -398,7 +408,3 @@ class Bingo {
 
 
 let miBingo = new Bingo();
-
-// am let miCarton1 = new Carton(90, 15, 3, 9);
-// am let miCarton2 = new Carton(90, 15, 3, 9);
-// am let miCarton3 = new Carton();
