@@ -200,7 +200,22 @@ const layoutHTMLBotonBingo = {
         borderRadius: "100px",
         backgroundColor: "lightgrey",
     },
-    eventos: []
+    eventos: [
+        {
+            evento: "click",
+            funcion: (evento, objeto) => {
+                let estado = evento.target.innerHTML;
+                if (estado === "Girar") {
+                    objeto.girando = false;
+                    evento.target.innerHTML = "Parar";
+                    estado = evento.target.innerHTML;
+                    objeto.intervalo = setInterval(procesaBola, 3000);
+
+                    
+                }
+            }
+        }
+    ]
 }
 // note Just STYLES end
 
