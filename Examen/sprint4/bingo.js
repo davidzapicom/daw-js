@@ -1,4 +1,3 @@
-// note Just STYLES start
 const layoutHTMLCarton = {
     tipo: "section",
     atributos: {
@@ -49,6 +48,24 @@ const layoutHTMLCelda = {
         fontFamily: "Arial",
         fontWeight: "bold",
     },
+
+    eventos: [
+        {
+            evento: "click",
+            funcion: (evento, objeto) => {
+                if (objeto.numero != 0) {
+                    if (objeto.estado == undefined || !objeto.estado) {
+                        objeto.estado = true;
+                        evento.target.style.filter = "invert(100%)";
+                        Bingo.comprobarBingo(objeto.linea.carton.juego, objeto.linea, objeto.linea.carton);
+                    } else {
+                        objeto.estado = false;
+                        evento.target.style.filter = " ";
+                    }
+                }
+            }
+        }
+    ]
 };
 
 const layoutHTMLMesa = {
@@ -80,8 +97,7 @@ const layoutHTMLMesaBombo = {
     estilos: {
         display: "flex",
         flexDirection: "column",
-
-    }
+    },
 };
 
 const layoutHTMLAreaBolas = {
@@ -196,10 +212,6 @@ const layoutHTMLBotonBingo = {
         name: "botonBombo",
         fontSize: "4em",
     },
-    estilos: {
-        borderRadius: "100px",
-        backgroundColor: "lightgrey",
-    },
     eventos: [
         {
             evento: "click",
@@ -210,17 +222,25 @@ const layoutHTMLBotonBingo = {
                     evento.target.innerHTML = "Parar";
                     estado = evento.target.innerHTML;
                     objeto.intervalo = setInterval(procesaBola, 3000);
-
-                    
+                    function procesaBola() {
+                        objeto.nuevaBola();
+                        objeto.girando = true;
+                        if (objeto.bolas.length === objeto.numeroDeBolas) {
+                            clearInterval(objeto.intervalo);
+                            evento.target.innerHTML = "FINALIZADO";
+                            evento.target.disabled = true;
+                        }
+                    }
+                } else {
+                    evento.target.innerHTML = "Girar";
+                    objeto.girando = false;
+                    estado = evento.target.innerHTML;
+                    clearInterval(objeto.intervalo);
                 }
             }
         }
     ]
 }
-// note Just STYLES end
-
-
-// note Just functions and constructors start
 function generarElementoHTML(layout, objeto) {
     if (layout != undefined) {
         let elementoHTML = document.createElement(layout.tipo);
@@ -230,10 +250,13 @@ function generarElementoHTML(layout, objeto) {
         for (let estilo in layout.estilos) {
             elementoHTML.style[estilo] = layout.estilos[estilo];
         }
-        const elemHTML = documen.createElement(layout.tipo);
-        layout.eventos.forEach(ev => {
-            elemHTML.addEventListener(ev.evento, ev.funcion);
-        });
+
+        if (layout.eventos != undefined) {
+            layout.eventos.forEach(ev => {
+                elementoHTML.addEventListener(ev.evento, e => ev.funcion(e, objeto));
+            })
+        };
+
         return elementoHTML;
     }
     return null;
@@ -253,7 +276,7 @@ class Carton {
         this.numerosPorLinea = numerosPorLinea;
         this.huecosPorLinea = huecosPorLinea;
 
-        this.ElementoHTML = generarElementoHTML(layoutHTMLCarton);
+        this.ElementoHTML = generarElementoHTML(layoutHTMLCarton, this);
         this.numeros = [];
         this.lineas = [];
 
@@ -279,7 +302,7 @@ class Linea {
         this.numeroDeHuecos = numeroDeHuecos;
         this.numeroDeColumnas = numerosDeColumnas;
 
-        this.ElementoHTML = generarElementoHTML(layoutHTMLLinea);
+        this.ElementoHTML = generarElementoHTML(layoutHTMLLinea, this);
         this.numeros = [];
         this.celdas = [];
         this.huecos = [];
@@ -295,7 +318,7 @@ class Linea {
         for (let i = 0; i < this.numeroDeColumnas; i++) {
             console.log(this.huecos);
             if (this.huecos.indexOf(i) == -1) {
-                // Generar un numero aleaotior en esa decena qu eno este yq en el carton
+                // Generar un numero aleatorio en esa decena que no este ya en el carton
                 let primero = i * 10 + 1;
                 let ultimo = (i + 1) * 10;
 
@@ -348,13 +371,34 @@ class Celda {
         } else {
             this.numero = numero;
         }
-        this.ElementoHTML = generarElementoHTML(layoutHTMLCelda);
+        this.ElementoHTML = generarElementoHTML(layoutHTMLCelda, this);
         this.ElementoHTML.innerHTML = this.numero;
         this.linea.ElementoHTML.insertAdjacentElement("beforeend", this.ElementoHTML);
     }
 }
 
 class Bingo {
+
+    static ComprobarBingo(bingo, linea, carton) {
+        const cantaLinea = linea.celdas.every(celda => celda.numero == 0 || celda.estado);
+        const cantaBingo = false;
+        if (cantaLinea) {
+            if (bingo.girando) {
+                bingo.botonBingoHTML.dispatch('click');
+            }
+            const lineaOK = Bingo.comprobarLinea(bingo, linea);
+
+
+            if (lineaOK) {
+                linea.celdas.forEach(celda => celda.elementoHTML.style.background = 'green');
+                cantaBingo = carton.lineas.every(linea => linea.estado);
+            }
+            alert("Linea");
+
+            alert("BINGO!!!!");
+        }
+    }
+
     constructor(numeroDeBolas = 90, numeroDeCartones = 3, numerosPorCarton = 15, lineas = 3, columnas = 9) {
         this.numeroDeBolas = numeroDeBolas;
         this.numeroDeCartones = numeroDeCartones;
@@ -363,7 +407,7 @@ class Bingo {
         this.columnas = columnas;
         this.cartones = [];
         this.bolas = [];
-        this.numeros = [];
+        this.numeros = []
 
         this.mesaHTML = generarElementoHTML(layoutHTMLMesa, this);
         document.body.insertAdjacentElement("beforeend", this.mesaHTML);
@@ -380,11 +424,6 @@ class Bingo {
         this.botonBingoHTML = generarElementoHTML(layoutHTMLBotonBingo, this);
         this.bomboHTML.insertAdjacentElement("beforeend", this.botonBingoHTML);
         this.botonBingoHTML.innerHTML = "Girar";
-
-
-        // am lineaComprobar.celdas.every(celda => {
-        // am   miBingo.includes(celda.numero); 
-        // am });
 
         this.generarTablaDeBolas();
     }
@@ -409,7 +448,6 @@ class Bingo {
             y = y >= 10 ? 1 : y + 1;
         }
     }
-
     generarCartones() {
         for (let i = 1; i <= this.numeroDeCartones; i++) {
             let carton = new Carton(
@@ -422,8 +460,39 @@ class Bingo {
             this.areaCartonesHTML.insertAdjacentElement('afterbegin', carton.ElementoHTML);
         }
     }
+    nuevaBola() {
+        let aleatorio = numeroAleatorio(1, this.numeroDeBolas);
+        while (this.numeros.indexOf(aleatorio) != -1) {
+            aleatorio = numeroAleatorio(1, this.numeroDeBolas);
+        }
+        let bola = new Bola(this, aleatorio);
+        this.bolas.push(bola);
+        this.numeros.push(aleatorio);
+        let tempo = setTimeout(function () {
+            bola.elementoHTML.style.bottom = "-500px";
+            let tempo = setTimeout(() => {
+                let casilla = document.getElementById(aleatorio);
+                let bottomposition = casilla.style.bottom;
+                bola.elementoHTML.style.bottom = bottomposition;
+                casilla.replaceWith(bola.elementoHTML);
+                bola.elementoHTML.style.boxShadow = "7px 7px 5px 0px rgba(50, 50, 0.75)";
+                bola.elementoHTML.style.transitionProperty = bottom;
+                bola.elementoHTML.style.transitionDuration = "2s";
+            }, 1000);
+        }, 1000);
+    }
 }
-// note Just functions and constructor ends
 
 
-let miBingo = new Bingo();
+class Bola {
+    constructor(bingo, numero) {
+        this.bingo = bingo;
+        this.numero = numero;
+        this.elementoHTML = generarElementoHTML(layoutHTMLBola, this);
+        this.elementoHTML.innerHTML = numero;
+        bingo.carrilBolasHTML.insertAdjacentElement("beforeend", this.elementoHTML);
+    }
+
+}
+
+let mibingo = new Bingo();
