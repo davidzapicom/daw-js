@@ -316,7 +316,6 @@ class Linea {
     }
 
     generarCeldas() {
-
         this.huecos = this.generarHuecos();
         console.log(this.huecos);
         for (let i = 0; i < this.numeroDeColumnas; i++) {
