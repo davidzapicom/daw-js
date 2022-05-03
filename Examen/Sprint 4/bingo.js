@@ -53,6 +53,8 @@ const layoutHTMLCelda = {
         {
             evento: "click",
             funcion: (evento, objeto) => {
+
+                // note es 0 o ""
                 if (objeto.numero != 0) {
                     if (objeto.estado == undefined || !objeto.estado) {
                         objeto.estado = true;
@@ -222,6 +224,7 @@ const layoutHTMLBotonBingo = {
                     evento.target.innerHTML = "Parar";
                     estado = evento.target.innerHTML;
                     objeto.intervalo = setInterval(procesaBola, 3000);
+
                     function procesaBola() {
                         objeto.nuevaBola();
                         objeto.girando = true;
@@ -379,7 +382,6 @@ class Celda {
 
 class Bingo {
     static comprobarBingo(bingo, linea, carton) {
-        bingo.girando == false;
         const cantaLinea = linea.celdas.every(celda => celda.numero == 0 || celda.estado);
         const cantaBingo = false;
         if (cantaLinea) {
@@ -408,6 +410,7 @@ class Bingo {
         this.cartones = [];
         this.bolas = [];
         this.numeros = []
+        this.girando = false;
 
         this.mesaHTML = generarElementoHTML(layoutHTMLMesa, this);
         document.body.insertAdjacentElement("beforeend", this.mesaHTML);
