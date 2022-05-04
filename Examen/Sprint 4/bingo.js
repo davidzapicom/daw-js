@@ -272,7 +272,8 @@ function numeroAleatorio(desde, hasta) {
 }
 
 class Carton {
-    constructor(numeroBolasJuego = 90, numerosPorCarton = 15, numeroDeLineas = 3, numeroDeColumnas = 9, numerosPorLinea = 5, huecosPorLinea = 4) {
+    constructor(juego, numeroBolasJuego = 90, numerosPorCarton = 15, numeroDeLineas = 3, numeroDeColumnas = 9, numerosPorLinea = 5, huecosPorLinea = 4) {
+        this.juego = juego;
         this.numeroBolasJuego = numeroBolasJuego;
         this.numerosPorCarton = numerosPorCarton;
         this.numeroDeLineas = numeroDeLineas;
@@ -453,6 +454,7 @@ class Bingo {
     generarCartones() {
         for (let i = 1; i <= this.numeroDeCartones; i++) {
             let carton = new Carton(
+                this,
                 this.numeroDeBolas,
                 this.numerosPorCarton,
                 this.lineas,
@@ -479,7 +481,7 @@ class Bingo {
                 bola.elementoHTML.style.bottom = bottomposition;
                 casilla.replaceWith(bola.elementoHTML);
                 bola.elementoHTML.style.boxShadow = "7px 7px 5px 0px rgba(50, 50, 0.75)";
-                bola.elementoHTML.style.transitionProperty = bottom;
+                bola.elementoHTML.style.transitionProperty = "bottom";
                 bola.elementoHTML.style.transitionDuration = "2s";
             }, 1000);
         }, 1000);
