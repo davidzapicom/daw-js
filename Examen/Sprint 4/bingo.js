@@ -410,7 +410,6 @@ class Bingo {
         this.bolas = [];
         this.numeros = []
         this.girando = false;
-
         this.mesaHTML = generarElementoHTML(layoutHTMLMesa, this);
         document.body.insertAdjacentElement("beforeend", this.mesaHTML);
 
