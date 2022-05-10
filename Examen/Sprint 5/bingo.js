@@ -374,13 +374,14 @@ class Bingo {
             }
             lineaOK = Bingo.comprobarLinea(bingo, linea);
             linea.estado = lineaOK;
-            alert("Linea !!");
         }
         if (lineaOK) {
             linea.celdas.forEach((celda) => (celda.ElementoHTML.style.backgroundColor = "blue"));
             cantaBingo = carton.lineas.every((linea) => (linea.estado));
+                alert("Linea!!");
             if (cantaBingo) {
                 bingoOK = Bingo.revisarBingo(carton);
+                alert("Bingo!!");
             }
         }
         if (arrancarBingo) {
@@ -392,8 +393,14 @@ class Bingo {
             celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true);
         return lineaOK;
     }
-    static revisarBingo(){
+
+    // *
+    static revisarBingo(carton){
+        const bingoOK = carton.celdas.every((celda) =>
+            celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true);
+        return bingoOK;
     }
+
     constructor(numeroDeBolas = 90, numeroDeCartones = 3, numerosPorCarton = 15, lineas = 3, columnas = 9) {
         this.numeroDeBolas = numeroDeBolas;
         this.numeroDeCartones = numeroDeCartones;
