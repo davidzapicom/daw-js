@@ -53,8 +53,6 @@ const layoutHTMLCelda = {
         {
             evento: "click",
             funcion: (evento, objeto) => {
-
-                // note es 0 o ""
                 if (objeto.numero != 0) {
                     if (objeto.estado == undefined || !objeto.estado) {
                         objeto.estado = true;
@@ -385,21 +383,45 @@ class Bingo {
         const cantaLinea = linea.celdas.every(celda => celda.numero == 0 || celda.estado);
         const cantaBingo = false;
         if (cantaLinea) {
+            let evento = new Event('click');
+            let arrancarBingo = false;
             if (bingo.girando) {
-                bingo.botonBingoHTML.dispatch('click');
+                arrancarBingo = true;
+                bingo.botonBingoHTML.dispatchEvent(evento);
             }
             const lineaOK = Bingo.comprobarLinea(bingo, linea);
-
+            linea.estado = lineaOK;
 
             if (lineaOK) {
-                linea.celdas.forEach(celda => celda.elementoHTML.style.background = 'green');
+                linea.celdas.forEach(celda => celda.ElementoHTML.style.backgroundColor = 'green');
                 cantaBingo = carton.lineas.every(linea => linea.estado);
             }
-            alert("Linea");
 
-            alert("BINGO!!!!");
+            alert("Linea");
+            
+            //alert("Bingo");
         }
+
     }
+
+    static comprobarLinea(bingo, linea) {
+        const lineaOK = linea.celdas.every((celda) =>
+            celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true);
+        return lineaOK;
+    }
+
+
+
+    // static revisarBingo(carton) {
+    //     for (let i = 0; i < this.carton.lineas.length; i++) {
+    //         let linea = this.carton.lineas[i];
+    //         if (linea.estado) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
 
     constructor(numeroDeBolas = 90, numeroDeCartones = 3, numerosPorCarton = 15, lineas = 3, columnas = 9) {
         this.numeroDeBolas = numeroDeBolas;
@@ -409,7 +431,7 @@ class Bingo {
         this.columnas = columnas;
         this.cartones = [];
         this.bolas = [];
-        this.numeros = []
+        this.numeros = [];
         this.girando = false;
         this.mesaHTML = generarElementoHTML(layoutHTMLMesa, this);
         document.body.insertAdjacentElement("beforeend", this.mesaHTML);
@@ -497,5 +519,7 @@ class Bola {
         bingo.carrilBolasHTML.insertAdjacentElement("beforeend", this.elementoHTML);
     }
 }
+
+
 
 let mibingo = new Bingo();
