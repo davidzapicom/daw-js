@@ -228,6 +228,8 @@ const layoutHTMLBotonBingo = {
         }
     ]
 }
+
+
 function generarElementoHTML(layout, objeto) {
     if (layout != undefined) {
         let elementoHTML = document.createElement(layout.tipo);
@@ -246,10 +248,14 @@ function generarElementoHTML(layout, objeto) {
     }
     return null;
 }
+
+
 function numeroAleatorio(desde, hasta) {
     let n = parseInt(desde + Math.random() * (hasta - desde + 1));
     return n;
 }
+
+
 class Carton {
     constructor(juego, numeroBolasJuego = 90, numerosPorCarton = 15, numeroDeLineas = 3, numeroDeColumnas = 9, numerosPorLinea = 5, huecosPorLinea = 4) {
         this.juego = juego;
@@ -274,6 +280,8 @@ class Carton {
         }
     }
 }
+
+
 class Linea {
     constructor(carton, desde, hasta, numeroDeHuecos, numerosDeColumnas) {
         this.carton = carton;
@@ -333,6 +341,8 @@ class Linea {
         return h;
     }
 }
+
+
 class Celda {
     constructor(linea, numero) {
         this.linea = linea;
@@ -346,6 +356,8 @@ class Celda {
         this.linea.ElementoHTML.insertAdjacentElement("beforeend", this.ElementoHTML);
     }
 }
+
+
 class Bingo {
     static comprobarBingo(bingo, linea, carton) {
         let cantaLinea = linea.celdas.every((celda) => celda.numero == 0 || celda.estado);
@@ -460,6 +472,8 @@ class Bingo {
         }, 1000);
     }
 }
+
+
 class Bola {
     constructor(bingo, numero) {
         this.bingo = bingo;
@@ -469,4 +483,6 @@ class Bola {
         bingo.carrilBolasHTML.insertAdjacentElement("beforeend", this.elementoHTML);
     }
 }
+
+
 let mibingo = new Bingo();
