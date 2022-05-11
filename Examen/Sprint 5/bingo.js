@@ -1,8 +1,5 @@
 const synth = window.speechSynthesis;
 
-var voices = [];
-
-
 const layoutHTMLCarton = {
     tipo: "section",
     atributos: {
@@ -241,7 +238,8 @@ const layoutHTMLBotonBingo = {
     ],
     estilos: {
         background: "transparent",
-        borderRadius: "100px",
+        border: "5px solid",
+        borderRadius: "1px",
         color: "#fff",
         border: "#fff",
     },
@@ -315,25 +313,33 @@ class Linea {
         this.carton.ElementoHTML.insertAdjacentElement("beforeend", this.ElementoHTML);
     }
     generarCeldas() {
-        this.huecos = this.generarHuecos();
-        console.log(this.huecos);
-        for (let i = 0; i < this.numeroDeColumnas; i++) {
-            console.log(this.huecos);
-            if (this.huecos.indexOf(i) == -1) {
-                // Generar un numero aleatorio en esa decena que no este ya en el carton
-                let primero = i * 10 + 1;
-                let ultimo = (i + 1) * 10;
-                let numero = numeroAleatorio(primero, ultimo);
-                while (this.estaEnCarton(numero)) {
-                    numero = numeroAleatorio(primero, ultimo);
-                }
-                let celda = new Celda(this, numero);
-                this.celdas.push(celda);
+        let huecos = this.generarHuecos();
+        for (let i = 1; i <= this.numeroDeColumnas; i++) {
+            let celda;
+            if (huecos.includes(i)) {
+                celda = new Celda(this, 0);
+            } else {
+                let repetido = false;
+                do {
+                    let primero = (i-1)*10;
+                    let ultimo = (i*10-1);
+                    if(i == 1){
+                        primero = primero + 1;
+                    }
+                    if(i == this.numeroDeColumnas ){
+                        ultimo = ultimo + 1;
+                    }
+                    var numero = numeroAleatorio(primero, ultimo);
+                    if (this.carton.numeros.find((element) => element == numero) !== undefined) {
+                        repetido = true;
+                    } else {
+                        this.carton.numeros.push(numero);
+                        repetido = false;
+                    }
+                } while (repetido);
+                celda = new Celda(this, numero);
             }
-            else {
-                let celda = new Celda(this, 0);
-                this.celdas.push(celda);
-            }
+            this.celdas.push(celda);
         }
     }
     estaEnCarton(n) {
@@ -500,7 +506,7 @@ class Bingo {
         let tempo = setTimeout(function () {
             let vozBola = new SpeechSynthesisUtterance(`el ${bola.numero}`);
             //* idioma declarado
-            vozBola.voice = synth.getVoices()[1];
+            vozBola.voice = synth.getVoices()[2];
             synth.speak(vozBola);
             bola.elementoHTML.style.bottom = "-500px";
             let tempo = setTimeout(() => {
