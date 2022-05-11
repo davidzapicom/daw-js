@@ -237,11 +237,11 @@ const layoutHTMLBotonBingo = {
         }
     ],
     estilos: {
-        background: "transparent",
+        backgroundColor: "transparent",
         border: "5px solid",
         borderRadius: "1px",
-        color: "#fff",
-        border: "#fff",
+        color: "#000",
+        border: "#000",
     },
 }
 
@@ -321,12 +321,12 @@ class Linea {
             } else {
                 let repetido = false;
                 do {
-                    let primero = (i-1)*10;
-                    let ultimo = (i*10-1);
-                    if(i == 1){
+                    let primero = (i - 1) * 10;
+                    let ultimo = (i * 10 - 1);
+                    if (i == 1) {
                         primero = primero + 1;
                     }
-                    if(i == this.numeroDeColumnas ){
+                    if (i == this.numeroDeColumnas) {
                         ultimo = ultimo + 1;
                     }
                     var numero = numeroAleatorio(primero, ultimo);
@@ -407,7 +407,7 @@ class Bingo {
                 alert("Linea!!");
                 bingo.lineaCantada = true;
             }
-            
+
             cantaBingo = carton.lineas.every((linea) => (linea.estado));
             if (cantaBingo) {
                 bingoOK = Bingo.revisarBingo(carton);
@@ -422,7 +422,7 @@ class Bingo {
     }
 
     static comprobarLinea(bingo, linea) {
-        const lineaOK = linea.celdas.every((celda) => 
+        const lineaOK = linea.celdas.every((celda) =>
             celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true
         );
         return lineaOK;
@@ -503,11 +503,11 @@ class Bingo {
         let bola = new Bola(this, aleatorio);
         this.bolas.push(bola);
         this.numeros.push(aleatorio);
+        let vozBola = new SpeechSynthesisUtterance(`${bola.numero}`);
+        //* idioma declarado
+        vozBola.voice = synth.getVoices()[1];
+        synth.speak(vozBola);
         let tempo = setTimeout(function () {
-            let vozBola = new SpeechSynthesisUtterance(`el ${bola.numero}`);
-            //* idioma declarado
-            vozBola.voice = synth.getVoices()[2];
-            synth.speak(vozBola);
             bola.elementoHTML.style.bottom = "-500px";
             let tempo = setTimeout(() => {
                 let casilla = document.getElementById(aleatorio);
@@ -533,5 +533,10 @@ class Bola {
     }
 }
 
+let jugador = prompt("Write your name down");
+let vozjugador = new SpeechSynthesisUtterance(`Wellcome ${jugador}`);
+        //* idioma declarado
+        vozjugador.voice = synth.getVoices()[2];
+        synth.speak(vozjugador);
 
 let mibingo = new Bingo();
