@@ -1,3 +1,4 @@
+const synth = window.speechSynthesis;
 const layoutHTMLCarton = {
     tipo: "section",
     atributos: {
@@ -368,7 +369,9 @@ class Bingo {
         if (cantaLinea) {
             let evento = new Event("click");
             let arrancarBingo = false;
-            if (bingo.girando) {
+
+            //?
+            if (bingo.girando && !bingo.lineaCantada) {
                 arrancarBingo = true;
                 bingo.botonBingoHTML.dispatchEvent(evento);
             }
@@ -377,45 +380,38 @@ class Bingo {
         }
         if (lineaOK) {
             linea.celdas.forEach((celda) => (celda.ElementoHTML.style.backgroundColor = "blue"));
-            cantaBingo = carton.lineas.every((linea) => (linea.estado));
-            alert("Linea!!");
-
+            if (!bingo.lineaCantada) {
+                alert("Linea!!");
+                bingo.lineaCantada = true;
+            }
             
-            //!
+            cantaBingo = carton.lineas.every((linea) => (linea.estado));
             if (cantaBingo) {
                 bingoOK = Bingo.revisarBingo(carton);
                 if (bingoOK == true) {
                     alert("Bingo!!");
                 }
             }
-            //!
-
-
         }
         if (arrancarBingo) {
             bingo.botonBingoHTML.dispatchEvent(evento);
         }
     }
+
     static comprobarLinea(bingo, linea) {
-        const lineaOK = linea.celdas.every((celda) => celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true);
+        const lineaOK = linea.celdas.every((celda) => 
+            celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true
+        );
         return lineaOK;
     }
 
-    //*
     static revisarBingo(carton) {
-        for (let i = 0; i < this.carton.lineas.length; i++) {
-
-
-            //!
-            let linea = this.carton.lineas[i];
-            const bingoOK = carton.celdas.every((celda) => celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true);
-            //!
-
-
-            return true;
-        }
-        return false;
-
+        const bingoOK = carton.lineas.every((linea) =>
+            linea.celdas.every((celda) =>
+                celda.numero != 0 ? carton.juego.numeros.includes(celda.numero) : true
+            )
+        );
+        return bingoOK;
     }
 
     constructor(numeroDeBolas = 90, numeroDeCartones = 3, numerosPorCarton = 15, lineas = 3, columnas = 9) {
@@ -428,6 +424,7 @@ class Bingo {
         this.bolas = [];
         this.numeros = [];
         this.girando = false;
+        this.lineaCantada = false;
         this.mesaHTML = generarElementoHTML(layoutHTMLMesa, this);
         document.body.insertAdjacentElement("beforeend", this.mesaHTML);
         this.areaCartonesHTML = generarElementoHTML(layoutHTMLAreaCartones, this);
@@ -442,6 +439,7 @@ class Bingo {
         this.botonBingoHTML.innerHTML = "Girar";
         this.generarTablaDeBolas();
     }
+
     generarTablaDeBolas() {
         this.areaBolasHTML = generarElementoHTML(layoutHTMLAreaBolas, this);
         this.mesaBomboHTML.insertAdjacentElement("beforeend", this.areaBolasHTML);
@@ -483,6 +481,8 @@ class Bingo {
         this.bolas.push(bola);
         this.numeros.push(aleatorio);
         let tempo = setTimeout(function () {
+            let vozBola = new SpeechSynthesisUtterance(`el ${bola.numero}`);
+            synth.speak(vozBola);
             bola.elementoHTML.style.bottom = "-500px";
             let tempo = setTimeout(() => {
                 let casilla = document.getElementById(aleatorio);
