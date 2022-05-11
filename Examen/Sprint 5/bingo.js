@@ -139,7 +139,7 @@ const layoutHTMLBombo = {
         name: "bombo",
     },
     estilos: {
-        backgroundColor: "lightgrey",
+        backgroundColor: "#F9EBC8",
         width: "600px",
         height: "240px",
         display: "flex",
@@ -227,7 +227,13 @@ const layoutHTMLBotonBingo = {
                 }
             }
         }
-    ]
+    ],
+    estilos: {
+        background: "transparent",
+        borderRadius: "100px",
+        color: "#fff",
+        border: "#fff",
+    },
 }
 
 
