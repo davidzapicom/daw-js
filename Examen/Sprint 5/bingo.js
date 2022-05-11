@@ -379,12 +379,18 @@ class Bingo {
             linea.celdas.forEach((celda) => (celda.ElementoHTML.style.backgroundColor = "blue"));
             cantaBingo = carton.lineas.every((linea) => (linea.estado));
             alert("Linea!!");
+
+            
+            //!
             if (cantaBingo) {
                 bingoOK = Bingo.revisarBingo(carton);
                 if (bingoOK == true) {
                     alert("Bingo!!");
                 }
             }
+            //!
+
+
         }
         if (arrancarBingo) {
             bingo.botonBingoHTML.dispatchEvent(evento);
@@ -395,11 +401,17 @@ class Bingo {
         return lineaOK;
     }
 
-    // *
+    //*
     static revisarBingo(carton) {
         for (let i = 0; i < this.carton.lineas.length; i++) {
+
+
+            //!
             let linea = this.carton.lineas[i];
             const bingoOK = carton.celdas.every((celda) => celda.numero != 0 ? bingo.numeros.includes(celda.numero) : true);
+            //!
+
+
             return true;
         }
         return false;
