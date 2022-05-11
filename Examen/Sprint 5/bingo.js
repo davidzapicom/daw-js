@@ -1,4 +1,8 @@
 const synth = window.speechSynthesis;
+
+var voices = [];
+
+
 const layoutHTMLCarton = {
     tipo: "section",
     atributos: {
@@ -14,6 +18,7 @@ const layoutHTMLCarton = {
         justifyContent: "center",
     },
 };
+
 const layoutHTMLLinea = {
     tipo: "div",
     atributos: {
@@ -30,6 +35,7 @@ const layoutHTMLLinea = {
         alignItems: "center",
     },
 };
+
 const layoutHTMLCelda = {
     tipo: "div",
     atributos: {
@@ -65,6 +71,7 @@ const layoutHTMLCelda = {
         }
     ]
 };
+
 const layoutHTMLMesa = {
     tipo: "div",
     atributos: {
@@ -74,6 +81,7 @@ const layoutHTMLMesa = {
         display: "flex",
     },
 };
+
 const layoutHTMLAreaCartones = {
     tipo: "div",
     atributos: {
@@ -84,6 +92,7 @@ const layoutHTMLAreaCartones = {
         flexDirection: "column",
     },
 };
+
 const layoutHTMLMesaBombo = {
     tipo: "div",
     atributos: {
@@ -94,6 +103,7 @@ const layoutHTMLMesaBombo = {
         flexDirection: "column",
     },
 };
+
 const layoutHTMLAreaBolas = {
     tipo: "div",
     atributos: {
@@ -107,6 +117,7 @@ const layoutHTMLAreaBolas = {
         justifyContent: "center",
     },
 };
+
 const layoutHTMLColumnaBolas = {
     tipo: "div",
     atributos: {
@@ -488,6 +499,8 @@ class Bingo {
         this.numeros.push(aleatorio);
         let tempo = setTimeout(function () {
             let vozBola = new SpeechSynthesisUtterance(`el ${bola.numero}`);
+            //* idioma declarado
+            vozBola.voice = synth.getVoices()[1];
             synth.speak(vozBola);
             bola.elementoHTML.style.bottom = "-500px";
             let tempo = setTimeout(() => {
