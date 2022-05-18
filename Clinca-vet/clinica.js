@@ -8,11 +8,13 @@ function mascotas(nombre, peso, edad) {
     this.activo = "S";
 }
 
+
 function vacunas(nombre, ultimavacuna, ultimafecha) {
     this.nombre = nombre;
     this.ultimavacuna = ultimavacuna;
     this.ultimafecha = ultimafecha;
 }
+
 
 function altas() {
     var nombre = prompt("Nombre:");
