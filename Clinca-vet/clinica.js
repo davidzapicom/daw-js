@@ -1,6 +1,9 @@
 var arrayMascotas = [];
 var arrayVacunas = [];
 
+
+
+
 function mascotas(nombre, peso, edad) {
     this.nombre = nombre;
     this.peso = peso;
