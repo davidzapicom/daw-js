@@ -33,9 +33,9 @@ function altas() {
     if (arrayMascotas.length == 0) {
         miZona.innerHTML = "No hay ninguna mascota.";
     } else  if (arrayMascotas.length == 1) {
-        miZona.innerHTML = "Hay " + arrayMascotas.length + " mascota.";
+        miZona.innerHTML = "Hay " +arrayMascotas.length+ " mascota.";
     } else {
-        miZona.innerHTML = "Hay " + arrayMascotas.length + " mascotas.";
+        miZona.innerHTML = "Hay " +arrayMascotas.length+ " mascotas.";
     }
     console.table(arrayMascotas);
 }
