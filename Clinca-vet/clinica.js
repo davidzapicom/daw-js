@@ -22,9 +22,11 @@ function altas() {
     var peso = prompt("Peso:");
     var edad = prompt("Edad:");
     if ((nombre != "") && (nombre != null) && (peso != "") && (peso != null) && (edad != "") && (edad != null)) {
-        for (var i = 0; i < arrayMascotas.length; i++)
-            if (arrayMascotas[i].nombre == nombre)
+        for(var i = 0; i < arrayMascotas.length; i++) {
+            if(arrayMascotas[i].nombre == nombre) {
                 return "EXISTE";
+            }
+        }
         arrayMascotas.push(new mascotas(nombre, edad, peso));
         arrayVacunas.push(new vacunas(nombre, "", ""));
     }
@@ -41,18 +43,20 @@ function altas() {
 
 function vacunar() {
     miZona.innerHTML = "";
-    for (var i = 0; i < arrayVacunas.length; i++)
-        if (arrayMascotas[i].activo == "Active")
-            miZona.innerHTML += "<br> <button type='submit' class='cssbuttons-io-button' value='Registrar Vacuna' onclick='registrar(" + i + ")'>Registrar vacuna<div class='icon'><svg height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M0 0h24v24H0z' fill='none'></path><path d='M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z' fill='currentColor'></path></svg></div></button>" + arrayVacunas[i].nombre + "-" + arrayVacunas[i].ultimafecha + "<br />";
+    for (var i=0; i<arrayVacunas.length; i++) {
+        if (arrayMascotas[i].activo == "Active") {
+            miZona.innerHTML += "<input type='button' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + arrayVacunas[i].nombre + "-" + arrayVacunas[i].ultimafecha + "<br />";
+        }
+    }
 }
 
 
 function registrar(animal) {
-    var queVacuna = prompt("Vacuna: ");
+    var queVacuna = prompt("Nombre de la vacuna: ");
     if ((queVacuna != "") && (queVacuna != null)) {
         arrayVacunas[animal].ultimavacuna = queVacuna;
         var f = new Date();
-        arrayVacunas[animal].ultimafecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+        arrayVacunas[animal].ultimafecha = f.getDate() + "/" + (f.getMonth()+1) + "/" + f.getFullYear();
     }
     console.table(arrayVacunas);
 }
@@ -60,9 +64,11 @@ function registrar(animal) {
 
 function bajas() {
     miZona.innerHTML = "";
-    for (var i = 0; i < arrayMascotas.length; i++)
-        if (arrayMascotas[i].activo == "Active")
+    for (var i=0; i<arrayMascotas.length; i++) {
+        if (arrayMascotas[i].activo == "Active") {
             miZona.innerHTML += "<input type='button' value='Dar de baja' onclick='darBaja(" + i + ")' /> " + arrayMascotas[i].nombre + "<br />";
+        }
+    }
     console.table(arrayMascotas);
 }
 
