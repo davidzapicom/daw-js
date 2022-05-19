@@ -43,18 +43,18 @@ function altas() {
 
 function vacunar() {
     miZona.innerHTML = "";
-    for (var i=0; i<arrayVacunas.length; i++) {
+    for (var i = 0; i < arrayVacunas.length; i++) {
         if (arrayMascotas[i].activo == "Active") {
-            miZona.innerHTML += "<input type='button' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + arrayVacunas[i].nombre + "-" + arrayVacunas[i].ultimafecha + "<br />";
+            miZona.innerHTML += "<input type='button' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + arrayVacunas[i].nombre + "-" + arrayVacunas[i].ultimavacuna + "-" + arrayVacunas[i].ultimafecha + "<br />";
         }
     }
 }
 
 
 function registrar(animal) {
-    var queVacuna = prompt("Nombre de la vacuna: ");
-    if ((queVacuna != "") && (queVacuna != null)) {
-        arrayVacunas[animal].ultimavacuna = queVacuna;
+    var vacuna = prompt("Nombre de la vacuna: ");
+    if ((vacuna != "") && (vacuna != null)) {
+        arrayVacunas[animal].ultimavacuna = vacuna;
         var f = new Date();
         arrayVacunas[animal].ultimafecha = f.getDate() + "/" + (f.getMonth()+1) + "/" + f.getFullYear();
     }
