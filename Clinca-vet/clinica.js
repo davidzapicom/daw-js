@@ -47,12 +47,12 @@ function vacunar() {
 }
 
 
-function registrar(quien) {
-    var queVacuna = prompt("Vçacuna: ");
+function registrar(animal) {
+    var queVacuna = prompt("Vacuna: ");
     if ((queVacuna != "") && (queVacuna != null)) {
-        arrayVacunas[quien].ultimavacuna = queVacuna;
+        arrayVacunas[animal].ultimavacuna = queVacuna;
         var f = new Date();
-        arrayVacunas[quien].ultimafecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+        arrayVacunas[animal].ultimafecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     }
     console.table(arrayVacunas);
 }
@@ -67,7 +67,7 @@ function bajas() {
 }
 
 
-function darBaja(quien) {
-    arrayMascotas[quien].activo = "Inactive";
+function darBaja(animal) {
+    arrayMascotas[animal].activo = "Inactive";
     bajas();
 }
