@@ -1,25 +1,26 @@
 var mascotas = [], vacunas = [];
 
 
-function mascota(nombre, peso, edad) {
+function mascota(nombre, edad, peso) {
     this.nombre = nombre;
-    this.peso = peso;
     this.edad = edad;
+    this.peso = peso;
     this.activo = "Active";
 }
 
 
-function vacuna(nombre, ultimavacuna, ultimafecha) {
+function vacuna(nombre, nombreVacuna, fechaVacuna) {
     this.nombre = nombre;
-    this.ultimavacuna = ultimavacuna;
-    this.ultimafecha = ultimafecha;
+    this.nombreVacuna = nombreVacuna;
+    this.fechaVacuna = fechaVacuna;
 }
 
 
-function altas() {
-    var nombre = prompt("Nombre:");
-    var peso = prompt("Peso:");
-    var edad = prompt("Edad:");
+function alta() {
+    var nombre = document.getElementById("nombre").value;
+    var edad = parseInt(document.getElementById("edad").value);
+    var peso = parseInt(document.getElementById("peso").value);
+
     if ((nombre != "") && (nombre != null) && (peso != "") && (peso != null) && (edad != "") && (edad != null)) {
         for(var i = 0; i < mascotas.length; i++) {
             if(mascotas[i].nombre == nombre) {
@@ -44,7 +45,7 @@ function vacunar() {
     miZona.innerHTML = "";
     for (var i = 0; i < vacunas.length; i++) {
         if (mascotas[i].activo == "Active") {
-            miZona.innerHTML += "<input type='button' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + vacunas[i].nombre + "-" + vacunas[i].ultimavacuna + "-" + vacunas[i].ultimafecha + "<br />";
+            miZona.innerHTML += "<input type='button' class='vacunar' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + vacunas[i].nombre + "-" + vacunas[i].nombreVacuna + "-" + vacunas[i].fechaVacuna + "<br />";
         }
     }
 }
@@ -53,15 +54,15 @@ function vacunar() {
 function registrar(animal) {
     var vacuna = prompt("Nombre de la vacuna: ");
     if ((vacuna != "") && (vacuna != null)) {
-        vacunas[animal].ultimavacuna = vacuna;
+        vacunas[animal].nombreVacuna = vacuna;
         var f = new Date();
-        vacunas[animal].ultimafecha = f.getDate() + "/" + (f.getMonth()+1) + "/" + f.getFullYear();
+        vacunas[animal].fechaVacuna = f.getDate() + "/" + (f.getMonth()+1) + "/" + f.getFullYear();
     }
     console.table(vacunas);
 }
 
 
-function bajas() {
+function baja() {
     miZona.innerHTML = "";
     for (var i=0; i<mascotas.length; i++) {
         if (mascotas[i].activo == "Active") {
@@ -74,5 +75,5 @@ function bajas() {
 
 function darBaja(animal) {
     mascotas[animal].activo = "Inactive";
-    bajas();
+    baja();
 }
