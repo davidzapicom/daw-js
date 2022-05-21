@@ -22,20 +22,20 @@
 			<span class="line"></span>
 		</nav>
 	</header>
-	<form id="formulario" style="display: none;">
+	<form id="formulario" onsubmit="return alta(event)" style="display: none;">
 		<div class="input-group">
-			<input type="text" class="input" id="nombre" name="nombre" autocomplete="on" minlength="3" maxlength="10" required>
+			<input type="text" class="input" id="nombre" name="nombre" value="" autocomplete="on" minlength="3" maxlength="10" required>
 			<label class="user-label">Nombre</label>
 		  </div>
 		  <div class="input-group">
-			<input type="number" class="input" id="edad" name="edad" autocomplete="on" min="1" max="500" required>
+			<input type="number" class="input" id="edad" name="edad" value="" autocomplete="on" min="1" max="500" required>
 			<label class="user-label">Edad</label>
 		  </div>
 		  <div class="input-group">
-			<input type="number" class="input" id="peso" name="peso" autocomplete="on" min="1" max="5000" required>
+			<input type="number" class="input" id="peso" name="peso" value="" autocomplete="on" min="1" max="5000" required>
 			<label class="user-label">Peso</label>
 		  </div>
-		  <button type="submit" class="insertar" onclick="alta()">Insertar</button>
+		  <button type="submit" class="insertar" value="Insertar" onclick="alta()">Insertar</button>
 	</form>
 	<div id="resultados">
 		<p id="resultado"></p>

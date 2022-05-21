@@ -16,36 +16,40 @@ function vacuna(nombre, nombreVacuna, fechaVacuna) {
 }
 
 
-function alta() {
+function alta(event) {
+    event.preventDefault();
     var nombre = document.getElementById("nombre").value;
     var edad = parseInt(document.getElementById("edad").value);
     var peso = parseInt(document.getElementById("peso").value);
 
-    if ((nombre != "") && (nombre != null) && (peso != "") && (peso != null) && (edad != "") && (edad != null)) {
+    if ((nombre != "") && (nombre != null) && (edad != "") && (edad != null) && (peso != "") && (peso != null)) {
         for(var i = 0; i < mascotas.length; i++) {
             if(mascotas[i].nombre == nombre) {
-                return "EXISTE";
+                return "Ya existe una mascota con ese nombre";
             }
         }
         mascotas.push(new mascota(nombre, edad, peso));
-        vacunas.push(new vacunas(nombre, "", ""));
+        vacunas.push(new vacuna(nombre, "", ""));
+    } else {
+        window.alert("Faltan datos");
+        window.location.reload();
     }
     if (mascotas.length == 0) {
-        miZona.innerHTML = "No hay ninguna mascota.";
+        resultado.innerHTML = "No hay ninguna mascota.";
     } else  if (mascotas.length == 1) {
-        miZona.innerHTML = "Hay " +mascotas.length+ " mascota.";
+        resultado.innerHTML += "Hay " +mascotas.length+ " mascota.";
     } else {
-        miZona.innerHTML = "Hay " +mascotas.length+ " mascotas.";
+        resultado.innerHTML = "Hay " +mascotas.length+ " mascotas.";
     }
-    console.table(mascotas);
 }
 
 
 function vacunar() {
-    miZona.innerHTML = "";
+    resultado.innerHTML = "";
+    formulario.style.display = 'none';
     for (var i = 0; i < vacunas.length; i++) {
         if (mascotas[i].activo == "Active") {
-            miZona.innerHTML += "<input type='button' class='vacunar' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + vacunas[i].nombre + "-" + vacunas[i].nombreVacuna + "-" + vacunas[i].fechaVacuna + "<br />";
+            resultado.innerHTML += "<input type='button' class='vacunar' value='Registrar Vacuna' onclick='registrar(" + i + ")' /> " + vacunas[i].nombre + "-" + vacunas[i].nombreVacuna + "-" + vacunas[i].fechaVacuna + "<br />";
         }
     }
 }
@@ -63,10 +67,10 @@ function registrar(animal) {
 
 
 function baja() {
-    miZona.innerHTML = "";
+    resultado.innerHTML = "";
     for (var i=0; i<mascotas.length; i++) {
         if (mascotas[i].activo == "Active") {
-            miZona.innerHTML += "<input type='button' value='Dar de baja' onclick='darBaja(" + i + ")' /> " + mascotas[i].nombre + "<br />";
+            resultado.innerHTML += "<input type='button' value='Dar de baja' onclick='darBaja(" + i + ")' /> " + mascotas[i].nombre + "<br />";
         }
     }
     console.table(mascotas);
