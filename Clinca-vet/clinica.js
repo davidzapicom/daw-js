@@ -1,3 +1,4 @@
+//* CLINICA JS */
 var arrayMascotas = [];
 var arrayVacunas = [];
 
