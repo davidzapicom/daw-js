@@ -5,39 +5,30 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123">
 	<link rel="stylesheet" href="style.css">
 	<title>Clinica Veterinaria</title>
 </head>
 
 <body>
-	<button type="submit" class="cssbuttons-io-button" value="Altas" onclick="altas()">Alta
-		<div class="icon">
-			<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M0 0h24v24H0z" fill="none"></path>
-				<path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-					fill="currentColor"></path>
-			</svg>
+
+	<header id="header">
+		<div id="logo">
+			<h1>Clinica Veterinaria</h1>
 		</div>
-	</button>
-	<button type="submit" class="cssbuttons-io-button" value="Vacunar" onclick="vacunar()">Vacunar
-		<div class="icon">
-			<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M0 0h24v24H0z" fill="none"></path>
-				<path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-					fill="currentColor"></path>
-			</svg>
-		</div>
-	</button>
-	<button type="submit" class="cssbuttons-io-button" value="Bajas" onclick="bajas()">Dar de baja
-		<div class="icon">
-			<svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M0 0h24v24H0z" fill="none"></path>
-				<path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-					fill="currentColor"></path>
-			</svg>
-		</div>
-	</button>
-	<div id="miZona"></div>
+		<nav class="links" style="--items: 3;">
+			<a onclick="">Alta</a>
+			<a onclick="vacunar()">Vacunar</a>
+			<a onclick="bajas()">Baja</a>
+			<span class="line"></span>
+		</nav>
+	</header>
+	<!-- <form action="" method="post" style="display: none;">
+
+	</form> -->
+	<div id="resultados">
+		<p id="resultado"></p>
+	</div>
 </body>
 <script src="clinica.js"></script>
 
