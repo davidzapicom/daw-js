@@ -16,9 +16,9 @@
 			<h1>Clinica Veterinaria</h1>
 		</div>
 		<nav class="links" style="--items: 3;">
-			<a onclick="formulario.style.display = 'block'">Alta</a>
-			<a onclick="vacunar()">Vacunar</a>
-			<a onclick="baja()">Baja</a>
+			<a onclick="formulario.style.display = 'block'; resultado.innerHTML = '';">Alta</a>
+			<a onclick="vacunar(); formulario.style.display = 'none';">Vacunar</a>
+			<a onclick="baja(); formulario.style.display = 'none';">Baja</a>
 			<span class="line"></span>
 		</nav>
 	</header>
@@ -35,7 +35,7 @@
 			<input type="number" class="input" id="peso" name="peso" value="" autocomplete="on" min="1" max="5000" required>
 			<label class="user-label">Peso</label>
 		  </div>
-		  <button type="submit" class="insertar" value="Insertar" onclick="alta()">Insertar</button>
+		  <button type="submit" class="insertar" value="Insertar">Insertar</button>
 	</form>
 	<div id="resultados">
 		<p id="resultado"></p>

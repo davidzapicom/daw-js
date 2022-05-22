@@ -141,21 +141,6 @@ p {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #logo {
     display: flex;
     justify-content: center;
@@ -219,7 +204,7 @@ input:valid~label {
 
 
 
-
+/** DISABLE ARROWS IN NUMBER INPUT */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -348,7 +333,7 @@ input[type=number] {
 
 
 
-/* From uiverse.io by @hannahyockel */
+/* Button baja */
 .baja {
     display: flex;
     flex-direction: column;
