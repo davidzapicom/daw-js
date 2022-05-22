@@ -18,6 +18,7 @@ function vacuna(nombre, nombreVacuna, fechaVacuna) {
 
 function alta(event) {
     resultado.innerHTML = "";
+    anotacion.innerHTML = "";
     event.preventDefault();
     var nombre = document.getElementById("nombre").value;
     var edad = parseInt(document.getElementById("edad").value);
@@ -37,11 +38,11 @@ function alta(event) {
         } 
         
         if (mascotas.length == 0) {
-            resultado.innerHTML = "No hay ninguna mascota.";
+            anotacion.innerHTML = "No hay ninguna mascota.";
         } else if (mascotas.length == 1) {
-            resultado.innerHTML = "Hay " + mascotas.length + " mascota.";
+            anotacion.innerHTML = "Hay " + mascotas.length + " mascota.";
         } else {
-            resultado.innerHTML = "Hay " + mascotas.length + " mascotas.";
+            anotacion.innerHTML = "Hay " + mascotas.length + " mascotas.";
         }
         document.getElementById('formulario').reset();
         formulario.style.display = 'none';

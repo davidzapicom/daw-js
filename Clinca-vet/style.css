@@ -358,7 +358,7 @@ input[type=number] {
 
 table {
     margin: 0 auto;
-    width: 80%;
+    width: 60%;
     border-collapse: collapse;
     text-align: left;
 }
@@ -369,5 +369,6 @@ th, td {
 }
 
 .highlight-row {
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
+    color: #000;
 }
