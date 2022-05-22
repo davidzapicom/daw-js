@@ -26,11 +26,16 @@ function alta(event) {
     if ((nombre != "") && (nombre != null) && (edad != "") && (edad != null) && (peso != "") && (peso != null)) {
         for (var i = 0; i < mascotas.length; i++) {
             if (mascotas[i].nombre == nombre) {
-                resultado.innerHTML = "Ya existe una mascota con el nombre" + nombre + ".";
+                resultado.innerHTML = `Ya existe una mascota con el nombre ${nombre} .`;
+                var existe = true;
             }
         }
-        mascotas.push(new mascota(nombre, edad, peso));
-        vacunas.push(new vacuna(nombre, "", ""));
+        if (!existe) {
+            mascotas.push(new mascota(nombre, edad, peso));
+            vacunas.push(new vacuna(nombre, "", ""));
+            resultado.innerHTML = `Mascota ${nombre} dada de alta.`;
+        } 
+        
         if (mascotas.length == 0) {
             resultado.innerHTML = "No hay ninguna mascota.";
         } else if (mascotas.length == 1) {
@@ -87,3 +92,66 @@ function darBaja(animal) {
     mascotas[animal].activo = "Inactive";
     baja();
 }
+
+
+window.addEventListener('DOMContentLoaded', function () {
+
+    const grades = [
+        ['Grade 1', 6],
+        ['Grade 2', 7],
+        ['Grade 3', 8],
+        ['Grade 4', 9],
+        ['Grade 5', 10],
+        ['Grade 6', 11]
+    ];
+
+    function getAge ( year, month, day ) {
+
+        return new Date().getFullYear() - new Date(year, month, day).getFullYear()
+    }
+
+    function gradeTable ( grades, age ) {
+
+        const tableHead = `
+            <table>
+                <thead>
+                    <tr class='highlight-row'>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Peso</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        const tableFoot = `
+                </tbody>
+            </table>
+        `;
+
+        const count = grades.length;
+        let tableBody = '';
+
+        for ( let i = 0; i < count; i += 1 ) {
+
+            let currGrade = grades[i][0];
+            let currAge = grades[i][1];
+            let highlight = (currAge === age) ? " class='highlight-row'" : '';
+
+            tableBody += `
+                <tr${highlight}>
+                    <td>${currGrade}</td>
+                    <td>${currAge}</td>
+                </tr>
+            `
+        }
+
+        return tableHead + tableBody + tableFoot;
+    }
+
+    document.querySelector('.container')
+        .insertAdjacentHTML(
+            'afterbegin',
+            gradeTable( grades, getAge( 2011, 4, 28 ) )
+        )
+})
