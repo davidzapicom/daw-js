@@ -61,20 +61,28 @@ function vacunar() {
     } else {
         for (var i = 0; i < vacunas.length; i++) {
             if (mascotas[i].activo == "Active") {
-                resultado.innerHTML += "<div class='cap'><input type='button' class='vacunar' value='Vacunar' onclick='registrarVacuna(" + i + ")' />" + vacunas[i].nombre + "-" + vacunas[i].nombreVacuna + "-" + vacunas[i].fechaVacuna + "</div><br />";
+                resultado.innerHTML += "<div class='cap'><input type='button' class='vacunar' value='Vacunar' onclick='registrarVacuna(" + i + ")' />" + vacunas[i].nombre + "</div><br />";
             }
         }
     }
 }
 
 
-function registrarVacuna(animal) {
-    var vacuna = document.getElementById("vacuna").value;
+function registrarVacuna(animal, event) {
     form_vacunar.style.display = 'block';
+    event.preventDefault();
+    var vacuna = document.getElementById("vacuna").value;
+
+
+
     if ((vacuna != "") && (vacuna != null)) {
         vacunas[animal].nombreVacuna = vacuna;
         var f = new Date();
         vacunas[animal].fechaVacuna = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+        anotacion.innerHTML = `vacunas[i].nombre + "-" + vacunas[i].nombreVacuna + "-" + vacunas[i].fechaVacuna`;
+    } else {
+        alert("Faltan datos");
+        window.location.reload();
     }
 }
 
@@ -107,6 +115,6 @@ function listar() {
     if (mascotas.length == 0) {
         anotacion.innerHTML = `No hay ninguna mascota.`;
     } else {
-        anotacion.innerHTML = `Hay alguna mascota.`;
+       //! anotacion.innerHTML = `Hay alguna mascota.`;
     }
 }
