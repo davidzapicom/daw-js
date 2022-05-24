@@ -6,9 +6,13 @@ class Clinica {
     }
     nuevaMascota(nombre, edad, peso) {
 
-        this.mascotas.push(new Mascota(nombre, edad, peso));
+
+
+
+        //?this.mascotas.push(new Mascota(nombre, edad, peso));
     }
 }
+
 
 class Mascota {
     constructor(nombre, edad, peso) {
@@ -34,12 +38,11 @@ class Mascota {
                     botonVacunar.innerHTML = 'Vacunar';
                     mascotaHTML.append(botonVacunar);
                     let pMascota = mascotas[i];
-                    //! botonVacunar.onclick = (e) => registrarVacuna(e, pMascota);
+                    botonVacunar.onclick = (e) => this.Mascota.vacunas.push(new Vacuna(nombre, edad, peso));
                 }
                 resultado.append(mascotaHTML);
             }
         }
-        this.Mascota.vacunas.push(new Vacuna(nombre, edad, peso));
     }
 }
 
@@ -50,8 +53,6 @@ class Vacuna {
         this.fechaVacuna = fechaVacuna;
     }
 }
-
-
 
 
 let miClinica = new Clinica('Clinica Veterinaria');
