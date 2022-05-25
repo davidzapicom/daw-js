@@ -16,32 +16,32 @@
 			<h1>Clinica Veterinaria</h1>
 		</div>
 		<nav class="links" style="--items: 4;">
-			<a onclick="form_alta.style.display = 'block'; resultado.innerHTML = '';">Alta</a>
-			<a onclick="listar(); form_alta.style.display = 'none';">Listar</a>
-			<a onclick="vacunar(); form_alta.style.display = 'none';">Vacunar</a>
-			<a onclick="baja(); form_alta.style.display = 'none';">Baja</a>
+			<button onclick="form_alta.style.display = 'block'; resultado.innerHTML = '';">Alta</button>
+			<button onclick="listar(); form_alta.style.display = 'none';">Listar</button>
+			<button onclick="vacunar(); form_alta.style.display = 'none';">Vacunar</button>
+			<button onclick="baja(); form_alta.style.display = 'none';">Baja</button>
 			<span class="line"></span>
 		</nav>
 	</header>
 	<form id="form_alta" onsubmit="return alta(event)" style="display: none;">
 		<div class="input-group">
 			<input type="text" class="input" id="nombre" name="nombre" value="" autocomplete="on" minlength="3" maxlength="10" required>
-			<label class="user-label">Nombre</label>
+			<label class="label">Nombre</label>
 		  </div>
 		  <div class="input-group">
 			<input type="number" class="input" id="edad" name="edad" value="" autocomplete="on" min="1" max="500" required>
-			<label class="user-label">Edad</label>
+			<label class="label">Edad</label>
 		  </div>
 		  <div class="input-group">
 			<input type="number" class="input" id="peso" name="peso" value="" autocomplete="on" min="1" max="5000" required>
-			<label class="user-label">Peso</label>
+			<label class="label">Peso</label>
 		  </div>
 		  <button type="submit" class="insertar" value="Insertar">Insertar</button>
 	</form>
 	<form id="form_vacunar" onsubmit="return registrarVacuna(event)" style="display: none;">
 		<div class="input-group">
 			<input type="text" class="input" id="vacuna" name="vacuna" value="" autocomplete="on" minlength="3" maxlength="10" required>
-			<label class="user-label">Nombre de la vacuna</label>
+			<label class="label">Nombre de la vacuna</label>
 		  </div>
 		  <button type="submit" class="insertar" value="Insertar">Insertar</button>
 	</form>
