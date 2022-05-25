@@ -69,11 +69,22 @@ class Clinica {
         this.formAlta.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.formAlta);
 
-        this.inputNombreMascota = document.createElement('input');
+
+        this.inputGroup = document.createElement('div', { className: 'input-group' });
+        this.inputGroup.append(document.createElement('label', { htmlFor: 'nombre' }, 'Nombre'));
+        this.inputGroup.append(document.createElement('input', { type: 'text', id: 'nombre', name: 'nombre', placeholder: 'Nombre' }));
+        this.formAlta.append(this.inputGroup);
+
+        /*this.inputNombreMascota = document.createElement('input');
         this.inputNombreMascota.setAttribute('type', 'text');
         this.inputNombreMascota.setAttribute('class', 'input');
         this.inputNombreMascota.setAttribute('id', 'nombreMascota');
         this.inputNombreMascota.setAttribute('value', '');
+
+        this.label = document.createElement('label');
+        this.label.setAttribute('class', 'label');
+        this.label.append('Nombre Mascota');
+        this.label.append(this.inputNombreMascota);
 
         this.inputNombrePropietario = document.createElement('input');
         this.inputNombrePropietario.setAttribute('type', 'text');
@@ -99,9 +110,12 @@ class Clinica {
         this.botonAlta.onclick = (e) => this.nuevaMascota();
 
         this.br = document.createElement('br');
+        this.br2 = document.createElement('br');
+        this.br3 = document.createElement('br');
+        this.br4 = document.createElement('br');
 
-        this.formAlta.append(this.inputNombreMascota, this.br, this.inputNombrePropietario, this.br, this.inputEdad, this.inputPeso, this.botonAlta);
-
+        this.formAlta.append(this.inputNombreMascota, this.br, this.inputNombrePropietario, this.br2, this.inputEdad, this.br3, this.inputPeso, this.br4, this.botonAlta);
+*/
 
 
 
