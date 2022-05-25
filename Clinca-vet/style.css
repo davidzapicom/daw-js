@@ -43,7 +43,7 @@ p {
     font-weight: 300;
 }
 
-.links>a {
+.links>button {
     color: #9ab;
     padding: .75em;
     text-align: center;
@@ -52,7 +52,7 @@ p {
     transition: all .5s;
 }
 
-.links>a:hover {
+.links>button:hover {
     background: #ffffff06;
     color: #adf;
 }
@@ -86,51 +86,51 @@ p {
     --index: 0;
 }
 
-.links>a:hover~.line {
+.links>button:hover~.line {
     opacity: 1;
 }
 
-.links>a:nth-of-type(1):hover~.line {
+.links>button:nth-of-type(1):hover~.line {
     --index: 1;
 }
 
-.links>a:nth-of-type(2):hover~.line {
+.links>button:nth-of-type(2):hover~.line {
     --index: 2;
 }
 
-.links>a:nth-of-type(3):hover~.line {
+.links>button:nth-of-type(3):hover~.line {
     --index: 3;
 }
 
-.links>a:nth-of-type(4):hover~.line {
+.links>button:nth-of-type(4):hover~.line {
     --index: 4;
 }
 
-.links>a:nth-of-type(5):hover~.line {
+.links>button:nth-of-type(5):hover~.line {
     --index: 5;
 }
 
-.links>a:nth-of-type(6):hover~.line {
+.links>button:nth-of-type(6):hover~.line {
     --index: 6;
 }
 
-.links>a:nth-of-type(7):hover~.line {
+.links>button:nth-of-type(7):hover~.line {
     --index: 7;
 }
 
-.links>a:nth-of-type(8):hover~.line {
+.links>button:nth-of-type(8):hover~.line {
     --index: 8;
 }
 
-.links>a:nth-of-type(9):hover~.line {
+.links>button:nth-of-type(9):hover~.line {
     --index: 9;
 }
 
-.links>a:nth-of-type(10):hover~.line {
+.links>button:nth-of-type(10):hover~.line {
     --index: 10;
 }
 
-.links>a:last-of-type:hover~.line {
+.links>button:last-of-type:hover~.line {
     --index: var(--items);
 }
 
