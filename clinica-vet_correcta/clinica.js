@@ -119,6 +119,7 @@ class Clinica {
         this.label3.append('Edad');
         this.inputGroup3.append(this.label3); 
 
+
         //* INPUT PESO
         this.inputGroup4 = document.createElement('div');
         this.inputGroup4.setAttribute('class','input-group');
@@ -135,6 +136,7 @@ class Clinica {
         this.label4.append('Peso');
         this.inputGroup4.append(this.label4); 
 
+
         //* BOTON ALTA
         this.botonAlta = document.createElement('button');
         this.botonAlta.setAttribute('class', 'insertar');
@@ -148,11 +150,25 @@ class Clinica {
 
         this.formAlta.append(this.inputGroup1, this.br, this.inputGroup2, this.br2, this.inputGroup3, this.br3, this.inputGroup4, this.br4, this.botonAlta);
 
+
         //* FORM VACUNAR
         this.formVacunar = document.createElement('form');
         this.formVacunar.setAttribute('id', 'form_vacunar');
         this.formVacunar.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.formVacunar);
+
+        this.selectVacunar = document.createElement('select');
+        this.formVacunar.append(this.selectVacunar);
+
+        this.option = document.createElement('option');
+        this.option.append('');
+
+
+
+
+
+
+
 
 
         //* DIV RESULTADOS
@@ -259,4 +275,4 @@ class Vacuna {
     }
 }
 
-let miClinica = new Clinica('Clinica Veterinaria');
+let miClinica = new Clinica('Clinica Milagritos');
