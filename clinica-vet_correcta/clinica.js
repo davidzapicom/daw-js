@@ -81,6 +81,7 @@ class Clinica {
         this.tablaHTML.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.tablaHTML);
 
+
         //* FORM ALTA
         this.formAlta = document.createElement('form');
         this.formAlta.setAttribute('id', 'form_alta');
@@ -218,21 +219,28 @@ class Clinica {
         this.thEdad.append('Edad');
         this.thPeso.append('Peso');
 
+        this.tr = document.createElement('tr');
+        this.tr.append(thNombre, thPropietario, thEdad, thPeso);
+        this.tablaHTML.append(tr);
 
         this.mascotas.forEach(mascota => {
-            let tr = document.createElement('tr');
-            let tdNombre = document.createElement('td');
-            let tdPropietario = document.createElement('td');
-            let tdEdad = document.createElement('td');
-            let tdPeso = document.createElement('td');
+            this.tr2 = document.createElement('tr');
+            this.tdNombre = document.createElement('td');
+            this.tdNombre.setAttribute('data-th', 'Nombre');
+            this.tdPropietario = document.createElement('td');
+            this.tdNombre.setAttribute('data-th', 'Propietario');
+            this.tdEdad = document.createElement('td');
+            this.tdNombre.setAttribute('data-th', 'Edad');
+            this.tdPeso = document.createElement('td');
+            this.tdNombre.setAttribute('data-th', 'Peso');
 
             this.tdNombre.append(mascota.nombreMascota);
             this.tdPropietario.append(mascota.nombrePropietario);
             this.tdEdad.append(mascota.edad);
             this.tdPeso.append(mascota.peso);
 
-            this.tr.append(tdNombre, tdPropietario, tdEdad, tdPeso);
-            this.tablaHTML.append(tr);
+            this.tr2.append(tdNombre, tdPropietario, tdEdad, tdPeso);
+            this.tablaHTML.append(tr2);
         })
         this.tablaHTML.setAttribute('style', 'display: block;');
     }

@@ -45,6 +45,7 @@ p {
 
 .links>button {
     color: #9ab;
+    background: #123;
     padding: .75em;
     text-align: center;
     text-decoration: none;
@@ -53,8 +54,8 @@ p {
 }
 
 .links>button:hover {
-    background: #ffffff06;
-    color: #adf;
+    background: #fff;
+    color: #123;
 }
 
 .links>.line {
@@ -143,11 +144,12 @@ p {
     font-size: 20px;
 }
 
-#form_alta,
-#form_vacunar,
-#resultados, 
-#section {
+#resultados {
     margin-top: 150px;
+}
+
+#form_alta {
+    margin-top: 50px;
 }
 
 .input-group {
