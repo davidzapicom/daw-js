@@ -64,12 +64,18 @@ class Clinica {
         this.sectionHTML.append(this.resultados);
 
         this.resultado = document.createElement('p');
-        this.resultado.append('Aún no se ha ejecutado ninguna acción.');
         this.resultado.setAttribute('id', 'resultado');
 
         this.anotacion = document.createElement('p');
-        this.anotacion.append('Para comenzar elija una opción en el menú.');
         this.anotacion.setAttribute('id', 'anotacion');
+
+
+        //!
+        // while (this.botonAlta.onclick) {
+        //     this.anotacion.append('Para comenzar elija una opción en el menú.');
+        //     this.resultado.append('Aún no se ha ejecutado ninguna acción.'); 
+        // }
+        
 
         this.resultados.append(this.resultado, this.anotacion);
 
@@ -220,8 +226,8 @@ class Clinica {
         this.thPeso.append('Peso');
 
         this.tr = document.createElement('tr');
-        this.tr.append(thNombre, thPropietario, thEdad, thPeso);
-        this.tablaHTML.append(tr);
+        this.tr.append(this.thNombre, this.thPropietario, this.thEdad, this.thPeso);
+        this.tablaHTML.append(this.tr);
 
         this.mascotas.forEach(mascota => {
             this.tr2 = document.createElement('tr');
@@ -239,8 +245,8 @@ class Clinica {
             this.tdEdad.append(mascota.edad);
             this.tdPeso.append(mascota.peso);
 
-            this.tr2.append(tdNombre, tdPropietario, tdEdad, tdPeso);
-            this.tablaHTML.append(tr2);
+            this.tr2.append(this.tdNombre, this.tdPropietario, this.tdEdad, this.tdPeso);
+            this.tablaHTML.append(this.tr2);
         })
         this.tablaHTML.setAttribute('style', 'display: block;');
     }
