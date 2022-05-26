@@ -148,8 +148,6 @@ class Clinica {
 
         this.formAlta.append(this.inputGroup1, this.br, this.inputGroup2, this.br2, this.inputGroup3, this.br3, this.inputGroup4, this.br4, this.botonAlta);
 
-
-
         //* FORM VACUNAR
         this.formVacunar = document.createElement('form');
         this.formVacunar.setAttribute('id', 'form_vacunar');
@@ -175,6 +173,7 @@ class Clinica {
     }
 
     nuevaMascota(e) {
+        e.preventDefault()
         let mascota = new Mascota(
             this.inputNombreMascota.value, 
             this.inputNombrePropietario.value, 
@@ -183,8 +182,14 @@ class Clinica {
         this.mascotas.push(mascota);
         this.formAlta.setAttribute('style', 'display: none;');
 
-        this.resultado.append(`Mascota ${this.inputNombreMascota} dada de alta.`);
-        this.anotacion.append(`Hay ${this.mascotas.length} mascotas en la clinica.`);
+        this.resultado.innerHTML = `Mascota ${this.inputNombreMascota.value} dada de alta.`;
+        if (this.mascotas.length == 0) {
+            this.anotacion.innerHTML = `No hay ninguna mascota.`;
+        } else if (this.mascotas.length == 1) {
+            this.anotacion.innerHTML = `Hay ${this.mascotas.length} mascota.`;
+        } else {
+            this.anotacion.innerHTML = `Hay ${this.mascotas.length} mascotas.`;
+        }
     }
 
     listadoMascotas(botonAccion) {
