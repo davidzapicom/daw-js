@@ -3,76 +3,85 @@
 $breakpoint-alpha: 480px; // adjust to your needs
 
 .rwd-table {
-  margin: 1em 0;
-  min-width: 300px; // adjust to your needs
-  
-  tr {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    display: none; 
-  }
-  
-  td {
-    display: block; 
-    
-    &:first-child {
-      padding-top: .5em;
-    }
-    &:last-child {
-      padding-bottom: .5em;
+    margin: 1em 0;
+    width: fit-content;
+
+    tr {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
     }
 
-    &:before {
-      content: attr(data-th)": ";
-      font-weight: bold;
-      width: 6.5em; 
-      display: inline-block;
-      
-      @media (min-width: $breakpoint-alpha) {
+    th {
         display: none;
-      }
     }
-  }
-  
-  th, td {
-    text-align: left;
-    @media (min-width: $breakpoint-alpha) {
-      display: table-cell;
-      padding: .25em .5em;
-      
-      &:first-child {
-        padding-left: 0;
-      }
-      
-      &:last-child {
-        padding-right: 0;
-      }
+
+    td {
+        display: block;
+
+        &:first-child {
+            padding-top: .5em;
+        }
+
+        &:last-child {
+            padding-bottom: .5em;
+        }
+
+        &:before {
+            content: attr(data-th)": ";
+            font-weight: bold;
+            width: 6.5em;
+            display: inline-block;
+
+            @media (min-width: $breakpoint-alpha) {
+                display: none;
+            }
+        }
     }
-  }
+
+    th,
+    td {
+        text-align: left;
+        font-size: 15px;
+        @media (min-width: $breakpoint-alpha) {
+            display: table-cell;
+            padding: .25em .5em;
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
 }
 
 
 
-@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+//@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
 
 .rwd-table {
-  background: #34495E;
-  color: #fff;
-  border-radius: .4em;
-  overflow: hidden;
-  tr {
-    border-color: lighten(#34495E, 10%);
-  }
-  th, td {
-    margin: .5em 1em;
-    @media (min-width: $breakpoint-alpha) { 
-      padding: 1em !important; 
+    background: #34495E;
+    color: #fff;
+    border-radius: .4em;
+    overflow: hidden;
+
+    tr {
+        border-color: lighten(#34495E, 10%);
     }
-  }
-  th, td:before {
-    color: #dd5;
-  }
+
+    th,
+    td {
+        margin: .5em 1em;
+
+        @media (min-width: $breakpoint-alpha) {
+            padding: 1em !important;
+        }
+    }
+
+    th,
+    td:before {
+        color: #dd5;
+    }
 }

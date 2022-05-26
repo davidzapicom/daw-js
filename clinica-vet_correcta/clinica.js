@@ -220,10 +220,10 @@ class Clinica {
         this.thEdad = document.createElement('th');
         this.thPeso = document.createElement('th');
 
-        this.thNombre.append('Nombre');
-        this.thPropietario.append('Propietario');
-        this.thEdad.append('Edad');
-        this.thPeso.append('Peso');
+        this.thNombre.append('NOMBRE');
+        this.thPropietario.append('PROPIETARIO');
+        this.thEdad.append('EDAD');
+        this.thPeso.append('PESO');
 
         this.tr = document.createElement('tr');
         this.tr.append(this.thNombre, this.thPropietario, this.thEdad, this.thPeso);
