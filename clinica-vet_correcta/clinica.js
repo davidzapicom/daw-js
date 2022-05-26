@@ -57,6 +57,21 @@ class Clinica {
         this.sectionHTML.setAttribute('id', 'section');
         this.clinicaHTML.append(this.sectionHTML);
 
+
+        //* DIV RESULTADOS
+        this.resultados = document.createElement('div');
+        this.resultados.setAttribute('id', 'resultados');
+        this.sectionHTML.append(this.resultados);
+        
+        this.resultado = document.createElement('p');
+        this.resultado.setAttribute('id', 'resultado');
+
+        this.anotacion = document.createElement('p');
+        this.anotacion.setAttribute('id', 'anotacion');
+
+        this.resultados.append(this.resultado, this.anotacion);
+        
+
         //* TABLA
         this.tablaHTML = document.createElement('table');
         this.tablaHTML.setAttribute('id', 'tabla');
@@ -68,6 +83,7 @@ class Clinica {
         this.formAlta.setAttribute('id', 'form_alta');
         this.formAlta.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.formAlta);
+
 
         //* INPUT NOMBRE MASCOTA
         this.inputGroup1 = document.createElement('div');
@@ -159,37 +175,14 @@ class Clinica {
 
         this.selectVacunar = document.createElement('select');
         this.formVacunar.append(this.selectVacunar);
-
-        this.option = document.createElement('option');
-        this.option.append('');
-
-
-
-
-
-
-
-
-
-        //* DIV RESULTADOS
-        this.resultados = document.createElement('div');
-        this.resultados.setAttribute('id', 'resultados');
-        this.sectionHTML.append(this.resultados);
         
-        this.resultado = document.createElement('p');
-        this.resultado.setAttribute('id', 'resultado');
-
-        this.anotacion = document.createElement('p');
-        this.anotacion.setAttribute('id', 'anotacion');
-
-        this.resultados.append(this.resultado, this.anotacion);
 
         //* INSERCCION CLINICA EN EL BODY 
         document.body.append(this.clinicaHTML);
     }
 
     nuevaMascota(e) {
-        e.preventDefault()
+        e.preventDefault();
         let mascota = new Mascota(
             this.inputNombreMascota.value, 
             this.inputNombrePropietario.value, 
@@ -208,25 +201,29 @@ class Clinica {
         }
     }
 
-    listadoMascotas(botonAccion) {
-        this.mascotas.forEach(mas => {
+    listadoMascotas() {
+        this.resultado.innerHTML = `Listado de mascotas:`;
+        this.anotacion.innerHTML = `${this.mascotas.length} mascotas.`;
+        this.tdNombreTitulo = document.createElement('td');
+        this.tdNombreTitulo.append('Nombre Mascota');
+
+
+        this.mascotas.forEach(mascota => {
             let tr = document.createElement('tr');
             let tdNombre = document.createElement('td');
             let tdPropietario = document.createElement('td');
             let tdEdad = document.createElement('td');
             let tdPeso = document.createElement('td');
-            let tdAccion = document.createElement('td');
 
-            tdNombre.append(mas.nombre);
-            tdPropietario.append(mas.propietario);
-            tdEdad.append(mas.edad);
-            tdPeso.append(mas.peso);
+            tdNombre.append(mascota.nombreMascota);
+            tdPropietario.append(mascota.nombrePropietario);
+            tdEdad.append(mascota.edad);
+            tdPeso.append(mascota.peso);
 
-            tdAccion.append(mas.botonAccion);
-
-            tr.append(tdNombre, tdPropietario, tdEdad, tdPeso, tdAccion);
+            tr.append(tdNombre, tdPropietario, tdEdad, tdPeso);
             this.tablaHTML.append(tr);
         })
+        this.tablaHTML.setAttribute('style', 'display: block;');
     }
 }
 
@@ -242,6 +239,7 @@ class Mascota {
         this.mascotaHTML = document.createElement('tr');
         this.mascotaHTML.innerHTML = `<td>${this.nombre}</td>`
     }
+
     vacunar(nombreMascota, nombrePropietario, edad, peso) {
         this.mascotaHTML = document.createElement('div');
         let nombreHTML = document.createElement('span');
@@ -262,8 +260,9 @@ class Mascota {
             }
         }
     }
+     
     baja() {
-        //!this.activo = "Inactive";
+        //!
     }
 }
 
