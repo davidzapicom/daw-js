@@ -62,7 +62,7 @@ class Clinica {
         this.resultados = document.createElement('div');
         this.resultados.setAttribute('id', 'resultados');
         this.sectionHTML.append(this.resultados);
-        
+
         this.resultado = document.createElement('p');
         this.resultado.append('Aún no se ha ejecutado ninguna acción.');
         this.resultado.setAttribute('id', 'resultado');
@@ -72,11 +72,12 @@ class Clinica {
         this.anotacion.setAttribute('id', 'anotacion');
 
         this.resultados.append(this.resultado, this.anotacion);
-        
+
 
         //* TABLA
         this.tablaHTML = document.createElement('table');
         this.tablaHTML.setAttribute('id', 'tabla');
+        this.tablaHTML.setAttribute('class', 'rwd-table');
         this.tablaHTML.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.tablaHTML);
 
@@ -89,7 +90,7 @@ class Clinica {
 
         //* INPUT NOMBRE MASCOTA
         this.inputGroup1 = document.createElement('div');
-        this.inputGroup1.setAttribute('class','input-group');
+        this.inputGroup1.setAttribute('class', 'input-group');
 
         this.inputNombreMascota = document.createElement('input');
         this.inputNombreMascota.setAttribute('type', 'text');
@@ -101,12 +102,12 @@ class Clinica {
         this.label1 = document.createElement('label');
         this.label1.setAttribute('class', 'label');
         this.label1.append('Nombre mascota');
-        this.inputGroup1.append(this.label1); 
+        this.inputGroup1.append(this.label1);
 
 
         //* INPUT NOMBRE PROPIETARIO
         this.inputGroup2 = document.createElement('div');
-        this.inputGroup2.setAttribute('class','input-group');
+        this.inputGroup2.setAttribute('class', 'input-group');
 
         this.inputNombrePropietario = document.createElement('input');
         this.inputNombrePropietario.setAttribute('type', 'text');
@@ -118,12 +119,12 @@ class Clinica {
         this.label2 = document.createElement('label');
         this.label2.setAttribute('class', 'label');
         this.label2.append('Nombre propietario');
-        this.inputGroup2.append(this.label2); 
+        this.inputGroup2.append(this.label2);
 
 
         //* INPUT EDAD
         this.inputGroup3 = document.createElement('div');
-        this.inputGroup3.setAttribute('class','input-group');
+        this.inputGroup3.setAttribute('class', 'input-group');
 
         this.inputEdad = document.createElement('input');
         this.inputEdad.setAttribute('type', 'number');
@@ -135,12 +136,12 @@ class Clinica {
         this.label3 = document.createElement('label');
         this.label3.setAttribute('class', 'label');
         this.label3.append('Edad');
-        this.inputGroup3.append(this.label3); 
+        this.inputGroup3.append(this.label3);
 
 
         //* INPUT PESO
         this.inputGroup4 = document.createElement('div');
-        this.inputGroup4.setAttribute('class','input-group');
+        this.inputGroup4.setAttribute('class', 'input-group');
 
         this.inputPeso = document.createElement('input');
         this.inputPeso.setAttribute('type', 'number');
@@ -152,7 +153,7 @@ class Clinica {
         this.label4 = document.createElement('label');
         this.label4.setAttribute('class', 'label');
         this.label4.append('Peso');
-        this.inputGroup4.append(this.label4); 
+        this.inputGroup4.append(this.label4);
 
 
         //* BOTON ALTA
@@ -177,7 +178,7 @@ class Clinica {
 
         this.selectVacunar = document.createElement('select');
         this.formVacunar.append(this.selectVacunar);
-        
+
 
         //* INSERCCION CLINICA EN EL BODY 
         document.body.append(this.clinicaHTML);
@@ -186,9 +187,9 @@ class Clinica {
     nuevaMascota(e) {
         e.preventDefault();
         let mascota = new Mascota(
-            this.inputNombreMascota.value, 
-            this.inputNombrePropietario.value, 
-            this.inputEdad.value, 
+            this.inputNombreMascota.value,
+            this.inputNombrePropietario.value,
+            this.inputEdad.value,
             this.inputPeso.value);
         this.mascotas.push(mascota);
         this.formAlta.setAttribute('style', 'display: none;');
@@ -206,8 +207,16 @@ class Clinica {
     listadoMascotas() {
         this.resultado.innerHTML = `Listado de mascotas:`;
         this.anotacion.innerHTML = `${this.mascotas.length} mascotas.`;
-        this.tdNombreTitulo = document.createElement('td');
-        this.tdNombreTitulo.append('Nombre Mascota');
+
+        this.thNombre = document.createElement('th');
+        this.thPropietario = document.createElement('th');
+        this.thEdad = document.createElement('th');
+        this.thPeso = document.createElement('th');
+
+        this.thNombre.append('Nombre');
+        this.thPropietario.append('Propietario');
+        this.thEdad.append('Edad');
+        this.thPeso.append('Peso');
 
 
         this.mascotas.forEach(mascota => {
@@ -217,12 +226,12 @@ class Clinica {
             let tdEdad = document.createElement('td');
             let tdPeso = document.createElement('td');
 
-            tdNombre.append(mascota.nombreMascota);
-            tdPropietario.append(mascota.nombrePropietario);
-            tdEdad.append(mascota.edad);
-            tdPeso.append(mascota.peso);
+            this.tdNombre.append(mascota.nombreMascota);
+            this.tdPropietario.append(mascota.nombrePropietario);
+            this.tdEdad.append(mascota.edad);
+            this.tdPeso.append(mascota.peso);
 
-            tr.append(tdNombre, tdPropietario, tdEdad, tdPeso);
+            this.tr.append(tdNombre, tdPropietario, tdEdad, tdPeso);
             this.tablaHTML.append(tr);
         })
         this.tablaHTML.setAttribute('style', 'display: block;');
@@ -262,7 +271,7 @@ class Mascota {
             }
         }
     }
-     
+
     baja() {
         //!
     }
