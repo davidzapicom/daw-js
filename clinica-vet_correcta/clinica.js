@@ -69,28 +69,39 @@ class Clinica {
         this.formAlta.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.formAlta);
 
+        //* INPUT NOMBRE MASCOTA
+        this.inputGroup1 = document.createElement('div');
+        this.inputGroup1.setAttribute('class','input-group');
+        this.formAlta.append(this.inputGroup1);
 
-        this.inputGroup = document.createElement('div', { className: 'input-group' });
-        this.inputGroup.append(document.createElement('label', { htmlFor: 'nombre' }, 'Nombre'));
-        this.inputGroup.append(document.createElement('input', { type: 'text', id: 'nombre', name: 'nombre', placeholder: 'Nombre' }));
-        this.formAlta.append(this.inputGroup);
-
-        /*this.inputNombreMascota = document.createElement('input');
+        this.inputNombreMascota = document.createElement('input');
         this.inputNombreMascota.setAttribute('type', 'text');
         this.inputNombreMascota.setAttribute('class', 'input');
         this.inputNombreMascota.setAttribute('id', 'nombreMascota');
         this.inputNombreMascota.setAttribute('value', '');
+        this.inputGroup1.append(this.inputNombreMascota);
 
-        this.label = document.createElement('label');
-        this.label.setAttribute('class', 'label');
-        this.label.append('Nombre Mascota');
-        this.label.append(this.inputNombreMascota);
+        this.label1 = document.createElement('label');
+        this.label1.setAttribute('class', 'label');
+        this.label1.append('Nombre Mascota');
+        this.inputGroup1.append(this.label1); 
+
+
+        //* INPUT NOMBRE PROPIETARIO
+        this.inputGroup2 = document.createElement('div');
+        this.inputGroup2.setAttribute('class','input-group');
+        this.formAlta.append(this.inputGroup2);
 
         this.inputNombrePropietario = document.createElement('input');
         this.inputNombrePropietario.setAttribute('type', 'text');
         this.inputNombrePropietario.setAttribute('class', 'input');
         this.inputNombrePropietario.setAttribute('id', 'nombrePropietario');
         this.inputNombrePropietario.setAttribute('value', '');
+
+        this.label2 = document.createElement('label');
+        this.label2.setAttribute('class', 'label');
+        this.label2.append('Nombre Mascota');
+        this.inputGroup2.append(this.label1); 
 
         this.inputEdad = document.createElement('input');
         this.inputEdad.setAttribute('type', 'number');
@@ -114,8 +125,7 @@ class Clinica {
         this.br3 = document.createElement('br');
         this.br4 = document.createElement('br');
 
-        this.formAlta.append(this.inputNombreMascota, this.br, this.inputNombrePropietario, this.br2, this.inputEdad, this.br3, this.inputPeso, this.br4, this.botonAlta);
-*/
+        this.formAlta.append(this.inputGroup1, this.br, this.inputNombrePropietario, this.br2, this.inputEdad, this.br3, this.inputPeso, this.br4, this.botonAlta);
 
 
 
@@ -125,7 +135,6 @@ class Clinica {
         this.formVacunar.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.formVacunar);
 
-        
 
 
 
@@ -159,7 +168,6 @@ class Clinica {
 
             tr.append(tdNombre, tdPropietario, tdEdad, tdPeso, tdAccion);
             this.tablaHTML.append(tr);
-
         })
     }
 }
