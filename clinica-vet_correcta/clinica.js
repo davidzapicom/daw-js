@@ -64,9 +64,11 @@ class Clinica {
         this.sectionHTML.append(this.resultados);
         
         this.resultado = document.createElement('p');
+        this.resultado.append('Aún no se ha ejecutado ninguna acción.');
         this.resultado.setAttribute('id', 'resultado');
 
         this.anotacion = document.createElement('p');
+        this.anotacion.append('Para comenzar elija una opción en el menú.');
         this.anotacion.setAttribute('id', 'anotacion');
 
         this.resultados.append(this.resultado, this.anotacion);
