@@ -32,7 +32,7 @@ class Clinica {
 
         this.botonAlta = document.createElement('button');
         this.botonAlta.append('Alta');
-        this.botonAlta.onclick = (e) => this.nuevaMascota();
+        this.botonAlta.onclick = (e) => this.formAlta.setAttribute('style', 'display: block;');
 
         this.botonListar = document.createElement('button');
         this.botonListar.append('Listar');
@@ -72,7 +72,6 @@ class Clinica {
         //* INPUT NOMBRE MASCOTA
         this.inputGroup1 = document.createElement('div');
         this.inputGroup1.setAttribute('class','input-group');
-        this.formAlta.append(this.inputGroup1);
 
         this.inputNombreMascota = document.createElement('input');
         this.inputNombreMascota.setAttribute('type', 'text');
@@ -83,49 +82,71 @@ class Clinica {
 
         this.label1 = document.createElement('label');
         this.label1.setAttribute('class', 'label');
-        this.label1.append('Nombre Mascota');
+        this.label1.append('Nombre mascota');
         this.inputGroup1.append(this.label1); 
 
 
         //* INPUT NOMBRE PROPIETARIO
         this.inputGroup2 = document.createElement('div');
         this.inputGroup2.setAttribute('class','input-group');
-        this.formAlta.append(this.inputGroup2);
 
         this.inputNombrePropietario = document.createElement('input');
         this.inputNombrePropietario.setAttribute('type', 'text');
         this.inputNombrePropietario.setAttribute('class', 'input');
         this.inputNombrePropietario.setAttribute('id', 'nombrePropietario');
         this.inputNombrePropietario.setAttribute('value', '');
+        this.inputGroup2.append(this.inputNombrePropietario);
 
         this.label2 = document.createElement('label');
         this.label2.setAttribute('class', 'label');
-        this.label2.append('Nombre Mascota');
-        this.inputGroup2.append(this.label1); 
+        this.label2.append('Nombre propietario');
+        this.inputGroup2.append(this.label2); 
+
+
+        //* INPUT EDAD
+        this.inputGroup3 = document.createElement('div');
+        this.inputGroup3.setAttribute('class','input-group');
 
         this.inputEdad = document.createElement('input');
         this.inputEdad.setAttribute('type', 'number');
         this.inputEdad.setAttribute('class', 'input');
         this.inputEdad.setAttribute('id', 'edad');
         this.inputEdad.setAttribute('value', '');
+        this.inputGroup3.append(this.inputEdad);
+
+        this.label3 = document.createElement('label');
+        this.label3.setAttribute('class', 'label');
+        this.label3.append('Edad');
+        this.inputGroup3.append(this.label3); 
+
+        //* INPUT PESO
+        this.inputGroup4 = document.createElement('div');
+        this.inputGroup4.setAttribute('class','input-group');
 
         this.inputPeso = document.createElement('input');
         this.inputPeso.setAttribute('type', 'number');
         this.inputPeso.setAttribute('class', 'input');
         this.inputPeso.setAttribute('id', 'peso');
         this.inputPeso.setAttribute('value', '');
+        this.inputGroup4.append(this.inputPeso);
 
+        this.label4 = document.createElement('label');
+        this.label4.setAttribute('class', 'label');
+        this.label4.append('Peso');
+        this.inputGroup4.append(this.label4); 
+
+        //* BOTON ALTA
         this.botonAlta = document.createElement('button');
         this.botonAlta.setAttribute('class', 'insertar');
         this.botonAlta.append('Alta');
-        this.botonAlta.onclick = (e) => this.nuevaMascota();
+        this.botonAlta.onclick = (e) => this.nuevaMascota(e);
 
         this.br = document.createElement('br');
         this.br2 = document.createElement('br');
         this.br3 = document.createElement('br');
         this.br4 = document.createElement('br');
 
-        this.formAlta.append(this.inputGroup1, this.br, this.inputNombrePropietario, this.br2, this.inputEdad, this.br3, this.inputPeso, this.br4, this.botonAlta);
+        this.formAlta.append(this.inputGroup1, this.br, this.inputGroup2, this.br2, this.inputGroup3, this.br3, this.inputGroup4, this.br4, this.botonAlta);
 
 
 
@@ -136,18 +157,34 @@ class Clinica {
         this.sectionHTML.append(this.formVacunar);
 
 
+        //* DIV RESULTADOS
+        this.resultados = document.createElement('div');
+        this.resultados.setAttribute('id', 'resultados');
+        this.sectionHTML.append(this.resultados);
+        
+        this.resultado = document.createElement('p');
+        this.resultado.setAttribute('id', 'resultado');
 
+        this.anotacion = document.createElement('p');
+        this.anotacion.setAttribute('id', 'anotacion');
 
+        this.resultados.append(this.resultado, this.anotacion);
 
+        //* INSERCCION CLINICA EN EL BODY 
         document.body.append(this.clinicaHTML);
     }
 
-    nuevaMascota(nombreMascota, nombrePropietario, edad, peso) {
-        this.formAlta.setAttribute('style', 'display: block;');
-
-
-        let mascota = new Mascota(nombreMascota, nombrePropietario, edad, peso);
+    nuevaMascota(e) {
+        let mascota = new Mascota(
+            this.inputNombreMascota.value, 
+            this.inputNombrePropietario.value, 
+            this.inputEdad.value, 
+            this.inputPeso.value);
         this.mascotas.push(mascota);
+        this.formAlta.setAttribute('style', 'display: none;');
+
+        this.resultado.append(`Mascota ${this.inputNombreMascota} dada de alta.`);
+        this.anotacion.append(`Hay ${this.mascotas.length} mascotas en la clinica.`);
     }
 
     listadoMascotas(botonAccion) {
