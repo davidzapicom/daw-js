@@ -78,7 +78,6 @@ function registrarVacuna(animal, event) {
     if ((vacuna != "") && (vacuna != null)) {
         vacunas[animal].nombreVacuna = vacuna;
         var f = new Date();
-        vacunas[animal].fechaVacuna = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
         anotacion.innerHTML = `vacunas[i].nombre + "-" + vacunas[i].nombreVacuna + "-" + vacunas[i].fechaVacuna`;
     } else {
         alert("Faltan datos");

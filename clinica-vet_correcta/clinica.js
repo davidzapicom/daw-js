@@ -40,7 +40,7 @@ class Clinica {
 
         this.botonVacunar = document.createElement('button');
         this.botonVacunar.append('Vacunar');
-        this.botonVacunar.onclick = (e) => this.Mascota.vacunar();
+        this.botonVacunar.onclick = (e) => this.formVacunar.setAttribute('style', 'display: block;');
 
         this.botonBaja = document.createElement('button');
         this.botonBaja.append('Baja');
@@ -75,7 +75,7 @@ class Clinica {
         //     this.anotacion.append('Para comenzar elija una opción en el menú.');
         //     this.resultado.append('Aún no se ha ejecutado ninguna acción.'); 
         // }
-        
+
 
         this.resultados.append(this.resultado, this.anotacion);
 
@@ -234,11 +234,11 @@ class Clinica {
             this.tdNombre = document.createElement('td');
             this.tdNombre.setAttribute('data-th', 'Nombre');
             this.tdPropietario = document.createElement('td');
-            this.tdNombre.setAttribute('data-th', 'Propietario');
+            this.tdPropietario.setAttribute('data-th', 'Propietario');
             this.tdEdad = document.createElement('td');
-            this.tdNombre.setAttribute('data-th', 'Edad');
+            this.tdEdad.setAttribute('data-th', 'Edad');
             this.tdPeso = document.createElement('td');
-            this.tdNombre.setAttribute('data-th', 'Peso');
+            this.tdPeso.setAttribute('data-th', 'Peso');
 
             this.tdNombre.append(mascota.nombreMascota);
             this.tdPropietario.append(mascota.nombrePropietario);
@@ -265,35 +265,47 @@ class Mascota {
         this.mascotaHTML.innerHTML = `<td>${this.nombre}</td>`
     }
 
-    vacunar(nombreMascota, nombrePropietario, edad, peso) {
-        this.mascotaHTML = document.createElement('div');
-        let nombreHTML = document.createElement('span');
-        if (Clinica.mascotas.length == 0) {
-            resultado.innerHTML = `No hay ninguna mascota.`;
-        } else {
-            for (var i = 0; i < Clinica.mascotas.length; i++) {
-                if (Clinica.mascotas[i].activo == "Active") {
-                    nombreHTML.innerHTML = Clinica.mascotas[i].nombre;
-                    this.mascotaHTML.append(nombreHTML);
-                    botonVacunar = document.createElement('button');
-                    botonVacunar.innerHTML = 'Vacunar';
-                    mascotaHTML.append(botonVacunar);
-                    let pMascota = Clinica.mascotas[i];
-                    botonVacunar.onclick = (e) => this.Mascota.vacunas.push(new Vacuna(nombreMascota, nombrePropietario, edad, peso));
-                }
-                resultado.append(mascotaHTML);
-            }
-        }
+    vacunar(e) {
+        e.preventDefault();
+
+        this.fechaVacuna = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+
+
+
+        let vacuna = new Vacuna(
+            this.inputNombreMascota.value,
+            this.inputNombreVacuna.value,
+            this.fechaVacuna);
+        Mascota.vacunas.push(vacuna);
+
+        this.formVacunar.setAttribute('style', 'display: block;');
     }
 
     baja() {
-        //!
+        Clinica.resultado.innerHTML = `Listado de mascotas:`;
+        anotacion.innerHTML = `${this.mascotas.length} mascotas.`;
+
+        this.ul = document.createElement('ul');
+        this.mascotas.forEach(mascota => {
+            this.li = document.createElement('li');
+            this.tdNombre.append(mascota.nombreMascota);
+            this.buttonBaja = document.createElement('button');
+            this.buttonBaja.append('Baja');
+
+            //! this.buttonBaja.onclick = (e) => this.Mascota.baja();
+
+            //! Cómo darle el valor de la mascota al botón?
+
+            this.ul.append(this.li, this.buttonBaja);
+        })
+        this.tablaHTML.setAttribute('style', 'display: block;');
     }
 }
 
 
 class Vacuna {
-    constructor(nombreVacuna, fechaVacuna) {
+    constructor(nombreMascota, nombreVacuna, fechaVacuna) {
+        this.nombreMascota = nombreMascota;
         this.nombreVacuna = nombreVacuna;
         this.fechaVacuna = fechaVacuna;
     }
