@@ -70,8 +70,8 @@ class Clinica {
         this.anotacion.setAttribute('id', 'anotacion');
 
 
-        //!
-        // while (this.botonAlta.onclick) {
+        //! mostrar este mensaje mientras no se toque ningun boton
+        // while (!this.botonAlta.onclick && !this.botonListar.onclick && !this.botonVacunar.onclick && !this.botonBaja.onclick) {
         //     this.anotacion.append('Para comenzar elija una opción en el menú.');
         //     this.resultado.append('Aún no se ha ejecutado ninguna acción.'); 
         // }
