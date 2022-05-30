@@ -44,7 +44,7 @@ class Clinica {
 
         this.botonBaja = document.createElement('button');
         this.botonBaja.append('Baja');
-        this.botonBaja.onclick = (e) => Mascota.baja();
+        this.botonBaja.onclick = (e) => this.formBaja.setAttribute('style', 'display: block;');
 
         this.spanraya = document.createElement('span');
         this.spanraya.setAttribute('class', 'line');
@@ -183,8 +183,67 @@ class Clinica {
         this.formVacunar.setAttribute('style', 'display: none;');
         this.sectionHTML.append(this.formVacunar);
 
+        //* INPUT NOMBRE VACUNA
+        this.inputGroup5 = document.createElement('div');
+        this.inputGroup5.setAttribute('class', 'input-group');
+        this.formVacunar.append(this.inputGroup5);
+
+        this.inputNombreVacuna = document.createElement('input');
+        this.inputNombreVacuna.setAttribute('type', 'text');
+        this.inputNombreVacuna.setAttribute('class', 'input');
+        this.inputNombreVacuna.setAttribute('id', 'nombreVacuna');
+        this.inputNombreVacuna.setAttribute('value', '');
+        this.inputGroup5.append(this.inputNombreVacuna);
+
+        this.label5 = document.createElement('label');
+        this.label5.setAttribute('class', 'label');
+        this.label5.append('Nombre vacuna');
+        this.inputGroup5.append(this.label5);
+
         this.selectVacunar = document.createElement('select');
         this.formVacunar.append(this.selectVacunar);
+
+        this.mascotas.forEach(mascota => {
+            this.option = document.createElement('option');
+            this.option.setAttribute('value', 'mascota.nombre');
+            this.option.append(mascota.nombre);
+
+            this.selectVacunar.append(this.option);
+        });
+
+        //* BOTON VACUNAR
+        this.botonVacunar = document.createElement('button');
+        this.botonVacunar.setAttribute('class', 'insertar');
+        this.botonVacunar.append('Vacunar');
+        this.botonVacunar.onclick = (e) => Mascota.vacunar(e);
+
+        this.formVacunar.append(this.botonVacunar);
+
+
+        //* FORM BAJA
+        this.formBaja = document.createElement('form');
+        this.formBaja.setAttribute('id', 'form_baja');
+        this.formBaja.setAttribute('style', 'display: none;');
+        this.sectionHTML.append(this.formBaja);
+
+        this.selectBaja = document.createElement('select');
+        this.formBaja.append(this.selectBaja);
+
+        this.mascotas.forEach(mascota => {
+            this.option = document.createElement('option');
+            this.option.setAttribute('value', 'mascota.nombre');
+            this.option.append(mascota.nombre);
+
+            this.selectBaja.append(this.option);
+        });
+
+        //* BOTON BAJA
+        this.botonBaja = document.createElement('button');
+        this.botonBaja.setAttribute('class', 'insertar');
+        this.botonBaja.append('Baja');
+        this.botonBaja.onclick = (e) => Mascota.baja(e);
+
+        this.formBaja.append(this.botonBaja);
 
 
         //* INSERCCION CLINICA EN EL BODY 
@@ -311,4 +370,31 @@ class Vacuna {
     }
 }
 
-let miClinica = new Clinica('Clinica Milagritos');
+let miClinica = new Clinica('Clinica Veterinaria');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let selectMascota = document.getElementById("numero_mascota");
+// while (selectMascota.options.length > 0) {
+//     selectMascota.options.remove(0);
+// }
+// let opcion = document.createElement("OPTION");
+// opcion.innerHTML = "(Seleccionar)";
+// selectMascota.options.add(opcion);
+// for (let i = 0; i < mascotas.length; i++) {
+//     opcion = document.createElement("OPTION");
+//     opcion.innerHTML = mascotas[i].nombre;
+//     selectMascota.options.add(opcion);
+// }
