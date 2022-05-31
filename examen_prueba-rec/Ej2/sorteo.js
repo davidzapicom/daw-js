@@ -58,13 +58,12 @@ class Sorteo {
         this.btnPreparar = document.createElement('button');
         this.btnPreparar.append("PREPARAR");
         this.btnPreparar.onclick = (e) => this.asignarPersonas(e);
-        this.nav.append(this.btnPreparar);
 
         this.btnSortear = document.createElement('button');
         this.btnSortear.setAttribute('style', 'display: none');
         this.btnSortear.append("SORTEAR");
         this.btnSortear.onclick = (e) => this.sortear(e);
-        this.nav.append(this.btnSortear); 
+        this.nav.append(this.btnPreparar, this.btnSortear); 
 
         //* SECTION RESULTADOS
         this.section = document.createElement('section');
@@ -80,7 +79,7 @@ class Sorteo {
 
         this.anotacion = document.createElement('p');
         this.anotacion.setAttribute('id', 'anotacion');
-        this.resultados.append(this.resultado, this.anotacion);
+        this.resultados.append(this.anotacion, this.resultado);
 
         this.ol = document.createElement('ol');
         this.resultado.append(this.ol);
@@ -115,7 +114,7 @@ class Sorteo {
 
         this.personasOrdenado = this.personas.sort();
         this.ol = document.createElement('ol');
-        this.resultado.append(this.ol);
+        this.resultado.replaceWith(this.ol);
         for (i = 0; i < this.personas.length; i++) {
             this.li = document.createElement('li');
 
@@ -135,15 +134,11 @@ class Sorteo {
         let numPremiado = Math.floor(Math.random() * (this.personas.length - 1)) + 1;
         let tempo = setTimeout(function () {
             this.anotacion.innerHTML = "";
-            this.resultado.append(`Número premiado: ${numPremiado}`);
         }, 3000);            
 
         let pos = this.numsAl.findIndex(ele => ele === numPremiado);
         pos+=1;
-        this.resultado.append(`La persona premiada es el numero: ${pos}`);
-
-        
-        
+        this.anotacion.replaceWith(`La persona ganadora es ${this.personasOrdenado[pos-1]} con la posición ${pos} y el numero premiado: ${numPremiado}`);
 
     }
 }
