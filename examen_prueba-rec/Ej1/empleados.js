@@ -104,10 +104,10 @@ function bloquear(e, empleado) {
 }
 
 function seleccionar(e, empleado) {
-    if (empleado.pulsado === undefined || empleado.pulsado === false) {
+    if (empleado.selecionado === undefined || empleado.selecionado === false) {
         empleado.filaElementoHTML.style.backgroundColor = 'red';
-        empleado.pulsado = true;
-    } else if (empleado.pulsado === true) {
+        empleado.selecionado = true;
+    } else if (empleado.selecionado === true) {
         empleado.filaElementoHTML.style.backgroundColor = 'black';
     }
 }
