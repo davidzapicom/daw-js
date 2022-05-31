@@ -56,27 +56,19 @@ class Sorteo {
         this.header.append(this.nav);
 
         this.btnPreparar = document.createElement('button');
-        botonPreparar.append("PREPARAR");
-        botonPreparar.onclick = (e) => asignarPersonas(e);
+        this.btnPreparar.append("PREPARAR");
+        this.btnPreparar.onclick = (e) => this.asignarPersonas(e);
         this.nav.append(this.btnPreparar);
+
+        this.btnSortear = document.createElement('button');
+        this.btnSortear.setAttribute('style', 'display: none');
+        this.btnSortear.append("SORTEAR");
+        this.btnSortear.onclick = (e) => this.sortear(e);
+        this.nav.append(this.btnSortear);
 
         //* SECTION RESULTADOS
         this.section = document.createElement('section');
         this.sorteo.append(this.section);
-
-
-        this.ol = document.createElement('ol');
-        this.section.append(this.ol);
-
-
-        this.personas.forEach(persona => {
-            this.li = document.createElement('li');
-            this.li.append(persona);
-            this.ol.append(this.li);
-        });
-
-
-
 
         //* DIV RESULTADOS
         this.resultados = document.createElement('div');
@@ -90,40 +82,60 @@ class Sorteo {
         this.anotacion.setAttribute('id', 'anotacion');
         this.resultados.append(this.resultado, this.anotacion);
 
-        this.mascotas.forEach(mascota => {
-            this.option = document.createElement('option');
-            this.option.setAttribute('value', 'mascota.nombre');
-            this.option.append(mascota.nombre);
+        this.ol = document.createElement('ol');
+        this.resultado.append(this.ol);
 
-            this.selectBaja.append(this.option);
+
+        this.personas.forEach(persona => {
+            this.li = document.createElement('li');
+            this.li.append(persona);
+            this.ol.append(this.li);
         });
-
 
         //* INSERCCION SORTEO EN EL BODY 
         document.body.append(this.sorteo);
     }
 
     asignarPersonas(e) {
-        mensaje.innerHTML = "SORTEANDO";
-        // personas.sort();
-    
-        // var cantidadNumeros = personas.length;
-        // var myArray = [];
-        // while (myArray.length < cantidadNumeros) {
-        //     var numeroAleatorio = Math.ceil(Math.random() * cantidadNumeros);
-        //     var existe = false;
-        //     for (var i = 0; i < myArray.length; i++) {
-        //         if (myArray[i] == numeroAleatorio) {
-        //             existe = true;
-        //             break;
-        //         }
-        //     }
-        //     if (!existe) {
-        //         myArray[myArray.length] = numeroAleatorio;
-        //     }
-    
-        // }
-        // mensaje.innerHTML = `${myArray.length} nums.`;
+        this.btnPreparar.disabled = true;
+
+        while (this.numsAl.length < this.personas.length) {
+            var numeroAleatorio = Math.ceil(Math.random() * this.personas.length);
+            var existe = false;
+            for (var i = 0; i < this.numsAl.length; i++) {
+                if (this.numsAl[i] == numeroAleatorio) {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe) {
+                this.numsAl[this.numsAl.length] = numeroAleatorio;
+            }
+        }
+
+        this.personasOrdenado = this.personas.sort();
+        this.ol = document.createElement('ol');
+        this.resultado.append(this.ol);
+        for (i = 0; i < this.personas.length; i++) {
+            this.li = document.createElement('li');
+
+            let persona = this.personasOrdenado[i];
+            let element = this.numsAl[i];
+
+            this.li.append(`${persona}. Número aleatorio asignado:  ${element}`);
+            this.ol.append(this.li);
+        }
+        this.btnSortear.style.display = 'block';
+    }
+
+
+    sortear(e) {
+        this.resultado.innerHTML = "SORTEANDO";
+        let tempo = setTimeout(function () {
+            this.resultado.innerHTML = "";
+            let numPremiado = Math.floor(Math.random() * (27 - 1)) + 1;
+            this.anotacion.innerHTML = `${numPremiado}`;
+        }, 3000);            
     }
 }
 
