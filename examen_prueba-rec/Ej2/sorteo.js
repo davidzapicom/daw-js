@@ -64,7 +64,7 @@ class Sorteo {
         this.btnSortear.setAttribute('style', 'display: none');
         this.btnSortear.append("SORTEAR");
         this.btnSortear.onclick = (e) => this.sortear(e);
-        this.nav.append(this.btnSortear);
+        this.nav.append(this.btnSortear); 
 
         //* SECTION RESULTADOS
         this.section = document.createElement('section');
@@ -130,12 +130,21 @@ class Sorteo {
 
 
     sortear(e) {
-        this.resultado.innerHTML = "SORTEANDO";
+        this.btnSortear.disabled = true;
+        this.anotacion.innerHTML = "SORTEANDO";
+        let numPremiado = Math.floor(Math.random() * (this.personas.length - 1)) + 1;
         let tempo = setTimeout(function () {
-            this.resultado.innerHTML = "";
-            let numPremiado = Math.floor(Math.random() * (27 - 1)) + 1;
-            this.anotacion.innerHTML = `${numPremiado}`;
+            this.anotacion.innerHTML = "";
+            this.resultado.append(`Número premiado: ${numPremiado}`);
         }, 3000);            
+
+        let pos = this.numsAl.findIndex(ele => ele === numPremiado);
+        pos+=1;
+        this.resultado.append(`La persona premiada es el numero: ${pos}`);
+
+        
+        
+
     }
 }
 
