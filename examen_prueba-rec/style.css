@@ -1,0 +1,25 @@
+table {
+    table-layout: auto;
+    width: 100%;
+}
+
+tr {
+    border: 1px solid;
+}
+
+th {
+    border : 4px solid;
+
+}
+
+td {
+    border: 2px solid;
+    font-size: 1.2 em;
+    width: auto;
+}
+
+button {
+    border: 4px solid;
+    background: transparent;
+    margin: 5px;
+}
