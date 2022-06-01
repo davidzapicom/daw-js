@@ -139,14 +139,13 @@ class Sorteo {
         this.btnSortear.disabled = true;
         this.anotacion.innerHTML = "SORTEANDO";
         let numPremiado = Math.floor(Math.random() * (this.personas.length - 1)) + 1;
-        // let tempo = setTimeout(function () {
-        //     this.anotacion.innerHTML = "";
-        // }, 3000);            
+        let tempo = setTimeout(function () {
+            this.anotacion.innerHTML = "";
+        }, 3000);            
         
         let pos = this.numsAl.findIndex(ele => ele === numPremiado);
         liElementoHTML[pos].style.backgroundColor = '#f00';
         this.anotacion.replaceWith(`La persona ganadora es ${this.personasOrdenado[pos]} con la posición ${pos+=1} y el numero premiado ${numPremiado}`);
-
     }
 }
 
