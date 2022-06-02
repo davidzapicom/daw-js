@@ -51,7 +51,6 @@ function generarTablaHTML(tabla, cabeceras, botones) {
         let th = document.createElement('th');
         th.append(cabecera.etiqueta);
         trcabecera.append(th);
-
     })
     tablaHTML.append(trcabecera);
 
