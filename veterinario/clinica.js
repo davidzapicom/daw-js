@@ -1,7 +1,7 @@
 const mascotasOBJ = [
-    { nombreMascota: "Lola", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2003-08-31", codigo: "A047", edad: 12, peso: 11, ultimaVacuna: 'no registrada'},
-    { nombreMascota: "Xixo", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2000-12-04", codigo: "A034", edad: 1, peso: 1, ultimaVacuna: 'no registrada'},
-    { nombreMascota: "Cohete", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "1972-12-06", codigo: "A001", edad: 42, peso: 42, ultimaVacuna: 'no registrada'},
+    { nombreMascota: "Lola", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2003-08-31", codigo: "A047", edad: 12, peso: 11, ultimaVacuna: 'no registrada' },
+    { nombreMascota: "Xixo", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2000-12-04", codigo: "A034", edad: 1, peso: 1, ultimaVacuna: 'no registrada' },
+    { nombreMascota: "Cohete", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "1972-12-06", codigo: "A001", edad: 42, peso: 42, ultimaVacuna: 'no registrada' },
 ]
 
 const cabecera = [
@@ -67,6 +67,31 @@ function generarTablaHTML(tabla, cabeceras, botones) {
 }
 
 
+
+function alta() {
+    let nombreMascota = prompt('Nombre de la mascota');
+    let nombrePropietario = prompt('Nombre del propietario');
+    let fechaNacimiento = prompt('Fecha de nacimiento');
+    let codigo = prompt('Código');
+    let edad = prompt('Edad');
+    let peso = prompt('Peso');
+    let ultimaVacuna = prompt('Última vacuna');
+
+    let nuevaMascota = {
+        nombreMascota: nombreMascota,
+        nombrePropietario: nombrePropietario,
+        fechaNacimiento: fechaNacimiento,
+        codigo: codigo,
+        edad: edad,
+        peso: peso,
+        ultimaVacuna: ultimaVacuna
+    }
+    mascotasOBJ.push(nuevaMascota);
+
+    tablaHTML.append(nuevaMascota.filaElementoHTML);
+}
+
+
 function vacunar(eve, mascota) {
     let input = document.createElement('input');
     input.setAttribute('type', 'text');
@@ -85,7 +110,7 @@ function vacunar(eve, mascota) {
 
 }
 
-  
+
 
 function baja(e, mascota) {
     let confirmacion = confirm(`¿Está seguro de eliminar a ${mascota.nombreMascota}?`);
@@ -95,11 +120,6 @@ function baja(e, mascota) {
     }
 
 }
-
-
-
-
-
 
 
 
@@ -130,6 +150,17 @@ class Clinica {
         this.tituloHTML.append(`${this.nombre}`);
         this.logoHTML.append(this.tituloHTML);
 
+        //* NAV
+        this.navHTML = document.createElement('nav');
+        this.navHTML.setAttribute('class', 'links');
+        this.navHTML.setAttribute('style', '--items: 1;');
+        this.headerHTML.append(this.navHTML);
+
+        this.botonAlta = document.createElement('button');
+        this.botonAlta.append('Alta');
+        this.botonAlta.onclick = (e) => alta();
+
+        this.navHTML.append(this.botonAlta);
 
 
         //* INSERCCION CLINICA EN EL BODY 
