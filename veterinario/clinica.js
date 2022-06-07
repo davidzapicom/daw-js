@@ -1,7 +1,7 @@
 const mascotasOBJ = [
-    { nombreMascota: "Lola", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2003-08-31T22:00:00.000Z", codigo: "A047", fechaIncorporacion: "2022-02-08T23:00:00.000Z", edad: 12, peso: 11},
-    { nombreMascota: "Xixo", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2000-12-04T23:00:00.000Z", codigo: "A034", fechaIncorporacion: "2022-01-23T23:00:00.000Z", edad: 1, peso: 1},
-    { nombreMascota: "Cohete", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "1972-12-06T23:00:00.000Z", codigo: "A001", fechaIncorporacion: "2020-12-30T23:00:00.000Z", edad: 42, peso: 42},
+    { nombreMascota: "Lola", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2003-08-31", codigo: "A047", edad: 12, peso: 11, ultimaVacuna: 'no registrada'},
+    { nombreMascota: "Xixo", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "2000-12-04", codigo: "A034", edad: 1, peso: 1, ultimaVacuna: 'no registrada'},
+    { nombreMascota: "Cohete", nombrePropietario: "Casilda Alarcos González", fechaNacimiento: "1972-12-06", codigo: "A001", edad: 42, peso: 42, ultimaVacuna: 'no registrada'},
 ]
 
 const cabecera = [
@@ -11,6 +11,7 @@ const cabecera = [
     { elemento: "fechaNacimiento", etiqueta: "Fecha de nacimiento" },
     { elemento: "edad", etiqueta: "Edad" },
     { elemento: "peso", etiqueta: "Peso" },
+    { elemento: "ultimaVacuna", etiqueta: "Última vacuna" },
 ];
 
 const botonera = [
@@ -22,6 +23,86 @@ const tablaHTML = generarTablaHTML(mascotasOBJ, cabecera, botonera);
 
 document.body.insertAdjacentElement('beforeend', tablaHTML);
 
+function generarTablaHTML(tabla, cabeceras, botones) {
+    let tablaHTML = document.createElement('table');
+    tablaHTML.setAttribute('class', 'table-striped');
+
+    //* Cabecera
+    let trcabecera = document.createElement('tr');
+    cabeceras.forEach(cabecera => {
+        let th = document.createElement('th');
+        th.append(cabecera.etiqueta);
+        trcabecera.append(th);
+    })
+    tablaHTML.append(trcabecera);
+
+    //* Contenido
+    tabla.forEach(fila => {
+        let trfilas = document.createElement('tr');
+        cabecera.forEach(cabecera => {
+            let td = document.createElement('td');
+            td.append(fila[cabecera.elemento]);
+            trfilas.append(td);
+        })
+
+        fila.botonesHTML = [];
+        //* Botones
+        let divBotonera = document.createElement('div');
+        botones.forEach(boton => {
+            let btn = document.createElement('button');
+            btn.append(boton.accion);
+            btn.addEventListener('click', (e) => {
+                boton.eventoClick(e, fila);
+            });
+            divBotonera.append(btn);
+            fila.botonesHTML.push(btn);
+        })
+        fila.filaElementoHTML = trfilas;
+        fila.botoneraHTML = divBotonera;
+
+        trfilas.append(divBotonera);
+        tablaHTML.append(trfilas);
+    })
+    return tablaHTML;
+}
+
+
+function vacunar(eve, mascota) {
+    let input = document.createElement('input');
+    input.setAttribute('type', 'text');
+    input.setAttribute('placeholder', 'Nombre vacuna');
+    let button = document.createElement('button');
+    button.append('Agregar');
+    button.addEventListener('click', (e) => {
+        let nombreVacuna = input.value;
+        mascota.ultimaVacuna = nombreVacuna;
+
+    });
+    let td = document.createElement('td');
+    td.append(input, button);
+    eve.target.parentElement.append(td);
+
+
+}
+
+  
+
+function baja(e, mascota) {
+    let confirmacion = confirm(`¿Está seguro de eliminar a ${mascota.nombreMascota}?`);
+    if (confirmacion) {
+        mascota.filaElementoHTML.remove();
+        mascota.botoneraHTML.remove();
+    }
+
+}
+
+
+
+
+
+
+
+
 
 class Clinica {
     constructor(nombre) {
@@ -29,9 +110,6 @@ class Clinica {
         this.tiposMacotas = [];
         this.mascotas = [];
         document.title = this.nombre;
-
-
-
 
         //* DIV CONTENEDOR
         this.clinicaHTML = document.createElement('div');
@@ -51,71 +129,41 @@ class Clinica {
         this.tituloHTML = document.createElement('h1');
         this.tituloHTML.append(`${this.nombre}`);
         this.logoHTML.append(this.tituloHTML);
+
+
+
+        //* INSERCCION CLINICA EN EL BODY 
+        document.body.insertAdjacentElement('afterBegin', this.clinicaHTML);
     }
 
 
 
 
 
-    generarTablaHTML(tabla, cabeceras, botones) {
-        let tablaHTML = document.createElement('table');
-    
-        //* Cabecera
-        let trcabecera = document.createElement('tr');
-        cabeceras.forEach(cabecera => {
-            let th = document.createElement('th');
-            th.append(cabecera.etiqueta);
-            trcabecera.append(th);
-        })
-        tablaHTML.append(trcabecera);
-    
-        //* Contenido
-        tabla.forEach(fila => {
-            let trfilas = document.createElement('tr');
-    
-            cabecera.forEach(cabecera => {
-                let td = document.createElement('td');
-                td.append(fila[cabecera.elemento]);
-                trfilas.append(td);
-            })
-    
-            fila.botonesHTML = [];
-            //* Botones
-            let divBotonera = document.createElement('div');
-            botones.forEach(boton => {
-                let btn = document.createElement('button');
-                btn.append(boton.accion);
-                btn.addEventListener('click', (e) => {
-                    boton.eventoClick(e, fila);
-                });
-                divBotonera.append(btn);
-                fila.botonesHTML.push(btn);
-            })
-            fila.filaElementoHTML = trfilas;
-            fila.botoneraHTML = divBotonera;
-    
-            trfilas.append(divBotonera);
-            tablaHTML.append(trfilas);
-        })
-        return tablaHTML;
-    }
-    
-    
-    vacunar(eve, mascota) {
-        let td = document.createElement('td');
-        td.append(mascota.salario);
-        eve.target.parentElement.append(td);
-    
-    
-    }
-    
-    baja(e, mascota) {
-    
-    
-    
+}
+
+
+class Mascota {
+    constructor(nombreMascota, nombrePropietario, edad, peso) {
+        this.nombreMascota = nombreMascota;
+        this.nombrePropietario = nombrePropietario;
+        this.edad = edad;
+        this.peso = peso;
+        this.vacunas = [];
+        this.activo = "Active";
+        this.mascotaHTML = document.createElement('tr');
+        this.mascotaHTML.innerHTML = `<td>${this.nombre}</td>`
     }
 }
 
+
+class Vacuna {
+    constructor(nombreMascota, nombreVacuna, fechaVacuna) {
+        this.nombreMascota = nombreMascota;
+        this.nombreVacuna = nombreVacuna;
+        this.fechaVacuna = fechaVacuna;
+    }
+}
 
 
 let miClinica = new Clinica('Clinica Veterinaria');

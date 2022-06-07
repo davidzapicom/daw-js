@@ -252,16 +252,6 @@ class Clinica {
 
 
 
-    generarElemento() {
-        //* CREACION DE ELEMENTOS
-        
-
-
-
-    }
-
-
-
 
     nuevaMascota(e) {
         this.sectionHTML.remove();
