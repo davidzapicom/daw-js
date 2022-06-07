@@ -250,7 +250,21 @@ class Clinica {
         document.body.append(this.clinicaHTML);
     }
 
+
+
+    generarElemento() {
+        //* CREACION DE ELEMENTOS
+        
+
+
+
+    }
+
+
+
+
     nuevaMascota(e) {
+        this.sectionHTML.remove();
         e.preventDefault();
         let mascota = new Mascota(
             this.inputNombreMascota.value,
