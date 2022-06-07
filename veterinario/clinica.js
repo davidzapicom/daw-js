@@ -166,11 +166,6 @@ class Clinica {
         //* INSERCCION CLINICA EN EL BODY 
         document.body.insertAdjacentElement('afterBegin', this.clinicaHTML);
     }
-
-
-
-
-
 }
 
 
