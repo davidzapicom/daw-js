@@ -19,7 +19,7 @@ const botonera = [
     { accion: 'Baja', eventoClick: (e, fila) => baja(e, fila) }
 ];
 
-const tablaHTML = generarTablaHTML(mascotasOBJ, cabecera, botonera);
+var tablaHTML = generarTablaHTML(mascotasOBJ, cabecera, botonera);
 
 document.body.insertAdjacentElement('beforeend', tablaHTML);
 
@@ -88,7 +88,9 @@ function alta() {
     }
     mascotasOBJ.push(nuevaMascota);
 
-    tablaHTML.append(nuevaMascota.filaElementoHTML);
+    tablaHTML.remove();
+    tablaHTML = generarTablaHTML(mascotasOBJ, cabecera, botonera);
+    document.body.insertAdjacentElement('beforeend', tablaHTML);
 }
 
 
@@ -98,15 +100,17 @@ function vacunar(eve, mascota) {
     input.setAttribute('placeholder', 'Nombre vacuna');
     let button = document.createElement('button');
     button.append('Agregar');
-    button.addEventListener('click', (e) => {
+    button.onclick = (e) => {
         let nombreVacuna = input.value;
         mascota.ultimaVacuna = nombreVacuna;
-
-    });
+        td.remove();
+        tablaHTML.remove();
+        tablaHTML = generarTablaHTML(mascotasOBJ, cabecera, botonera);
+        document.body.insertAdjacentElement('beforeend', tablaHTML);
+    }
     let td = document.createElement('td');
     td.append(input, button);
     eve.target.parentElement.append(td);
-
 
 }
 
@@ -118,7 +122,6 @@ function baja(e, mascota) {
         mascota.filaElementoHTML.remove();
         mascota.botoneraHTML.remove();
     }
-
 }
 
 
