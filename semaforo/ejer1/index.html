@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/css" rel="StyleSheet" href="style.css" />
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+    <div id="mizona">
+        <button type="button" onclick="mostrarFormularioAltaPersona();">Añadir</button>
+        <button type="button" onclick="mostrarFormularioModificar();">Modificar</button>
+        <button type="button" onclick="mostrarPeso();">Calcular</button>
+</body>
+<div id="cont_formulario_personas">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre">
+        <br>
+        <label for="peso">Peso:</label>
+        <input type="number" id="peso">
+        <br>
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura">
+        <br>
+        <button type="button" onclick="altaPersona();">Alta Persona</button>
+    </div>
+
+    <div id="cont_formulario_modificar">
+        <label for="nombres_persona">Nombre de la persona: </label>
+        <select type="text" id="nombre_persona"></select>
+        <label for="pesos_modificar">Peso:</label>
+        <input type="number" id="peso_modificar">
+        <br>
+        <label for="alturas_modificar">Altura:</label>
+        <input type="number" id="altura_modificar">
+        <br>
+        <button type="button" onclick="modificarPersona();">Modificar Persona</button>
+
+    </div>
+        <p>Personas Existentes</p>
+        <div id="contenedor_personas"></div>
+
+        <p>Personas con el imc calculado</p>
+        <div id="contenedor_personas_calculadas"></div>
+</html>
